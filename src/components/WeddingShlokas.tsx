@@ -52,7 +52,7 @@ export default function WeddingShlokas() {
 
   return (
     <section style={{
-      background: '#223348',
+      background: '#F6F0E6',
       padding: '80px 24px',
       textAlign: 'center',
       position: 'relative',
