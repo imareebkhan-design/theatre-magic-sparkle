@@ -563,16 +563,16 @@ export default function Index() {
               {/* ── SECTION 6: GIFTS ── */}
               <Section dark>
                 <div className="max-w-lg mx-auto space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Wedding Registry</p>
+                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('gifts.registry')}</p>
                   <WeddingCarIllustration />
-                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">Gifts</h2>
+                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">{t('gifts.title')}</h2>
                   <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    Your presence is the best gift we could receive. However, if you wish to contribute to our new life together, you can do so via bank transfer.
+                    {t('gifts.desc')}
                   </p>
-                  <p className="font-script text-3xl text-brand-red-dark italic pt-2">With all our love</p>
+                  <p className="font-script text-3xl text-brand-red-dark italic pt-2">{t('gifts.love')}</p>
 
                   <div className="pt-4 space-y-3">
-                    <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Bank Details</p>
+                    <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('gifts.bank')}</p>
                     <div className="border border-brand-red-dark/30 rounded-sm px-8 py-6 text-left space-y-2">
                       <p className="font-serif text-xs text-brand-red-dark tracking-widest uppercase">Account Holder: Sam &amp; Sofia</p>
                       <p className="font-serif text-xs text-brand-red-dark tracking-wider">IBAN: IT60 X054 2811 1010 0000 0123 456</p>
