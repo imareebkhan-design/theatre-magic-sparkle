@@ -52,6 +52,8 @@ function Countdown() {
 }
 
 /* ─────────────── Temple Illustration ─────────────── */
+const illustrationFilter = 'brightness(0) saturate(100%) invert(14%) sepia(30%) saturate(700%) hue-rotate(175deg) brightness(95%) contrast(95%)';
+
 const VenueIllustration = () => (
   <img
     src={templeIllustration}
@@ -60,6 +62,7 @@ const VenueIllustration = () => (
     loading="lazy"
     width={1024}
     height={640}
+    style={{ filter: illustrationFilter }}
   />
 );
 
@@ -322,6 +325,7 @@ export default function Index() {
               loading="lazy"
               width={1024}
               height={1024}
+              style={{ filter: illustrationFilter }}
             />
             <div>
               <Countdown />
@@ -386,6 +390,7 @@ export default function Index() {
                     loading="lazy"
                     width={1024}
                     height={640}
+                    style={{ filter: illustrationFilter }}
                   />
                   <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
