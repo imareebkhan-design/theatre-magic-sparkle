@@ -33,6 +33,7 @@ export default function CurtainReveal({ children, onOpen }: { children: React.Re
     const [showHint, setShowHint] = useState(false);
     const [hasInteracted, setHasInteracted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const { t } = useLanguage();
 
     useEffect(() => {
         setIsMobile(window.innerWidth < 768);
