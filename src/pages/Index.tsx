@@ -524,7 +524,7 @@ export default function Index() {
                     {t('venue.reception.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
-                    6th December 2026 · 7:00 PM onwards
+                    {t('venue.reception.datetime')}
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
