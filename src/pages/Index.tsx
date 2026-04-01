@@ -223,14 +223,15 @@ const ThankYouCard = () => {
       />
     </svg>
     <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-12">
-      <h2 className="font-script text-5xl text-brand-red-dark mb-4">Thank You</h2>
+      <h2 className="font-script text-5xl text-brand-red-dark mb-4">{t('thankyou.title')}</h2>
       <p className="font-serif text-sm text-brand-red-dark/80 leading-relaxed mb-6">
-        For joining us on this special day.<br />Your presence is the best gift we could receive.
+        {t('thankyou.desc').split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}
       </p>
-      <p className="font-script text-3xl text-brand-red-dark">Sam &amp; Sofia</p>
+      <p className="font-script text-3xl text-brand-red-dark">Nikila &amp; Sarthak</p>
     </div>
   </div>
-);
+  );
+};
 
 /* ─────────────── Section wrapper ─────────────── */
 /* Apple-style stagger container */
