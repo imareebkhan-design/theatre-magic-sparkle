@@ -1,6 +1,7 @@
 import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
+import templeIllustration from '../assets/temple-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -46,54 +47,16 @@ function Countdown() {
   );
 }
 
-/* ─────────────── Venue Illustration SVG ─────────────── */
+/* ─────────────── Temple Illustration ─────────────── */
 const VenueIllustration = () => (
-  <svg viewBox="0 0 600 320" className="w-full max-w-2xl mx-auto" stroke="#5C1010" strokeWidth="1.2" fill="none">
-    <line x1="20" y1="290" x2="580" y2="290" strokeWidth="1.5" />
-    <rect x="200" y="150" width="200" height="140" strokeWidth="1.5" />
-    <polyline points="185,150 300,105 415,150" />
-    <rect x="271" y="220" width="58" height="70" rx="28" ry="0" />
-    <rect x="220" y="165" width="30" height="40" rx="12" />
-    <rect x="350" y="165" width="30" height="40" rx="12" />
-    <line x1="240" y1="290" x2="240" y2="150" />
-    <line x1="260" y1="290" x2="260" y2="150" />
-    <line x1="340" y1="290" x2="340" y2="150" />
-    <line x1="360" y1="290" x2="360" y2="150" />
-    <rect x="80" y="175" width="120" height="115" strokeWidth="1.2" />
-    <polyline points="65,175 140,140 200,175" />
-    <rect x="95" y="190" width="22" height="30" rx="10" />
-    <rect x="140" y="190" width="22" height="30" rx="10" />
-    <rect x="112" y="245" width="38" height="45" />
-    <line x1="105" y1="290" x2="105" y2="175" />
-    <line x1="120" y1="290" x2="120" y2="175" />
-    <line x1="175" y1="290" x2="175" y2="175" />
-    <line x1="190" y1="290" x2="190" y2="175" />
-    <rect x="400" y="175" width="120" height="115" strokeWidth="1.2" />
-    <polyline points="400,175 460,140 535,175" />
-    <rect x="415" y="190" width="22" height="30" rx="10" />
-    <rect x="460" y="190" width="22" height="30" rx="10" />
-    <rect x="450" y="245" width="38" height="45" />
-    <line x1="410" y1="290" x2="410" y2="175" />
-    <line x1="425" y1="290" x2="425" y2="175" />
-    <line x1="480" y1="290" x2="480" y2="175" />
-    <line x1="495" y1="290" x2="495" y2="175" />
-    <ellipse cx="45" cy="210" rx="22" ry="55" strokeWidth="1" />
-    <line x1="45" y1="265" x2="45" y2="290" />
-    <ellipse cx="70" cy="225" rx="16" ry="40" strokeWidth="1" />
-    <line x1="70" y1="265" x2="70" y2="290" />
-    <ellipse cx="555" cy="210" rx="22" ry="55" strokeWidth="1" />
-    <line x1="555" y1="265" x2="555" y2="290" />
-    <ellipse cx="530" cy="225" rx="16" ry="40" strokeWidth="1" />
-    <line x1="530" y1="265" x2="530" y2="290" />
-    <ellipse cx="300" cy="305" rx="45" ry="10" strokeWidth="1" />
-    <line x1="300" y1="290" x2="300" y2="295" />
-    <path d="M285,295 Q300,275 315,295" strokeWidth="1" />
-    <line x1="265" y1="130" x2="275" y2="150" strokeWidth="0.5" opacity="0.5" />
-    <line x1="285" y1="115" x2="295" y2="150" strokeWidth="0.5" opacity="0.5" />
-    <line x1="305" y1="110" x2="310" y2="150" strokeWidth="0.5" opacity="0.5" />
-    <line x1="320" y1="115" x2="325" y2="150" strokeWidth="0.5" opacity="0.5" />
-    <line x1="335" y1="125" x2="345" y2="150" strokeWidth="0.5" opacity="0.5" />
-  </svg>
+  <img
+    src={templeIllustration}
+    alt="South Indian Temple Illustration"
+    className="w-full max-w-md mx-auto"
+    loading="lazy"
+    width={1024}
+    height={640}
+  />
 );
 
 /* ─────────────── Menu Ribbon Frame SVG ─────────────── */
@@ -344,15 +307,15 @@ export default function Index() {
                   <p className="font-serif italic text-brand-red-dark/50 text-sm pt-2">until the big day</p>
 
                   <div className="pt-16 space-y-6">
-                    <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The celebration will take place at</p>
+                    <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
                     <VenueIllustration />
                     <div className="space-y-1 pt-2">
-                      <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark">Villa Medicea di Artimino</h3>
+                      <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
                       <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60 pt-2">
-                        Via di Papa Leone X, 28 · Artimino, Florence
+                        Temple Road · Chennai, Tamil Nadu
                       </p>
                       <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">September 10, 2027</p>
-                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Reception to Follow</p>
+                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
                   </div>
                 </div>
