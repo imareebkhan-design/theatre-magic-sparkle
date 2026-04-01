@@ -614,7 +614,7 @@ export default function Index() {
               <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
 
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
+                  <h2 className="text-[36px] sm:text-[48px]" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
 
                   <div style={{ background: '#FFFDF9', border: '1px solid rgba(171,138,59,0.15)', borderRadius: '2px', padding: '32px', width: '100%', textAlign: 'left' }} className="space-y-6">
                     <div className="space-y-1">
