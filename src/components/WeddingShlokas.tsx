@@ -52,7 +52,7 @@ export default function WeddingShlokas() {
 
   return (
     <section style={{
-      background: '#223348',
+      background: '#F6F0E6',
       padding: '80px 24px',
       textAlign: 'center',
       position: 'relative',
@@ -63,7 +63,7 @@ export default function WeddingShlokas() {
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         fontSize: '400px',
-        color: 'rgba(171,138,59,0.03)',
+        color: 'rgba(34,51,72,0.04)',
         fontFamily: "'Tiro Devanagari Sanskrit', serif",
         pointerEvents: 'none', userSelect: 'none', lineHeight: 1,
       }}>ॐ</div>
@@ -89,7 +89,7 @@ export default function WeddingShlokas() {
                 ? "'Tiro Devanagari Sanskrit', serif"
                 : "'Noto Sans Tamil', sans-serif",
               fontSize: s.isDevanagari ? '42px' : '32px',
-              color: '#AB8A3B',
+              color: '#223348',
               lineHeight: 1.7,
               margin: '0 0 40px',
               whiteSpace: 'pre-line',
@@ -104,7 +104,7 @@ export default function WeddingShlokas() {
               fontSize: '20px',
               fontStyle: 'italic',
               fontWeight: 300,
-              color: 'rgba(246,240,230,0.85)',
+              color: '#53694D',
               lineHeight: 1.9,
               margin: '0 0 24px',
               maxWidth: '600px',
@@ -120,7 +120,7 @@ export default function WeddingShlokas() {
               fontSize: '10px',
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
-              color: 'rgba(171,138,59,0.7)',
+              color: '#AB8A3B',
             }}>
               — {s.ref}
             </p>
