@@ -392,7 +392,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } } }}
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '15px', color: '#7397A8', marginTop: '8px' }}
             >
-              8:30 AM · Salem, Tamil Nadu
+              {t('hero.time')}
             </motion.p>
 
             {/* Venue */}
