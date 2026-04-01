@@ -291,6 +291,13 @@ export default function Index() {
               Request the honour of your presence at their wedding celebration
             </p>
 
+            {/* Date */}
+            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">November 29, 2026</p>
+
+            {/* Countdown */}
+            <Countdown />
+            <p className="font-serif italic text-brand-red-dark/50 text-sm">until the big day</p>
+
             <div className="flex flex-col items-center pt-8 opacity-50 animate-bounce">
               <span className="font-serif text-[9px] tracking-[0.3em] uppercase text-brand-red-dark">Scroll</span>
               <span className="text-brand-red-dark text-lg">↓</span>
@@ -300,12 +307,9 @@ export default function Index() {
 
         {/* ── REMAINING SECTIONS (no scratch gate) ── */}
         <>
-              {/* ── SECTION 3: COUNTDOWN + VENUE ── */}
+              {/* ── SECTION 3: VENUE ── */}
               <Section>
                 <div className="max-w-3xl mx-auto space-y-6">
-                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">Countdown</h2>
-                  <Countdown />
-                  <p className="font-serif italic text-brand-red-dark/50 text-sm pt-2">until the big day</p>
 
                   <div className="pt-16 space-y-6">
                     <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
