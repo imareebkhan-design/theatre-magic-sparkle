@@ -2,7 +2,6 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import ScratchOffCanvas from '../components/ScratchOffCanvas';
 import FlockingBirds from '../components/FlockingBirds';
-import HeroSection from '../components/HeroSection';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -301,7 +300,6 @@ export default function Index() {
         </button>
       </header>
 
-      <HeroSection />
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="min-h-screen justify-center">
