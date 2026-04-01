@@ -675,16 +675,16 @@ export default function Index() {
                   Crafted with love · 2026
                 </p>
 
-                {/* shadi.digital */}
+                {/* shaadi.digital */}
                 <a
-                  href="https://shadi.digital"
+                  href="https://shaadi.digital"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '11px', letterSpacing: '0.15em', color: 'rgba(246,240,230,0.35)', textDecoration: 'none', marginTop: '8px', transition: 'color 0.3s' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = '#AB8A3B')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(246,240,230,0.35)')}
                 >
-                  made with love by shadi.digital
+                  made with love by shaadi.digital
                 </a>
               </footer>
         </>
