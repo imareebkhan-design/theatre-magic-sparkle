@@ -331,8 +331,6 @@ export default function Index() {
                       height={1024}
                     />
                   </div>
-                    </div>
-                  </div>
                 </div>
               </Section>
 
