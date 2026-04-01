@@ -17,6 +17,8 @@ export default {
         serif: ["Playfair Display", "serif"],
         script: ["Great Vibes", "cursive"],
         sans: ["Montserrat", "sans-serif"],
+        "dm-sans": ["DM Sans", "sans-serif"],
+        cormorant: ["Cormorant Garamond", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

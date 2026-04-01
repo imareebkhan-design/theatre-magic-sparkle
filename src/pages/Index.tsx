@@ -303,18 +303,29 @@ export default function Index() {
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="min-h-screen justify-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <p className="font-serif tracking-[0.18em] uppercase text-[10px] text-brand-red-dark/70">
-              You are cordially invited to celebrate the wedding of
+          <div className="max-w-3xl mx-auto space-y-8 flex flex-col items-center">
+            {/* Line 1 */}
+            <p className="font-dm-sans text-[12px] uppercase tracking-[0.3em] text-[#C97B5A]">
+              With Joy &amp; Love, We Invite You to Celebrate
             </p>
-            <div className="flex flex-col items-center -space-y-3">
-              <h1 className="font-script text-[9rem] sm:text-[11rem] text-brand-red-dark leading-none">Sam</h1>
-              <span className="font-script text-5xl text-brand-red-dark/60">&amp;</span>
-              <h1 className="font-script text-[9rem] sm:text-[11rem] text-brand-red-dark leading-none">Sofia</h1>
+
+            {/* Line 2 */}
+            <h1 className="font-cormorant font-light text-4xl sm:text-[56px] text-[#AB8A3B] leading-tight">
+              Nikila &amp; Sarthak
+            </h1>
+
+            {/* Gold divider with diamond */}
+            <div className="flex items-center gap-3 w-full max-w-xs">
+              <div className="flex-1 h-px bg-[#AB8A3B]/40" />
+              <div className="w-2.5 h-2.5 rotate-45 border border-[#AB8A3B]/60" />
+              <div className="flex-1 h-px bg-[#AB8A3B]/40" />
             </div>
-            <p className="font-serif text-[10px] tracking-[0.18em] uppercase text-brand-red-dark/70 max-w-lg mx-auto leading-relaxed">
-              We would like to invite you to celebrate with us the most special day of our lives. It would be an honor to have you present at this important moment.
+
+            {/* Line 3 */}
+            <p className="font-dm-sans font-light text-[15px] text-[#223348] leading-[2] max-w-lg text-center">
+              Request the honour of your presence at their wedding celebration
             </p>
+
             <div className="flex flex-col items-center pt-8 opacity-50 animate-bounce">
               <span className="font-serif text-[9px] tracking-[0.3em] uppercase text-brand-red-dark">Scroll</span>
               <span className="text-brand-red-dark text-lg">↓</span>
