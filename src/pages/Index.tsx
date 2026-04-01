@@ -292,7 +292,19 @@ export default function Index() {
             </p>
 
             {/* Date */}
-            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">November 29, 2026</p>
+            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">29 November 2026</p>
+
+            {/* Couple Swing Illustration */}
+            <div className="pt-4">
+              <img
+                src={coupleSwingIllustration}
+                alt="Couple on a swing illustration"
+                className="w-full max-w-sm mx-auto"
+                loading="lazy"
+                width={1024}
+                height={1024}
+              />
+            </div>
 
             {/* Countdown */}
             <Countdown />
