@@ -511,7 +511,7 @@ export default function Index() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-80px' }}
                 >
-                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The wedding reception</motion.p>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>{t('venue.reception.subtitle')}</motion.p>
                   <motion.img
                     variants={staggerItem}
                     src={receptionVenueIllustration}
