@@ -63,7 +63,7 @@ export default function WeddingShlokas() {
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         fontSize: '400px',
-        color: 'rgba(171,138,59,0.03)',
+        color: 'rgba(34,51,72,0.04)',
         fontFamily: "'Tiro Devanagari Sanskrit', serif",
         pointerEvents: 'none', userSelect: 'none', lineHeight: 1,
       }}>ॐ</div>
