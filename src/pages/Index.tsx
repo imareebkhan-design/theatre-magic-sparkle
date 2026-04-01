@@ -365,7 +365,7 @@ export default function Index() {
         </Section>
 
         {/* ── SECTION 2: ILLUSTRATION + COUNTDOWN ── */}
-        <Section>
+        <Section className="!pt-0 !-mt-20">
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
             <CoupleParallax>
               <img
