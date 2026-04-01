@@ -376,9 +376,9 @@ export default function Index() {
               </Section>
 
               {/* ── SECTION 5B: RECEPTION VENUE ── */}
-              <Section dark>
+              <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The wedding reception</p>
+                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The wedding reception</p>
                   <img
                     src={receptionVenueIllustration}
                     alt="Reception venue illustration"
@@ -387,24 +387,25 @@ export default function Index() {
                     width={1024}
                     height={640}
                   />
-                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Celebration</h3>
-                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
+                  <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</h3>
+                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Jabalpur, Madhya Pradesh
                   </p>
-                  <p className="font-serif text-lg tracking-[0.15em] text-brand-red-dark mt-2">
-                    6th December 2026
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
+                    6th December 2026 · 7:00 PM onwards
                   </p>
                   <a
                     href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
+                    className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 rounded-none transition-all duration-300"
+                    style={{ border: '1px solid #AB8A3B', background: 'transparent' }}
                   >
-                    <svg className="w-4 h-4 text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <svg className="w-4 h-4 transition-colors" style={{ color: '#AB8A3B' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                       <circle cx="12" cy="9" r="2.5" />
                     </svg>
-                    <span className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors">
+                    <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
                       View on Maps
                     </span>
                   </a>
