@@ -185,7 +185,9 @@ const WeddingCarIllustration = () => (
 );
 
 /* ─────────────── Thank You Card (deckled edge) ─────────────── */
-const ThankYouCard = () => (
+const ThankYouCard = () => {
+  const { t } = useLanguage();
+  return (
   <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1 / 1' }}>
     <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
       <defs>
