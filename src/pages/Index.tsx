@@ -747,7 +747,7 @@ export default function Index() {
 
                 {/* Blessing */}
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', fontStyle: 'italic', color: 'rgba(246,240,230,0.5)', maxWidth: '480px', lineHeight: 1.8, margin: 0 }}>
-                  "May your home be filled with laughter, your hearts with love"
+                  {t('footer.blessing')}
                 </p>
 
                 {/* Hashtag */}
