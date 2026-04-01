@@ -249,15 +249,7 @@ export default function Index() {
 
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 w-full p-6 flex items-center justify-between z-[110] pointer-events-none">
-        <div className="flex items-center gap-3 bg-white/70 backdrop-blur-md rounded-full pl-2 pr-6 py-2 shadow-sm pointer-events-auto cursor-pointer border border-brand-accent/10">
-          <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0 overflow-hidden bg-[#F4EDE4]">
-            <span className="text-xs">🕊️</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-[9px] uppercase font-semibold tracking-widest text-brand-red-dark leading-tight">Teatro Demo</span>
-            <span className="text-[9px] font-sans text-brand-red-dark/60 leading-tight">Buy now</span>
-          </div>
-        </div>
+        <div />
 
         <button className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center pointer-events-auto border border-brand-accent/10">
           <Info size={16} className="text-brand-red-dark" />
@@ -282,9 +274,9 @@ export default function Index() {
 
             {/* Names */}
             <div className="flex flex-col items-center -space-y-4 sm:-space-y-6 mt-8">
-              <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Nikila</h1>
-              <span className="font-script text-4xl sm:text-5xl text-brand-red-dark/50">&amp;</span>
-              <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Sarthak</h1>
+              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}>Nikila</h1>
+              <span className="font-script text-4xl sm:text-5xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
+              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}>Sarthak</h1>
             </div>
 
             {/* Request text */}
@@ -299,9 +291,9 @@ export default function Index() {
             <p className="font-serif text-sm text-brand-red-dark/50 mt-2">Sunday Evening</p>
 
             {/* Venue in hero */}
-            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Lakshmi Temple</h3>
+            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Krishna Mahal Mantapa</h3>
             <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/50 mt-2">
-              Chennai, Tamil Nadu
+              Salem, Tamil Nadu
             </p>
 
             {/* Divider */}
@@ -343,12 +335,12 @@ export default function Index() {
                 <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
                   <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
                   <VenueIllustration />
-                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Krishna Mahal Mantapa</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
-                    Temple Road · Chennai, Tamil Nadu
+                    Salem, Tamil Nadu
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Sri+Lakshmi+Temple+Chennai"
+                    href="https://maps.google.com/?q=Sri+Krishna+Mahal+Mantapa+Salem+Tamil+Nadu"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
@@ -383,12 +375,15 @@ export default function Index() {
                     width={1024}
                     height={640}
                   />
-                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Venue</h3>
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Celebration</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
-                    Madhya Pradesh
+                    Jabalpur, Madhya Pradesh
+                  </p>
+                  <p className="font-serif text-lg tracking-[0.15em] text-brand-red-dark mt-2">
+                    6th December 2026
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Madhya+Pradesh+India"
+                    href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
