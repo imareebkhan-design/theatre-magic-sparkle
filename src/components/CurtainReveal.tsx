@@ -43,6 +43,7 @@ export default function CurtainReveal({ children, onOpen }: { children: React.Re
 
     const handleOpen = () => {
         setIsOpen(true);
+        onOpen?.();
     };
 
     return (
