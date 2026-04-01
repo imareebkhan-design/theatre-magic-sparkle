@@ -378,7 +378,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 15, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } } }}
               className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
             >
-              Request the honour of your presence
+              {t('hero.honour')}
             </motion.p>
 
             {/* Date */}
