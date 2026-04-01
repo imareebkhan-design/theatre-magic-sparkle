@@ -1,9 +1,8 @@
 import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
-import ScratchOffCanvas from '../components/ScratchOffCanvas';
 import FlockingBirds from '../components/FlockingBirds';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
@@ -277,7 +276,7 @@ const Section = ({ children, className = '', dark = false }: { children: React.R
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rsvpChoice, setRsvpChoice] = useState<'yes' | 'no' | null>(null);
-  const [scratchedCount, setScratchedCount] = useState(0);
+  
 
   return (
     <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
@@ -335,29 +334,8 @@ export default function Index() {
           </div>
         </Section>
 
-        {/* ── SECTION 2: SCRATCH TO REVEAL ── */}
-        <Section dark>
-          <div className="max-w-2xl mx-auto space-y-10">
-            <div className="space-y-2">
-              <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/50">Scratch all three circles to continue</p>
-              <h2 className="font-script text-7xl sm:text-8xl text-brand-red-dark">Reveal</h2>
-              <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/70 font-semibold">Scratch to discover the date</p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-4">
-              <ScratchOffCanvas width={200} height={200} revealText="10" onScratchComplete={() => setScratchedCount(p => p + 1)} />
-              <ScratchOffCanvas width={200} height={200} revealText="Sept" onScratchComplete={() => setScratchedCount(p => p + 1)} />
-              <ScratchOffCanvas width={200} height={200} revealText="2027" onScratchComplete={() => setScratchedCount(p => p + 1)} />
-            </div>
-          </div>
-        </Section>
-
-        <AnimatePresence>
-          {scratchedCount >= 3 && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-            >
+        {/* ── REMAINING SECTIONS (no scratch gate) ── */}
+        <>
               {/* ── SECTION 3: COUNTDOWN + VENUE ── */}
               <Section>
                 <div className="max-w-3xl mx-auto space-y-6">
@@ -535,9 +513,7 @@ export default function Index() {
                   <ThankYouCard />
                 </div>
               </section>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </>
 
         {/* Floating Sound Toggle */}
         <button
