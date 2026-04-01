@@ -423,7 +423,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeOut' } } }}
               className="flex flex-col items-center mt-8" style={{ animation: 'scrollPulse 2s ease-in-out infinite' }}
             >
-              <span className="font-serif text-[10px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>Scroll</span>
+              <span className="font-serif text-[10px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>{t('hero.scroll')}</span>
               <span style={{ color: '#AB8A3B', fontSize: '20px' }}>↓</span>
             </motion.div>
           </motion.div>
