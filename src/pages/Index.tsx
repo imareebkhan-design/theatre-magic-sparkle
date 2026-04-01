@@ -399,7 +399,7 @@ export default function Index() {
               className="text-[13px] sm:text-[15px]"
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, color: '#7397A8', marginTop: '8px' }}
             >
-              {t('hero.time')}
+              {formatEventTime('8:30 AM')} · {t('venue.ceremony.location')}
             </motion.p>
 
             {/* Venue */}
