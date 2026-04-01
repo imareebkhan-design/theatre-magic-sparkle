@@ -473,19 +473,22 @@ export default function Index() {
                     className="w-full max-w-md mx-auto mix-blend-multiply"
                     loading="lazy"
                   />
-                  <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</h3>
-                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</motion.h3>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Jabalpur, Madhya Pradesh
-                  </p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
+                  </motion.p>
+                  <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
                     6th December 2026 · 7:00 PM onwards
-                  </p>
-                  <a
+                  </motion.p>
+                  <motion.a
+                    variants={staggerItem}
                     href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 rounded-none transition-all duration-300"
                     style={{ border: '1px solid #AB8A3B', background: 'transparent' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
                   >
                     <svg className="w-4 h-4 transition-colors" style={{ color: '#AB8A3B' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -494,8 +497,8 @@ export default function Index() {
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
                       View on Maps
                     </span>
-                  </a>
-                </div>
+                  </motion.a>
+                </motion.div>
               </Section>
 
               {/* ── SECTION 5: DRESS CODE ── */}
