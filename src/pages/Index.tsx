@@ -6,6 +6,7 @@ import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import WeddingTimeline from '../components/WeddingTimeline';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
@@ -399,31 +400,8 @@ export default function Index() {
                 </div>
               </Section>
 
-              {/* ── SECTION 4: MENU ── */}
-              <Section dark>
-                <div className="max-w-lg mx-auto space-y-0 w-full">
-                  <MenuRibbonFrame />
-                  <div className="border border-brand-red-dark/25 px-10 py-12 space-y-8 -mt-2">
-                    {[
-                      { course: 'STARTER', line1: 'Selection of Tuscan antipasti', line2: 'Bruschetta, crostini & mixed cold cuts' },
-                      { course: 'FIRST COURSE', line1: 'Black truffle risotto from Norcia', line2: 'with 24-month Parmigiano Reggiano' },
-                      { course: 'MAIN COURSE', line1: 'Grilled beef fillet', line2: 'with red wine sauce and seasonal vegetables' },
-                      { course: 'DESSERT', line1: 'Wedding cake with mascarpone cream', line2: 'and fresh berries' },
-                    ].map((item) => (
-                      <div key={item.course} className="space-y-1">
-                        <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark">{item.course}</p>
-                        <p className="font-serif text-sm text-brand-red-dark/80">{item.line1}</p>
-                        <p className="font-serif italic text-sm text-brand-red-dark/60">{item.line2}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <MenuRibbonBottom />
-                  <div className="pt-4 space-y-4">
-                    <DinnerTableIllustration />
-                    <p className="font-script text-3xl text-brand-red-dark italic">Estate Wines</p>
-                  </div>
-                </div>
-              </Section>
+              {/* ── SECTION 4: WEDDING TIMELINE ── */}
+              <WeddingTimeline />
 
               {/* ── SECTION 5: DRESS CODE ── */}
               <Section>
