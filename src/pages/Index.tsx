@@ -5,7 +5,7 @@ import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration-lineart.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
@@ -228,12 +228,31 @@ const ThankYouCard = () => (
 );
 
 /* ─────────────── Section wrapper ─────────────── */
+/* Apple-style stagger container */
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: 'easeOut' as const },
+  },
+};
+
 const Section = ({ children, className = '', dark = false }: { children: React.ReactNode; className?: string; dark?: boolean }) => (
   <motion.section
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 60 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-80px' }}
-    transition={{ duration: 0.9, ease: 'easeOut' }}
+    viewport={{ once: true, margin: '-100px' }}
+    transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
     className={`w-full py-24 px-6 flex flex-col items-center text-center ${dark ? 'bg-[#EDEAE6]' : 'bg-[#F4EDE4]'} ${className}`}
   >
     {children}
@@ -390,24 +409,34 @@ export default function Index() {
               {/* ── SECTION 4: WEDDING TIMELINE ── */}
               <WeddingTimeline />
 
-              {/* ── SECTION 5: CEREMONY VENUE ── */}
               <Section className="!bg-[#F6F0E6]">
-                <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The sacred ceremony will take place at</p>
-                  <VenueIllustration />
-                  <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Sri Krishna Mahal Mantapa</h3>
-                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
+                <motion.div
+                  className="max-w-3xl mx-auto flex flex-col items-center space-y-6"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-80px' }}
+                >
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The sacred ceremony will take place at</motion.p>
+                  <motion.div variants={staggerItem}>
+                    <VenueIllustration />
+                  </motion.div>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Sri Krishna Mahal Mantapa</motion.h3>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Salem, Tamil Nadu
-                  </p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
+                  </motion.p>
+                  <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
                     29th November 2026 · 8:30 AM
-                  </p>
-                  <a
+                  </motion.p>
+                  <motion.a
+                    variants={staggerItem}
                     href="https://maps.google.com/?q=Sri+Krishna+Mahal+Mantapa+Salem+Tamil+Nadu"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 rounded-none transition-all duration-300"
                     style={{ border: '1px solid #AB8A3B', background: 'transparent' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
                   >
                     <svg className="w-4 h-4 transition-colors" style={{ color: '#AB8A3B' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -416,43 +445,50 @@ export default function Index() {
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
                       View on Maps
                     </span>
-                  </a>
+                  </motion.a>
 
                   {/* Divider */}
-                  <div className="flex items-center gap-3 w-full max-w-[140px] pt-8">
+                  <motion.div variants={staggerItem} className="flex items-center gap-3 w-full max-w-[140px] pt-8">
                     <div className="flex-1 h-px bg-brand-red-dark/20" />
                     <div className="w-1.5 h-1.5 rotate-45 border border-brand-red-dark/25" />
                     <div className="flex-1 h-px bg-brand-red-dark/20" />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </Section>
 
               {/* ── SECTION 5B: RECEPTION VENUE ── */}
               <Section className="!bg-[#F6F0E6]">
-                <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The wedding reception</p>
-                  <img
+                <motion.div
+                  className="max-w-3xl mx-auto flex flex-col items-center space-y-6"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-80px' }}
+                >
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The wedding reception</motion.p>
+                  <motion.img
+                    variants={staggerItem}
                     src={receptionVenueIllustration}
                     alt="Reception venue illustration"
-                    className="w-full max-w-md mx-auto"
+                    className="w-full max-w-md mx-auto mix-blend-multiply"
                     loading="lazy"
-                    width={1024}
-                    height={640}
-                    
                   />
-                  <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</h3>
-                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</motion.h3>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Jabalpur, Madhya Pradesh
-                  </p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
+                  </motion.p>
+                  <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
                     6th December 2026 · 7:00 PM onwards
-                  </p>
-                  <a
+                  </motion.p>
+                  <motion.a
+                    variants={staggerItem}
                     href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 rounded-none transition-all duration-300"
                     style={{ border: '1px solid #AB8A3B', background: 'transparent' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
                   >
                     <svg className="w-4 h-4 transition-colors" style={{ color: '#AB8A3B' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -461,8 +497,8 @@ export default function Index() {
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
                       View on Maps
                     </span>
-                  </a>
-                </div>
+                  </motion.a>
+                </motion.div>
               </Section>
 
               {/* ── SECTION 5: DRESS CODE ── */}
@@ -689,44 +725,33 @@ export default function Index() {
               </footer>
         </>
 
-        {/* Floating Diya Sound Toggle */}
+        {/* Floating Speaker Toggle */}
         <button
           onClick={toggleAudio}
-          className="fixed bottom-6 right-6 flex items-center justify-center z-[60] transition-all duration-300 hover:scale-110"
+          className="fixed bottom-6 right-6 flex items-center justify-center z-[60] transition-all duration-300 hover:scale-110 active:scale-95"
           style={{
             width: '44px',
             height: '44px',
-            borderRadius: '22px',
-            background: 'rgba(34,51,72,0.8)',
-            backdropFilter: 'blur(8px)',
-            border: 'none',
+            borderRadius: '50%',
+            background: 'rgba(244,237,228,0.6)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(171,138,59,0.2)',
             cursor: 'pointer',
           }}
         >
           <span className="sr-only">Toggle Sound</span>
-          {/* Diya SVG */}
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Diya base */}
-            <ellipse cx="12" cy="18" rx="7" ry="3" fill="#AB8A3B" opacity="0.9" />
-            <ellipse cx="12" cy="17" rx="5" ry="2" fill="#AB8A3B" />
-            {/* Wick */}
-            <line x1="12" y1="15" x2="12" y2="10" stroke="#AB8A3B" strokeWidth="1.5" strokeLinecap="round" />
-            {/* Flame */}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AB8A3B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="none" />
             {isPlaying ? (
-              <g>
-                <path d="M12 4 C10 7, 9.5 9, 12 10 C14.5 9, 14 7, 12 4Z" fill="#AB8A3B" opacity="0.9">
-                  <animate attributeName="d" values="M12 4 C10 7,9.5 9,12 10 C14.5 9,14 7,12 4Z;M12 3.5 C9.5 7,9 9,12 10 C15 9,14.5 7,12 3.5Z;M12 4 C10 7,9.5 9,12 10 C14.5 9,14 7,12 4Z" dur="1.5s" repeatCount="indefinite" />
-                </path>
-                <path d="M12 5.5 C11 7, 10.8 8.5, 12 9.5 C13.2 8.5, 13 7, 12 5.5Z" fill="#F6F0E6" opacity="0.7">
-                  <animate attributeName="opacity" values="0.7;0.4;0.7" dur="1s" repeatCount="indefinite" />
-                </path>
-              </g>
+              <>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+              </>
             ) : (
-              /* Muted — no flame, just smoke wisps */
-              <g opacity="0.4">
-                <path d="M12 9 C11.5 7.5, 11 6, 12 5" stroke="#AB8A3B" strokeWidth="1" fill="none" strokeLinecap="round" />
-                <path d="M12.5 8 C12 6.5, 13 5.5, 12 4.5" stroke="#AB8A3B" strokeWidth="0.7" fill="none" strokeLinecap="round" opacity="0.5" />
-              </g>
+              <>
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </>
             )}
           </svg>
         </button>
