@@ -541,7 +541,7 @@ export default function Index() {
                       <circle cx="12" cy="9" r="2.5" />
                     </svg>
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
-                      View on Maps
+                      {t('venue.maps')}
                     </span>
                   </motion.a>
                 </motion.div>
