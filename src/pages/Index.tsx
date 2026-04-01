@@ -2,7 +2,7 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
-import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
+import coupleIllustration from '../assets/couple-illustration.jpg';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -332,12 +332,10 @@ export default function Index() {
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
             <CoupleParallax>
               <img
-                src={coupleSwingIllustration}
-                alt="Couple on a swing illustration"
-                className="w-full max-w-sm mx-auto"
+                src={coupleIllustration}
+                alt="Couple illustration"
+                className="w-full max-w-lg mx-auto"
                 loading="lazy"
-                width={1024}
-                height={1024}
               />
             </CoupleParallax>
             <div>
