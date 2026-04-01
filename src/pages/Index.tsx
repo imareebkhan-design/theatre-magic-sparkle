@@ -411,7 +411,22 @@ export default function Index() {
               {t('hero.venue')}
             </motion.h3>
 
-            {/* Divider */}
+            {/* NRI timezone notice */}
+            {!isIST && (
+              <motion.p
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, delay: 0.3 } } }}
+                className="text-[10px] sm:text-[11px] tracking-[0.15em] mt-3 px-4 py-1.5 rounded-full"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: '#AB8A3B',
+                  background: 'rgba(171,138,59,0.08)',
+                  border: '1px solid rgba(171,138,59,0.15)',
+                }}
+              >
+                🕐 Times shown in your local timezone
+              </motion.p>
+            )}
+
             <motion.div
               variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1, ease: 'easeOut' } } }}
               className="flex items-center gap-3 mt-8" style={{ width: '260px' }}
