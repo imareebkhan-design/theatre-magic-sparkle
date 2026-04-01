@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Generates an SVG texture matching the target's hand-drawn curtain folds
 const CurtainTexture = () => (
