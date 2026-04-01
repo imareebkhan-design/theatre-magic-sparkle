@@ -15,6 +15,7 @@ const eventKeys = [
 
 export default function WeddingTimeline() {
   const { t } = useLanguage();
+  const { formatEventTime } = useTimeZone();
 
   return (
     <section style={{ background: '#F6F0E6', padding: '80px 24px', fontFamily: "'DM Sans', sans-serif" }}>
