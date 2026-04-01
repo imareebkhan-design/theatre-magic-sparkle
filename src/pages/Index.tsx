@@ -332,12 +332,12 @@ export default function Index() {
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
             <CoupleParallax>
               <img
-                src={coupleSwingIllustration}
-                alt="Couple on a swing illustration"
-                className="w-full max-w-sm mx-auto"
+                src={coupleIllustration}
+                alt="Indian couple illustration at temple"
+                className="w-full max-w-lg mx-auto"
                 loading="lazy"
                 width={1024}
-                height={1024}
+                height={1400}
               />
             </CoupleParallax>
             <div>
