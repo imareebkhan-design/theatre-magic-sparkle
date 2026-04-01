@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 96%;
+    --foreground: 18 28% 18%;
+
+    --card: 36 33% 96%;
+    --card-foreground: 18 28% 18%;
+
+    --popover: 36 33% 96%;
+    --popover-foreground: 18 28% 18%;
+
+    --primary: 18 28% 18%;
+    --primary-foreground: 36 33% 96%;
+
+    --secondary: 15 19% 46%;
+    --secondary-foreground: 36 33% 96%;
+
+    --muted: 30 20% 90%;
+    --muted-foreground: 18 10% 45%;
+
+    --accent: 15 19% 46%;
+    --accent-foreground: 36 33% 96%;
+
+    --destructive: 0 55% 37%;
+    --destructive-foreground: 36 33% 96%;
+
+    --brand-bg: 36 33% 96%;
+    --brand-dark: 18 28% 18%;
+    --brand-accent: 15 19% 46%;
+    --brand-red: 0 55% 37%;
+    --brand-red-dark: 0 60% 28%;
+    --brand-gold: 43 64% 52%;
+    --brand-gold-light: 45 80% 81%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 18 28% 18%;
+
+    --radius: 0rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-sans {
+  font-family: 'Montserrat', sans-serif;
+}
