@@ -2,7 +2,6 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import ScratchOffCanvas from '../components/ScratchOffCanvas';
 import FlockingBirds from '../components/FlockingBirds';
-import HeroSection from '../components/HeroSection';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -301,9 +300,27 @@ export default function Index() {
         </button>
       </header>
 
-      <HeroSection />
-
       <CurtainReveal>
+        {/* ── SECTION 1: HERO INVITATION ── */}
+        <Section className="min-h-screen justify-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <p className="font-serif tracking-[0.18em] uppercase text-[10px] text-brand-red-dark/70">
+              You are cordially invited to celebrate the wedding of
+            </p>
+            <div className="flex flex-col items-center -space-y-3">
+              <h1 className="font-script text-[9rem] sm:text-[11rem] text-brand-red-dark leading-none">Sam</h1>
+              <span className="font-script text-5xl text-brand-red-dark/60">&amp;</span>
+              <h1 className="font-script text-[9rem] sm:text-[11rem] text-brand-red-dark leading-none">Sofia</h1>
+            </div>
+            <p className="font-serif text-[10px] tracking-[0.18em] uppercase text-brand-red-dark/70 max-w-lg mx-auto leading-relaxed">
+              We would like to invite you to celebrate with us the most special day of our lives. It would be an honor to have you present at this important moment.
+            </p>
+            <div className="flex flex-col items-center pt-8 opacity-50 animate-bounce">
+              <span className="font-serif text-[9px] tracking-[0.3em] uppercase text-brand-red-dark">Scroll</span>
+              <span className="text-brand-red-dark text-lg">↓</span>
+            </div>
+          </div>
+        </Section>
 
         {/* ── SECTION 2: SCRATCH TO REVEAL ── */}
         <Section dark>
