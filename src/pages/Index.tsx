@@ -52,6 +52,8 @@ function Countdown() {
 }
 
 /* ─────────────── Temple Illustration ─────────────── */
+const illustrationFilter = 'brightness(0) saturate(100%) invert(14%) sepia(30%) saturate(700%) hue-rotate(175deg) brightness(95%) contrast(95%)';
+
 const VenueIllustration = () => (
   <img
     src={templeIllustration}
@@ -60,6 +62,7 @@ const VenueIllustration = () => (
     loading="lazy"
     width={1024}
     height={640}
+    style={{ filter: illustrationFilter }}
   />
 );
 
