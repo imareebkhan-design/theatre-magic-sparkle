@@ -73,7 +73,7 @@ export default function WeddingTimeline() {
       {/* Reception Card */}
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center', padding: '40px 32px', border: '1px solid rgba(171,138,59,0.2)' }}>
         <p style={{ fontSize: '18px', color: '#AB8A3B', marginBottom: '12px' }}>✦</p>
-        <p style={{ fontSize: '10px', letterSpacing: '0.35em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '8px' }}>{t('timeline.reception.time')}</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.35em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '8px' }}>{formatEventTime('7:00 PM')}</p>
         <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', fontWeight: 300, color: '#223348', margin: '0 0 6px' }}>{t('timeline.reception.title')}</h3>
         <p style={{ fontSize: '12px', fontWeight: 300, color: '#7397A8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{t('timeline.reception.location')}</p>
       </motion.div>
