@@ -741,8 +741,8 @@ export default function Index() {
 
                 {/* Dates */}
                 <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '12px', letterSpacing: '0.3em', color: '#7397A8', lineHeight: 2.2 }}>
-                  <p style={{ margin: 0 }}>29 · 11 · 2026 — Salem, Tamil Nadu</p>
-                  <p style={{ margin: 0 }}>06 · 12 · 2026 — Jabalpur, Madhya Pradesh</p>
+                  <p style={{ margin: 0 }}>29 · 11 · 2026 — {t('venue.ceremony.location')}</p>
+                  <p style={{ margin: 0 }}>06 · 12 · 2026 — {t('venue.reception.location')}</p>
                 </div>
 
                 {/* Blessing */}
