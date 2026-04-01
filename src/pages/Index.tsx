@@ -263,14 +263,14 @@ export default function Index() {
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[60px] !px-6 relative overflow-hidden">
-          {/* South Indian couple hero background */}
+          {/* Temple hero background */}
           <div className="absolute inset-0 z-0">
             <img
-              src={southIndianCoupleHero}
+              src={templeIllustration}
               alt=""
               className="w-full h-full object-cover"
-              width={1920}
-              height={1280}
+              width={1024}
+              height={640}
             />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(244,237,228,0.82) 0%, rgba(244,237,228,0.7) 40%, rgba(244,237,228,0.85) 100%)' }} />
           </div>
