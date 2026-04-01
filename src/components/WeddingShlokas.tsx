@@ -89,7 +89,7 @@ export default function WeddingShlokas() {
                 ? "'Tiro Devanagari Sanskrit', serif"
                 : "'Noto Sans Tamil', sans-serif",
               fontSize: s.isDevanagari ? '42px' : '32px',
-              color: '#AB8A3B',
+              color: '#223348',
               lineHeight: 1.7,
               margin: '0 0 40px',
               whiteSpace: 'pre-line',
