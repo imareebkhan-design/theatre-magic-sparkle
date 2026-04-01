@@ -443,7 +443,7 @@ export default function Index() {
             <div>
               <Countdown />
             </div>
-            <p className="font-serif italic text-brand-red-dark/50 text-sm">until the big day</p>
+            <p className="font-serif italic text-brand-red-dark/50 text-sm">{t('countdown.until')}</p>
           </div>
         </Section>
 
