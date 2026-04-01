@@ -319,7 +319,7 @@ export default function Index() {
                       <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60 pt-2">
                         Temple Road · Chennai, Tamil Nadu
                       </p>
-                      <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">November 29, 2026</p>
+                      <p className="font-script text-4xl text-brand-red-dark/70 pt-4">Wedding Reception to Follow</p>
                       <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
                   </div>
