@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
+import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
