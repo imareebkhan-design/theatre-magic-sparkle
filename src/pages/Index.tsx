@@ -325,6 +325,7 @@ export default function Index() {
               loading="lazy"
               width={1024}
               height={1024}
+              style={{ filter: illustrationFilter }}
             />
             <div>
               <Countdown />
