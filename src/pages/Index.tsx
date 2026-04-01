@@ -757,7 +757,7 @@ export default function Index() {
 
                 {/* Crafted line */}
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '10px', color: 'rgba(246,240,230,0.2)', margin: '24px 0 0' }}>
-                  Crafted with love · 2026
+                  {t('footer.crafted')}
                 </p>
 
                 {/* shaadi.digital */}
