@@ -243,7 +243,7 @@ const Section = ({ children, className = '', dark = false }: { children: React.R
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rsvpChoice, setRsvpChoice] = useState<'yes' | 'no' | null>(null);
-  
+  const [eventChoice, setEventChoice] = useState<string | null>(null);
 
   return (
     <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
