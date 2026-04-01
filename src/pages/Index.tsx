@@ -3,6 +3,7 @@ import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
+import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -337,20 +338,69 @@ export default function Index() {
 
         {/* ── REMAINING SECTIONS ── */}
         <>
-              {/* ── SECTION 3: VENUE ── */}
+              {/* ── SECTION 3: CEREMONY VENUE ── */}
               <Section>
-                <div className="max-w-3xl mx-auto space-y-6">
-                  <div className="space-y-6">
-                    <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
-                    <VenueIllustration />
-                    <div className="space-y-1 pt-2">
-                      <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
-                      <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60 pt-2">
-                        Temple Road · Chennai, Tamil Nadu
-                      </p>
-                      <p className="font-script text-4xl text-brand-red-dark/70 pt-4">Wedding Reception to Follow</p>
-                    </div>
+                <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
+                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
+                  <VenueIllustration />
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
+                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
+                    Temple Road · Chennai, Tamil Nadu
+                  </p>
+                  <a
+                    href="https://maps.google.com/?q=Sri+Lakshmi+Temple+Chennai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
+                  >
+                    <svg className="w-4 h-4 text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    <span className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors">
+                      View on Maps
+                    </span>
+                  </a>
+
+                  {/* Divider */}
+                  <div className="flex items-center gap-3 w-full max-w-[140px] pt-8">
+                    <div className="flex-1 h-px bg-brand-red-dark/20" />
+                    <div className="w-1.5 h-1.5 rotate-45 border border-brand-red-dark/25" />
+                    <div className="flex-1 h-px bg-brand-red-dark/20" />
                   </div>
+                </div>
+              </Section>
+
+              {/* ── SECTION 3B: RECEPTION VENUE ── */}
+              <Section dark>
+                <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
+                  <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The wedding reception</p>
+                  <img
+                    src={receptionVenueIllustration}
+                    alt="Reception venue illustration"
+                    className="w-full max-w-md mx-auto"
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                  />
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Venue</h3>
+                  <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
+                    Madhya Pradesh
+                  </p>
+                  <a
+                    href="https://maps.google.com/?q=Madhya+Pradesh+India"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
+                  >
+                    <svg className="w-4 h-4 text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    <span className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60 group-hover:text-brand-red-dark transition-colors">
+                      View on Maps
+                    </span>
+                  </a>
                 </div>
               </Section>
 
