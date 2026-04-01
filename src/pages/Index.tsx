@@ -310,7 +310,7 @@ export default function Index() {
       <FlockingBirds />
 
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full p-4 sm:p-6 flex items-center justify-between z-[110] pointer-events-none">
+      <header className="fixed top-0 left-0 w-full px-3 sm:px-6 pt-3 sm:pt-6 pb-2 flex items-center justify-between z-[110] pointer-events-none">
         <div />
         <div className="flex items-center gap-3 pointer-events-auto">
           <LanguageSwitcher />

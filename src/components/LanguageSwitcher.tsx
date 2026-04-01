@@ -25,9 +25,9 @@ export default function LanguageSwitcher() {
           onClick={() => setLanguage(l.code)}
           className="transition-all duration-300"
           style={{
-            padding: '6px 14px',
+            padding: '5px 10px',
             borderRadius: '20px',
-            fontSize: '11px',
+            fontSize: '10px',
             fontFamily: "'DM Sans', sans-serif",
             letterSpacing: '0.05em',
             fontWeight: language === l.code ? 600 : 400,
