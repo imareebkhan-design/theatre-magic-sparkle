@@ -338,7 +338,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
               className="font-dm-sans text-[12px] sm:text-[13px] uppercase tracking-[0.35em] text-[#C97B5A]"
             >
-              With Joy &amp; Love, We Invite You to Celebrate
+              {t('hero.invite')}
             </motion.p>
 
             {/* Gold divider with diamond */}
