@@ -7,6 +7,7 @@ import receptionVenueIllustration from '../assets/reception-venue-illustration.p
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
+import WeddingShlokas from '../components/WeddingShlokas';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
