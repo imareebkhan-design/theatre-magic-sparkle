@@ -301,6 +301,7 @@ export default function Index() {
         </button>
       </header>
 
+      <HeroSection />
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="min-h-screen justify-center">
