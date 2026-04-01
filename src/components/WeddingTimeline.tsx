@@ -23,7 +23,7 @@ export default function WeddingTimeline() {
         <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#C97B5A', marginBottom: '12px' }}>
           {t('timeline.header.date')}
         </p>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '38px', fontWeight: 300, color: '#223348', margin: '0 0 8px' }}>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 6vw, 38px)', fontWeight: 300, color: '#223348', margin: '0 0 8px' }}>
           {t('timeline.header.title')}
         </h2>
         <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', fontStyle: 'italic', color: '#7397A8', margin: '0 0 32px' }}>
