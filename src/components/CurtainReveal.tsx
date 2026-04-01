@@ -7,19 +7,19 @@ const CurtainTexture = () => (
         <defs>
             {/* Pattern mimicking stylized curtain fabric folds */}
             <pattern id="curtain-folds" width="100" height="800" patternUnits="userSpaceOnUse">
-                <path d="M 10,0 Q 15,200 12,400 T 10,800" stroke="#fca5a5" strokeWidth="2" fill="none" opacity="0.4" />
-                <path d="M 25,50 Q 20,250 22,500 T 25,800" stroke="#fca5a5" strokeWidth="1" fill="none" opacity="0.2" />
-                <path d="M 40,0 Q 45,300 42,600 T 40,800" stroke="#fca5a5" strokeWidth="2.5" fill="none" opacity="0.5" />
-                <path d="M 60,100 Q 55,400 58,600 T 60,800" stroke="#fca5a5" strokeWidth="1" fill="none" opacity="0.3" />
-                <path d="M 75,0 Q 80,200 78,450 T 75,800" stroke="#fca5a5" strokeWidth="1.5" fill="none" opacity="0.4" />
-                <path d="M 90,20 Q 85,300 88,550 T 90,800" stroke="#fca5a5" strokeWidth="1" fill="none" opacity="0.2" />
+                <path d="M 10,0 Q 15,200 12,400 T 10,800" stroke="#4a6a8a" strokeWidth="2" fill="none" opacity="0.4" />
+                <path d="M 25,50 Q 20,250 22,500 T 25,800" stroke="#4a6a8a" strokeWidth="1" fill="none" opacity="0.2" />
+                <path d="M 40,0 Q 45,300 42,600 T 40,800" stroke="#4a6a8a" strokeWidth="2.5" fill="none" opacity="0.5" />
+                <path d="M 60,100 Q 55,400 58,600 T 60,800" stroke="#4a6a8a" strokeWidth="1" fill="none" opacity="0.3" />
+                <path d="M 75,0 Q 80,200 78,450 T 75,800" stroke="#4a6a8a" strokeWidth="1.5" fill="none" opacity="0.4" />
+                <path d="M 90,20 Q 85,300 88,550 T 90,800" stroke="#4a6a8a" strokeWidth="1" fill="none" opacity="0.2" />
             </pattern>
             <linearGradient id="shading" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0%" stopColor="#4a1111" stopOpacity="0.8" />
-                <stop offset="20%" stopColor="#8b2222" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="#5c1616" stopOpacity="0" />
-                <stop offset="80%" stopColor="#8b2222" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#4a1111" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#0f1a2a" stopOpacity="0.8" />
+                <stop offset="20%" stopColor="#1a2d45" stopOpacity="0.2" />
+                <stop offset="50%" stopColor="#162438" stopOpacity="0" />
+                <stop offset="80%" stopColor="#1a2d45" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#0f1a2a" stopOpacity="0.8" />
             </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#shading)" />
