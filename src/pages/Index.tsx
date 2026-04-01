@@ -371,7 +371,7 @@ export default function Index() {
               <img
                 src={coupleIllustration}
                 alt="Couple illustration"
-                className="w-full max-w-lg mx-auto"
+                className="w-full max-w-lg mx-auto mix-blend-multiply"
                 loading="lazy"
               />
             </CoupleParallax>
