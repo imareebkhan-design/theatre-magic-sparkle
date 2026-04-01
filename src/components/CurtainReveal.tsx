@@ -73,7 +73,7 @@ export default function CurtainReveal({ children }: { children: React.ReactNode 
                         transition={{ duration: 4.0, ease: [0.45, 0, 0.15, 1] }}
                         className="relative h-full w-1/2 overflow-hidden border-l border-black/30 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-10 cursor-pointer pointer-events-auto"
                         style={{
-                            backgroundColor: '#721c1c',
+                            backgroundColor: '#1a2d45',
                         }}
                     >
                         <CurtainTexture />
