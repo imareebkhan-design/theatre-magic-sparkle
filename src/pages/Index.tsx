@@ -291,9 +291,9 @@ export default function Index() {
             <p className="font-serif text-sm text-brand-red-dark/50 mt-2">Sunday Evening</p>
 
             {/* Venue in hero */}
-            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Lakshmi Temple</h3>
+            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Krishna Mahal Mantapa</h3>
             <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/50 mt-2">
-              Chennai, Tamil Nadu
+              Salem, Tamil Nadu
             </p>
 
             {/* Divider */}
