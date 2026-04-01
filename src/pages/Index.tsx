@@ -521,7 +521,7 @@ export default function Index() {
                   />
                   <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('venue.reception.title')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
-                    Jabalpur, Madhya Pradesh
+                    {t('venue.reception.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
                     6th December 2026 · 7:00 PM onwards
