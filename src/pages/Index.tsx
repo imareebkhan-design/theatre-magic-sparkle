@@ -269,46 +269,58 @@ export default function Index() {
             </p>
 
             {/* Gold divider with diamond */}
-            <div className="flex items-center gap-3 w-full max-w-[180px] mt-6">
+            <div className="flex items-center gap-3 w-full max-w-[180px] mt-4">
               <div className="flex-1 h-px bg-brand-red-dark/25" />
               <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
               <div className="flex-1 h-px bg-brand-red-dark/25" />
             </div>
 
             {/* Names */}
-            <div className="flex flex-col items-center -space-y-4 sm:-space-y-6 mt-8">
-              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Nikila" /></h1>
-              <span className="font-script text-4xl sm:text-5xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
-              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Sarthak" /></h1>
+            <div className="flex flex-col items-center -space-y-2 sm:-space-y-3 mt-5">
+              <h1 className="font-script text-[32px] sm:text-[48px] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Nikila" /></h1>
+              <span className="font-script text-2xl sm:text-3xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
+              <h1 className="font-script text-[32px] sm:text-[48px] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Sarthak" /></h1>
             </div>
 
+            {/* Lotus motif */}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mt-4">
+              <path d="M12 2C12 2 8 6 8 10C8 12 10 14 12 14C14 14 16 12 16 10C16 6 12 2 12 2Z" fill="#AB8A3B" opacity="0.8" />
+              <path d="M12 6C12 6 6 9 6 13C6 15 8 16 12 16C16 16 18 15 18 13C18 9 12 6 12 6Z" fill="#AB8A3B" opacity="0.5" />
+              <path d="M12 10C12 10 4 12 4 16C4 18 7 19 12 19C17 19 20 18 20 16C20 12 12 10 12 10Z" fill="#AB8A3B" opacity="0.3" />
+            </svg>
+
             {/* Request text */}
-            <p className="font-serif text-[11px] tracking-[0.25em] uppercase text-brand-red-dark/60 mt-12">
+            <p className="font-serif text-[11px] tracking-[0.25em] uppercase text-brand-red-dark/60 mt-3">
               Request the honour of your presence
             </p>
 
-            {/* Date with dot separators */}
-            <p className="font-serif text-2xl sm:text-3xl tracking-[0.15em] text-brand-red-dark mt-10">
-              29 &middot; 11 &middot; 2026
+            {/* Date */}
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 400, color: '#223348', letterSpacing: '0.2em', marginTop: '24px' }}>
+              29 · 11 · 2026
             </p>
-            <p className="font-serif text-sm text-brand-red-dark/50 mt-2">Sunday Evening</p>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#7397A8', marginTop: '6px' }}>
+              8:30 AM · Salem, Tamil Nadu
+            </p>
 
             {/* Venue in hero */}
-            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Krishna Mahal Mantapa</h3>
-            <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/50 mt-2">
-              Salem, Tamil Nadu
-            </p>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: '#223348', marginTop: '20px', fontWeight: 400 }}>Sri Krishna Mahal Mantapa</h3>
 
             {/* Divider */}
-            <div className="flex items-center gap-3 w-full max-w-[180px] mt-8">
+            <div className="flex items-center gap-3 w-full max-w-[180px] mt-5">
               <div className="flex-1 h-px bg-brand-red-dark/25" />
               <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
               <div className="flex-1 h-px bg-brand-red-dark/25" />
             </div>
 
-            <div className="flex flex-col items-center mt-8 opacity-50 animate-bounce">
-              <span className="font-serif text-[9px] tracking-[0.3em] uppercase text-brand-red-dark">Scroll</span>
-              <span className="text-brand-red-dark text-lg">↓</span>
+            <style>{`
+              @keyframes scrollPulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.4; }
+              }
+            `}</style>
+            <div className="flex flex-col items-center mt-5" style={{ animation: 'scrollPulse 2s ease-in-out infinite' }}>
+              <span className="font-serif text-[9px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>Scroll</span>
+              <span style={{ color: '#AB8A3B', fontSize: '18px' }}>↓</span>
             </div>
           </div>
         </Section>
