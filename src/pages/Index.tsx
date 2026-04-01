@@ -292,7 +292,19 @@ export default function Index() {
             </p>
 
             {/* Date */}
-            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">November 29, 2026</p>
+            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">29 November 2026</p>
+
+            {/* Couple Swing Illustration */}
+            <div className="pt-4">
+              <img
+                src={coupleSwingIllustration}
+                alt="Couple on a swing illustration"
+                className="w-full max-w-sm mx-auto"
+                loading="lazy"
+                width={1024}
+                height={1024}
+              />
+            </div>
 
             {/* Countdown */}
             <Countdown />
@@ -320,20 +332,7 @@ export default function Index() {
                         Temple Road · Chennai, Tamil Nadu
                       </p>
                       <p className="font-script text-4xl text-brand-red-dark/70 pt-4">Wedding Reception to Follow</p>
-                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
-                  </div>
-
-                  {/* Couple Swing Illustration */}
-                  <div className="pt-16">
-                    <img
-                      src={coupleSwingIllustration}
-                      alt="Couple on a swing illustration"
-                      className="w-full max-w-sm mx-auto rounded-lg"
-                      loading="lazy"
-                      width={1024}
-                      height={1024}
-                    />
                   </div>
                 </div>
               </Section>
