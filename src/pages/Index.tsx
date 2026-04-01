@@ -550,13 +550,13 @@ export default function Index() {
               {/* ── SECTION 5: DRESS CODE ── */}
               <Section>
                 <div className="max-w-2xl mx-auto space-y-6">
-                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">Dress Code</h2>
+                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">{t('dress.title')}</h2>
                   <DressCodeFigures />
                   <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    We invite you to dress elegantly and formally to celebrate this special day with us.
+                    {t('dress.desc')}
                   </p>
-                  <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark pt-2">Formal Attire</h3>
-                  <p className="font-script text-3xl text-brand-red-dark/60 italic">Please avoid wearing white</p>
+                  <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark pt-2">{t('dress.formal')}</h3>
+                  <p className="font-script text-3xl text-brand-red-dark/60 italic">{t('dress.nowhite')}</p>
                 </div>
               </Section>
 
