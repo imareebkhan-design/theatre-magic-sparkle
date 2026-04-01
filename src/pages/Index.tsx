@@ -375,12 +375,15 @@ export default function Index() {
                     width={1024}
                     height={640}
                   />
-                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Venue</h3>
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Reception Celebration</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
-                    Madhya Pradesh
+                    Jabalpur, Madhya Pradesh
+                  </p>
+                  <p className="font-serif text-lg tracking-[0.15em] text-brand-red-dark mt-2">
+                    6th December 2026
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Madhya+Pradesh+India"
+                    href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
