@@ -307,15 +307,15 @@ export default function Index() {
                   <p className="font-serif italic text-brand-red-dark/50 text-sm pt-2">until the big day</p>
 
                   <div className="pt-16 space-y-6">
-                    <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The celebration will take place at</p>
+                    <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
                     <VenueIllustration />
                     <div className="space-y-1 pt-2">
-                      <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark">Villa Medicea di Artimino</h3>
+                      <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
                       <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60 pt-2">
-                        Via di Papa Leone X, 28 · Artimino, Florence
+                        Temple Road · Chennai, Tamil Nadu
                       </p>
                       <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">September 10, 2027</p>
-                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Reception to Follow</p>
+                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
                   </div>
                 </div>
