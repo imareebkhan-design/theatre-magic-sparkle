@@ -261,7 +261,7 @@ export default function Index() {
 
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
-        <Section className="!min-h-screen !justify-center !py-0" style={{ padding: '60px 24px' }}>
+        <Section className="!min-h-screen !justify-center !py-[60px] !px-6">
           <div className="max-w-3xl mx-auto flex flex-col items-center" style={{ marginTop: '-10vh' }}>
             {/* Line 1 */}
             <p className="font-dm-sans text-[11px] uppercase tracking-[0.3em] text-[#C97B5A]">
