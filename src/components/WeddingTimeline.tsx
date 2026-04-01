@@ -49,7 +49,7 @@ export default function WeddingTimeline() {
             >
               {/* Content */}
               <div style={{ flex: 1, textAlign: event.side === 'left' ? 'right' : 'left', paddingRight: event.side === 'left' ? '32px' : '0', paddingLeft: event.side === 'right' ? '32px' : '0' }}>
-                <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{event.time}</p>
+                <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{formatEventTime(event.time, false)}</p>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 400, color: '#223348', margin: '0 0 2px' }}>{t(event.nameKey)}</h3>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '13px', fontStyle: 'italic', color: '#7397A8', margin: '0 0 4px' }}>{event.tamil}</p>
                 <p style={{ fontSize: '12px', fontWeight: 300, color: '#53694D', lineHeight: 1.6, margin: 0 }}>{t(event.descKey)}</p>
