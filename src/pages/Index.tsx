@@ -309,10 +309,12 @@ export default function Index() {
               With Joy &amp; Love, We Invite You to Celebrate
             </p>
 
-            {/* Line 2 */}
-            <h1 className="font-cormorant font-light text-4xl sm:text-[56px] text-[#AB8A3B] leading-tight">
-              Nikila &amp; Sarthak
-            </h1>
+            {/* Line 2 — Script names like reference */}
+            <div className="flex flex-col items-center -space-y-4 sm:-space-y-6">
+              <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Nikila</h1>
+              <span className="font-script text-4xl sm:text-5xl text-brand-red-dark/50">&amp;</span>
+              <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Sarthak</h1>
+            </div>
 
             {/* Gold divider with diamond */}
             <div className="flex items-center gap-3 w-full max-w-xs">
