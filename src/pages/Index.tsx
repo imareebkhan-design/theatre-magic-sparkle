@@ -228,6 +228,25 @@ const ThankYouCard = () => (
 );
 
 /* ─────────────── Section wrapper ─────────────── */
+/* Apple-style stagger container */
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 const Section = ({ children, className = '', dark = false }: { children: React.ReactNode; className?: string; dark?: boolean }) => (
   <motion.section
     initial={{ opacity: 0, y: 60 }}
