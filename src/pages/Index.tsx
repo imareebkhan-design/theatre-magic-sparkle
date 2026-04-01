@@ -335,12 +335,12 @@ export default function Index() {
                 <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
                   <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
                   <VenueIllustration />
-                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Lakshmi Temple</h3>
+                  <h3 className="font-script text-4xl sm:text-5xl text-brand-red-dark">Sri Krishna Mahal Mantapa</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60">
-                    Temple Road · Chennai, Tamil Nadu
+                    Salem, Tamil Nadu
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Sri+Lakshmi+Temple+Chennai"
+                    href="https://maps.google.com/?q=Sri+Krishna+Mahal+Mantapa+Salem+Tamil+Nadu"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 border border-brand-red-dark/20 rounded-none hover:border-brand-red-dark/40 transition-all duration-300"
