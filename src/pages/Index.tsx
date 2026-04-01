@@ -245,6 +245,39 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rsvpChoice, setRsvpChoice] = useState<'yes' | 'no' | null>(null);
   const [eventChoice, setEventChoice] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const fadeInAudio = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0;
+    audio.play().then(() => {
+      setIsPlaying(true);
+      let vol = 0;
+      const step = 0.4 / (3000 / 50); // reach 0.4 over 3s
+      const iv = setInterval(() => {
+        vol = Math.min(vol + step, 0.4);
+        audio.volume = vol;
+        if (vol >= 0.4) clearInterval(iv);
+      }, 50);
+    }).catch(() => {});
+  }, []);
+
+  const handleCurtainOpen = useCallback(() => {
+    setTimeout(fadeInAudio, 3000);
+  }, [fadeInAudio]);
+
+  const toggleAudio = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.4;
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  }, [isPlaying]);
 
   return (
     <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
