@@ -726,12 +726,12 @@ export default function Index() {
               </section>
 
               {/* ── FOOTER ── */}
-              <footer style={{ background: '#223348', padding: '80px 24px 48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
+              <footer style={{ background: '#223348', padding: '60px 20px 40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
                 {/* Om */}
                 <span style={{ fontFamily: "'Tiro Devanagari Sanskrit', serif", fontSize: '24px', color: '#AB8A3B' }}>ॐ</span>
 
                 {/* Names */}
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontSize: '52px', color: '#F6F0E6', margin: 0, lineHeight: 1.2 }}>
+                <h2 className="text-[36px] sm:text-[52px]" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: '#F6F0E6', margin: 0, lineHeight: 1.2 }}>
                   Nikila &amp; Sarthak
                 </h2>
 
