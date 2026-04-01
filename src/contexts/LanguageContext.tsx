@@ -56,8 +56,8 @@ const translations: Translations = {
 
   // Dress code
   'dress.title': { en: 'Dress Code', ta: 'உடையமைப்பு', hi: 'ड्रेस कोड' },
-  'dress.desc': { en: 'We invite you to dress elegantly and formally to celebrate this special day with us.', ta: 'இந்த சிறப்பு நாளை எங்களுடன் கொண்டாட நேர்த்தியாகவும் முறைப்படியும் உடையணிய அழைக்கிறோம்.', hi: 'हम आपको इस विशेष दिन को हमारे साथ मनाने के लिए सुंदर और औपचारिक कपड़े पहनने के लिए आमंत्रित करते हैं।' },
-  'dress.formal': { en: 'Formal Attire', ta: 'முறையான உடை', hi: 'औपचारिक पोशाक' },
+  'dress.desc': { en: 'We invite you to dress in traditional attire to celebrate this special day with us.', ta: 'இந்த சிறப்பு நாளை எங்களுடன் கொண்டாட பாரம்பரிய உடையணிய அழைக்கிறோம்.', hi: 'हम आपको इस विशेष दिन को हमारे साथ मनाने के लिए पारंपरिक पोशाक पहनने के लिए आमंत्रित करते हैं।' },
+  'dress.formal': { en: 'Traditional Attire', ta: 'பாரம்பரிய உடை', hi: 'पारंपरिक पोशाक' },
   'dress.nowhite': { en: 'Please avoid wearing white', ta: 'வெள்ளை நிற உடை தவிர்க்கவும்', hi: 'कृपया सफेद पहनने से बचें' },
 
   // Gifts

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedTimelineLine, EventCard } from './TimelineAnimations';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTimeZone } from '@/hooks/useTimeZone';
 
 const eventKeys = [
   { time: "5:30 AM", nameKey: 'event.naandi.name', tamil: "நாந்தி", descKey: 'event.naandi.desc', side: "left" as const },
@@ -14,6 +15,7 @@ const eventKeys = [
 
 export default function WeddingTimeline() {
   const { t } = useLanguage();
+  const { formatEventTime } = useTimeZone();
 
   return (
     <section style={{ background: '#F6F0E6', padding: '80px 24px', fontFamily: "'DM Sans', sans-serif" }}>
@@ -47,7 +49,7 @@ export default function WeddingTimeline() {
             >
               {/* Content */}
               <div style={{ flex: 1, textAlign: event.side === 'left' ? 'right' : 'left', paddingRight: event.side === 'left' ? '32px' : '0', paddingLeft: event.side === 'right' ? '32px' : '0' }}>
-                <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{event.time}</p>
+                <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{formatEventTime(event.time, false)}</p>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 400, color: '#223348', margin: '0 0 2px' }}>{t(event.nameKey)}</h3>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '13px', fontStyle: 'italic', color: '#7397A8', margin: '0 0 4px' }}>{event.tamil}</p>
                 <p style={{ fontSize: '12px', fontWeight: 300, color: '#53694D', lineHeight: 1.6, margin: 0 }}>{t(event.descKey)}</p>
@@ -71,7 +73,7 @@ export default function WeddingTimeline() {
       {/* Reception Card */}
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ maxWidth: '480px', margin: '0 auto', textAlign: 'center', padding: '40px 32px', border: '1px solid rgba(171,138,59,0.2)' }}>
         <p style={{ fontSize: '18px', color: '#AB8A3B', marginBottom: '12px' }}>✦</p>
-        <p style={{ fontSize: '10px', letterSpacing: '0.35em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '8px' }}>{t('timeline.reception.time')}</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.35em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '8px' }}>{formatEventTime('7:00 PM')}</p>
         <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', fontWeight: 300, color: '#223348', margin: '0 0 6px' }}>{t('timeline.reception.title')}</h3>
         <p style={{ fontSize: '12px', fontWeight: 300, color: '#7397A8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{t('timeline.reception.location')}</p>
       </motion.div>

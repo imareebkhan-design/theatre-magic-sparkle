@@ -11,6 +11,7 @@ import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTimeZone } from '@/hooks/useTimeZone';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
@@ -272,6 +273,7 @@ export default function Index() {
   const [eventChoice, setEventChoice] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { t } = useLanguage();
+  const { formatEventTime, isIST } = useTimeZone();
 
   const fadeInAudio = useCallback(() => {
     const audio = audioRef.current;
@@ -397,7 +399,7 @@ export default function Index() {
               className="text-[13px] sm:text-[15px]"
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, color: '#7397A8', marginTop: '8px' }}
             >
-              {t('hero.time')}
+              {formatEventTime('8:30 AM')} · {t('venue.ceremony.location')}
             </motion.p>
 
             {/* Venue */}
@@ -409,7 +411,22 @@ export default function Index() {
               {t('hero.venue')}
             </motion.h3>
 
-            {/* Divider */}
+            {/* NRI timezone notice */}
+            {!isIST && (
+              <motion.p
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, delay: 0.3 } } }}
+                className="text-[10px] sm:text-[11px] tracking-[0.15em] mt-3 px-4 py-1.5 rounded-full"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: '#AB8A3B',
+                  background: 'rgba(171,138,59,0.08)',
+                  border: '1px solid rgba(171,138,59,0.15)',
+                }}
+              >
+                🕐 Times shown in your local timezone
+              </motion.p>
+            )}
+
             <motion.div
               variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1, ease: 'easeOut' } } }}
               className="flex items-center gap-3 mt-8" style={{ width: '260px' }}
@@ -478,7 +495,7 @@ export default function Index() {
                     {t('venue.ceremony.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
-                    {t('venue.ceremony.datetime')}
+                    29th November 2026 · {formatEventTime('8:30 AM')}
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
@@ -530,7 +547,7 @@ export default function Index() {
                     {t('venue.reception.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
-                    {t('venue.reception.datetime')}
+                    6th December 2026 · {formatEventTime('7:00 PM')}
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
