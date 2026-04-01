@@ -1,4 +1,4 @@
-import { Info } from 'lucide-react';
+
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
