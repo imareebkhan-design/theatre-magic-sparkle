@@ -27,7 +27,7 @@ const CurtainTexture = () => (
     </svg>
 );
 
-export default function CurtainReveal({ children }: { children: React.ReactNode }) {
+export default function CurtainReveal({ children, onOpen }: { children: React.ReactNode; onOpen?: () => void }) {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -43,6 +43,7 @@ export default function CurtainReveal({ children }: { children: React.ReactNode 
 
     const handleOpen = () => {
         setIsOpen(true);
+        onOpen?.();
     };
 
     return (

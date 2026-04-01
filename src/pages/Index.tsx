@@ -4,7 +4,7 @@ import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration.jpg';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
@@ -245,6 +245,39 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rsvpChoice, setRsvpChoice] = useState<'yes' | 'no' | null>(null);
   const [eventChoice, setEventChoice] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const fadeInAudio = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0;
+    audio.play().then(() => {
+      setIsPlaying(true);
+      let vol = 0;
+      const step = 0.4 / (3000 / 50); // reach 0.4 over 3s
+      const iv = setInterval(() => {
+        vol = Math.min(vol + step, 0.4);
+        audio.volume = vol;
+        if (vol >= 0.4) clearInterval(iv);
+      }, 50);
+    }).catch(() => {});
+  }, []);
+
+  const handleCurtainOpen = useCallback(() => {
+    setTimeout(fadeInAudio, 3000);
+  }, [fadeInAudio]);
+
+  const toggleAudio = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.4;
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  }, [isPlaying]);
 
   return (
     <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
@@ -259,7 +292,11 @@ export default function Index() {
         </button>
       </header>
 
-      <CurtainReveal>
+      <audio ref={audioRef} id="bg-music" loop preload="auto">
+        <source src="/wedding-music.mp3" type="audio/mpeg" />
+      </audio>
+
+      <CurtainReveal onOpen={handleCurtainOpen}>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[60px] !px-6">
           <div className="max-w-3xl mx-auto flex flex-col items-center" style={{ marginTop: '-10vh' }}>
@@ -652,25 +689,44 @@ export default function Index() {
               </footer>
         </>
 
-        {/* Floating Sound Toggle */}
+        {/* Floating Diya Sound Toggle */}
         <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center z-[60] transition-colors border border-brand-red-dark/20 text-brand-red-dark hover:bg-white"
+          onClick={toggleAudio}
+          className="fixed bottom-6 right-6 flex items-center justify-center z-[60] transition-all duration-300 hover:scale-110"
+          style={{
+            width: '44px',
+            height: '44px',
+            borderRadius: '22px',
+            background: 'rgba(34,51,72,0.8)',
+            backdropFilter: 'blur(8px)',
+            border: 'none',
+            cursor: 'pointer',
+          }}
         >
           <span className="sr-only">Toggle Sound</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          {/* Diya SVG */}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Diya base */}
+            <ellipse cx="12" cy="18" rx="7" ry="3" fill="#AB8A3B" opacity="0.9" />
+            <ellipse cx="12" cy="17" rx="5" ry="2" fill="#AB8A3B" />
+            {/* Wick */}
+            <line x1="12" y1="15" x2="12" y2="10" stroke="#AB8A3B" strokeWidth="1.5" strokeLinecap="round" />
+            {/* Flame */}
             {isPlaying ? (
-              <>
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-              </>
+              <g>
+                <path d="M12 4 C10 7, 9.5 9, 12 10 C14.5 9, 14 7, 12 4Z" fill="#AB8A3B" opacity="0.9">
+                  <animate attributeName="d" values="M12 4 C10 7,9.5 9,12 10 C14.5 9,14 7,12 4Z;M12 3.5 C9.5 7,9 9,12 10 C15 9,14.5 7,12 3.5Z;M12 4 C10 7,9.5 9,12 10 C14.5 9,14 7,12 4Z" dur="1.5s" repeatCount="indefinite" />
+                </path>
+                <path d="M12 5.5 C11 7, 10.8 8.5, 12 9.5 C13.2 8.5, 13 7, 12 5.5Z" fill="#F6F0E6" opacity="0.7">
+                  <animate attributeName="opacity" values="0.7;0.4;0.7" dur="1s" repeatCount="indefinite" />
+                </path>
+              </g>
             ) : (
-              <>
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                <line x1="23" y1="9" x2="17" y2="15" />
-                <line x1="17" y1="9" x2="23" y2="15" />
-              </>
+              /* Muted — no flame, just smoke wisps */
+              <g opacity="0.4">
+                <path d="M12 9 C11.5 7.5, 11 6, 12 5" stroke="#AB8A3B" strokeWidth="1" fill="none" strokeLinecap="round" />
+                <path d="M12.5 8 C12 6.5, 13 5.5, 12 4.5" stroke="#AB8A3B" strokeWidth="0.7" fill="none" strokeLinecap="round" opacity="0.5" />
+              </g>
             )}
           </svg>
         </button>
