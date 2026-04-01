@@ -120,7 +120,7 @@ export default function WeddingShlokas() {
               fontSize: '10px',
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
-              color: 'rgba(171,138,59,0.7)',
+              color: '#AB8A3B',
             }}>
               — {s.ref}
             </p>
