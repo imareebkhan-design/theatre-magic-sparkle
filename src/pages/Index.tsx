@@ -14,6 +14,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
+  const { t } = useLanguage();
   const target = new Date('2026-11-29T16:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, min: 0, sec: 0 });
 
