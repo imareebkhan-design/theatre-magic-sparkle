@@ -6,6 +6,7 @@ import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import WeddingTimeline from '../components/WeddingTimeline';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
