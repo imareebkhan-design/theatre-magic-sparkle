@@ -2,12 +2,13 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
+import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
-  const target = new Date('2027-09-10T16:00:00').getTime();
+  const target = new Date('2026-11-29T16:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, min: 0, sec: 0 });
 
   useEffect(() => {
@@ -314,9 +315,21 @@ export default function Index() {
                       <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/60 pt-2">
                         Temple Road · Chennai, Tamil Nadu
                       </p>
-                      <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">September 10, 2027</p>
+                      <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark pt-4">November 29, 2026</p>
                       <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
+                  </div>
+
+                  {/* Couple Swing Illustration */}
+                  <div className="pt-16">
+                    <img
+                      src={coupleSwingIllustration}
+                      alt="Couple on a swing illustration"
+                      className="w-full max-w-sm mx-auto rounded-lg"
+                      loading="lazy"
+                      width={1024}
+                      height={1024}
+                    />
                   </div>
                 </div>
               </Section>
