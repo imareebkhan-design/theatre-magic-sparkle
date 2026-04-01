@@ -9,6 +9,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
