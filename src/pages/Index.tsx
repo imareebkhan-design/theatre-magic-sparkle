@@ -1,9 +1,8 @@
 import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
-import ScratchOffCanvas from '../components/ScratchOffCanvas';
 import FlockingBirds from '../components/FlockingBirds';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
