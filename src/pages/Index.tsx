@@ -519,7 +519,7 @@ export default function Index() {
                     className="w-full max-w-md mx-auto mix-blend-multiply"
                     loading="lazy"
                   />
-                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</motion.h3>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('venue.reception.title')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Jabalpur, Madhya Pradesh
                   </motion.p>
