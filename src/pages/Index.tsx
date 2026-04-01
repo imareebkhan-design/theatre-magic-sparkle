@@ -310,7 +310,7 @@ export default function Index() {
       <FlockingBirds />
 
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full p-4 sm:p-6 flex items-center justify-between z-[110] pointer-events-none">
+      <header className="fixed top-0 left-0 w-full px-3 sm:px-6 pt-3 sm:pt-6 pb-2 flex items-center justify-between z-[110] pointer-events-none">
         <div />
         <div className="flex items-center gap-3 pointer-events-auto">
           <LanguageSwitcher />
@@ -379,7 +379,7 @@ export default function Index() {
             {/* Request text */}
             <motion.p
               variants={{ hidden: { opacity: 0, y: 15, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } } }}
-              className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
+              className="font-serif text-[12px] sm:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
             >
               {t('hero.honour')}
             </motion.p>
@@ -387,13 +387,15 @@ export default function Index() {
             {/* Date */}
             <motion.p
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
-              style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 500, color: '#223348', letterSpacing: '0.25em', marginTop: '32px' }}
+              className="font-serif font-medium tracking-[0.25em] mt-8 text-[24px] sm:text-[36px]"
+              style={{ fontFamily: "'Playfair Display', serif", color: '#223348' }}
             >
               29 · 11 · 2026
             </motion.p>
             <motion.p
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } } }}
-              style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '15px', color: '#7397A8', marginTop: '8px' }}
+              className="text-[13px] sm:text-[15px]"
+              style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, color: '#7397A8', marginTop: '8px' }}
             >
               {t('hero.time')}
             </motion.p>
@@ -401,7 +403,8 @@ export default function Index() {
             {/* Venue */}
             <motion.h3
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: '#223348', marginTop: '20px', fontWeight: 300 }}
+              className="text-[24px] sm:text-[32px]"
+              style={{ fontFamily: "'Cormorant Garamond', serif", color: '#223348', marginTop: '20px', fontWeight: 300 }}
             >
               {t('hero.venue')}
             </motion.h3>
@@ -611,7 +614,7 @@ export default function Index() {
               <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
 
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
+                  <h2 className="text-[36px] sm:text-[48px]" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
 
                   <div style={{ background: '#FFFDF9', border: '1px solid rgba(171,138,59,0.15)', borderRadius: '2px', padding: '32px', width: '100%', textAlign: 'left' }} className="space-y-6">
                     <div className="space-y-1">
@@ -723,12 +726,12 @@ export default function Index() {
               </section>
 
               {/* ── FOOTER ── */}
-              <footer style={{ background: '#223348', padding: '80px 24px 48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
+              <footer style={{ background: '#223348', padding: '60px 20px 40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
                 {/* Om */}
                 <span style={{ fontFamily: "'Tiro Devanagari Sanskrit', serif", fontSize: '24px', color: '#AB8A3B' }}>ॐ</span>
 
                 {/* Names */}
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontSize: '52px', color: '#F6F0E6', margin: 0, lineHeight: 1.2 }}>
+                <h2 className="text-[36px] sm:text-[52px]" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: '#F6F0E6', margin: 0, lineHeight: 1.2 }}>
                   Nikila &amp; Sarthak
                 </h2>
 

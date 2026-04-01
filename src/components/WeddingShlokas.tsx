@@ -158,9 +158,9 @@ export default function WeddingShlokas() {
               className="shloka-shimmer"
               style={{
                 fontFamily: s.scriptFont(language),
-                fontSize: s.scriptSize(language),
+                fontSize: `clamp(24px, 6vw, ${s.scriptSize(language)})`,
                 lineHeight: 1.7,
-                margin: '0 0 40px',
+                margin: '0 0 32px',
                 whiteSpace: 'pre-line',
                 letterSpacing: '0.02em',
               }}
