@@ -272,50 +272,66 @@ export default function Index() {
               With Joy &amp; Love, We Invite You to Celebrate
             </p>
 
-            {/* Line 2 — Script names */}
-            <div className="flex flex-col items-center -space-y-4 sm:-space-y-6 mt-10">
+            {/* Gold divider with diamond */}
+            <div className="flex items-center gap-3 w-full max-w-[180px] mt-6">
+              <div className="flex-1 h-px bg-brand-red-dark/25" />
+              <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
+              <div className="flex-1 h-px bg-brand-red-dark/25" />
+            </div>
+
+            {/* Names */}
+            <div className="flex flex-col items-center -space-y-4 sm:-space-y-6 mt-8">
               <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Nikila</h1>
               <span className="font-script text-4xl sm:text-5xl text-brand-red-dark/50">&amp;</span>
               <h1 className="font-script text-[7rem] sm:text-[11rem] text-brand-red-dark leading-none">Sarthak</h1>
             </div>
 
-            {/* Gold divider with diamond */}
-            <div className="flex items-center gap-3 w-full max-w-xs mt-10">
-              <div className="flex-1 h-px bg-[#AB8A3B]/40" />
-              <div className="w-2.5 h-2.5 rotate-45 border border-[#AB8A3B]/60" />
-              <div className="flex-1 h-px bg-[#AB8A3B]/40" />
-            </div>
-
-            {/* Line 3 */}
-            <p className="font-dm-sans font-light text-[15px] text-[#223348] leading-[2] max-w-lg text-center mt-6">
-              Request the honour of your presence at their wedding celebration
+            {/* Request text */}
+            <p className="font-serif text-[11px] tracking-[0.25em] uppercase text-brand-red-dark/60 mt-12">
+              Request the honour of your presence
             </p>
 
-            {/* Date */}
-            <p className="font-serif text-2xl sm:text-3xl text-brand-red-dark mt-10">29 November 2026</p>
+            {/* Date with dot separators */}
+            <p className="font-serif text-2xl sm:text-3xl tracking-[0.15em] text-brand-red-dark mt-10">
+              29 &middot; 11 &middot; 2026
+            </p>
+            <p className="font-serif text-sm text-brand-red-dark/50 mt-2">Sunday Evening</p>
 
-            {/* Couple Swing Illustration */}
-            <div className="mt-12">
-              <img
-                src={coupleSwingIllustration}
-                alt="Couple on a swing illustration"
-                className="w-full max-w-sm mx-auto"
-                loading="lazy"
-                width={1024}
-                height={1024}
-              />
+            {/* Venue in hero */}
+            <h3 className="font-script text-3xl sm:text-4xl text-brand-red-dark mt-10">Sri Lakshmi Temple</h3>
+            <p className="font-serif text-[10px] tracking-[0.2em] uppercase text-brand-red-dark/50 mt-2">
+              Chennai, Tamil Nadu
+            </p>
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 w-full max-w-[180px] mt-8">
+              <div className="flex-1 h-px bg-brand-red-dark/25" />
+              <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
+              <div className="flex-1 h-px bg-brand-red-dark/25" />
             </div>
 
-            {/* Countdown */}
-            <div className="mt-14">
-              <Countdown />
-            </div>
-            <p className="font-serif italic text-brand-red-dark/50 text-sm mt-3">until the big day</p>
-
-            <div className="flex flex-col items-center mt-12 opacity-50 animate-bounce">
+            <div className="flex flex-col items-center mt-8 opacity-50 animate-bounce">
               <span className="font-serif text-[9px] tracking-[0.3em] uppercase text-brand-red-dark">Scroll</span>
               <span className="text-brand-red-dark text-lg">↓</span>
             </div>
+          </div>
+        </Section>
+
+        {/* ── SECTION 2: ILLUSTRATION + COUNTDOWN ── */}
+        <Section>
+          <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
+            <img
+              src={coupleSwingIllustration}
+              alt="Couple on a swing illustration"
+              className="w-full max-w-sm mx-auto"
+              loading="lazy"
+              width={1024}
+              height={1024}
+            />
+            <div>
+              <Countdown />
+            </div>
+            <p className="font-serif italic text-brand-red-dark/50 text-sm">until the big day</p>
           </div>
         </Section>
 
