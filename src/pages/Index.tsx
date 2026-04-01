@@ -316,14 +316,16 @@ export default function Index() {
         {/* ── SECTION 2: ILLUSTRATION + COUNTDOWN ── */}
         <Section>
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
-            <img
-              src={coupleSwingIllustration}
-              alt="Couple on a swing illustration"
-              className="w-full max-w-sm mx-auto"
-              loading="lazy"
-              width={1024}
-              height={1024}
-            />
+            <CoupleParallax>
+              <img
+                src={coupleSwingIllustration}
+                alt="Couple on a swing illustration"
+                className="w-full max-w-sm mx-auto"
+                loading="lazy"
+                width={1024}
+                height={1024}
+              />
+            </CoupleParallax>
             <div>
               <Countdown />
             </div>
