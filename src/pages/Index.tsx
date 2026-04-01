@@ -292,7 +292,11 @@ export default function Index() {
         </button>
       </header>
 
-      <CurtainReveal>
+      <audio ref={audioRef} id="bg-music" loop preload="auto">
+        <source src="/wedding-music.mp3" type="audio/mpeg" />
+      </audio>
+
+      <CurtainReveal onOpen={handleCurtainOpen}>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[60px] !px-6">
           <div className="max-w-3xl mx-auto flex flex-col items-center" style={{ marginTop: '-10vh' }}>
