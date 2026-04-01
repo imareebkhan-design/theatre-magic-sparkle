@@ -1,3 +1,5 @@
+import templeDoor from "@/assets/temple-door.jpg";
+
 const HeroSection = () => {
   return (
     <section
@@ -5,7 +7,7 @@ const HeroSection = () => {
       style={{ backgroundColor: '#223348' }}
     >
       <img
-        src="/temple-door.jpg"
+        src={templeDoor}
         alt="Temple door"
         className="h-full object-contain"
       />
