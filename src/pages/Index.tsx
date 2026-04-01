@@ -38,10 +38,10 @@ function Countdown() {
   return (
     <div className="flex gap-3 sm:gap-6 justify-center mt-4">
       {[
-        { label: 'DAYS', value: String(timeLeft.days) },
-        { label: 'HOURS', value: pad(timeLeft.hours) },
-        { label: 'MIN', value: pad(timeLeft.min) },
-        { label: 'SEC', value: pad(timeLeft.sec) },
+        { label: t('countdown.days'), value: String(timeLeft.days) },
+        { label: t('countdown.hours'), value: pad(timeLeft.hours) },
+        { label: t('countdown.min'), value: pad(timeLeft.min) },
+        { label: t('countdown.sec'), value: pad(timeLeft.sec) },
       ].map((item) => (
         <div key={item.label} className="flex flex-col items-center">
           <div className="w-20 h-20 sm:w-28 sm:h-28 border border-brand-red-dark/40 flex items-center justify-center">
