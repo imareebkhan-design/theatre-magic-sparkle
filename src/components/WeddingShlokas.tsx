@@ -35,6 +35,7 @@ const Divider = () => (
 
 export default function WeddingShlokas() {
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const shimmerRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -46,8 +47,26 @@ export default function WeddingShlokas() {
       });
     }, { threshold: 0.15 });
 
+    const shimmerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('playing');
+          // After animation ends, remove class and set solid color
+          setTimeout(() => {
+            (entry.target as HTMLElement).classList.remove('playing');
+          }, 2500);
+          shimmerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
     blockRefs.current.forEach((ref) => { if (ref) observer.observe(ref); });
-    return () => observer.disconnect();
+    shimmerRefs.current.forEach((ref) => { if (ref) shimmerObserver.observe(ref); });
+
+    return () => {
+      observer.disconnect();
+      shimmerObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -58,14 +77,35 @@ export default function WeddingShlokas() {
       position: 'relative',
       overflow: 'hidden',
     }}>
+      <style>{`
+        @keyframes omPulse {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.03; }
+          50% { transform: translate(-50%, -50%) scale(1.06); opacity: 0.055; }
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% center; }
+          100% { background-position: 200% center; }
+        }
+        .shloka-shimmer {
+          background: linear-gradient(90deg, #223348 30%, #AB8A3B 50%, #223348 70%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .shloka-shimmer.playing {
+          animation: shimmer 2.5s linear 1;
+        }
+      `}</style>
+
       {/* Background Om watermark */}
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
         fontSize: '400px',
         color: 'rgba(34,51,72,0.04)',
         fontFamily: "'Tiro Devanagari Sanskrit', serif",
         pointerEvents: 'none', userSelect: 'none', lineHeight: 1,
+        animation: 'omPulse 5s ease-in-out infinite',
       }}>ॐ</div>
 
       <Divider />
@@ -84,17 +124,20 @@ export default function WeddingShlokas() {
             }}
           >
             {/* Large script */}
-            <p style={{
-              fontFamily: s.isDevanagari
-                ? "'Tiro Devanagari Sanskrit', serif"
-                : "'Noto Sans Tamil', sans-serif",
-              fontSize: s.isDevanagari ? '42px' : '32px',
-              color: '#223348',
-              lineHeight: 1.7,
-              margin: '0 0 40px',
-              whiteSpace: 'pre-line',
-              letterSpacing: '0.02em',
-            }}>
+            <p
+              ref={(el) => (shimmerRefs.current[i] = el)}
+              className="shloka-shimmer"
+              style={{
+                fontFamily: s.isDevanagari
+                  ? "'Tiro Devanagari Sanskrit', serif"
+                  : "'Noto Sans Tamil', sans-serif",
+                fontSize: s.isDevanagari ? '42px' : '32px',
+                lineHeight: 1.7,
+                margin: '0 0 40px',
+                whiteSpace: 'pre-line',
+                letterSpacing: '0.02em',
+              }}
+            >
               {s.script}
             </p>
 

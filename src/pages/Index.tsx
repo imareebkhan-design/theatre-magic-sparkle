@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
+import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
@@ -276,9 +277,9 @@ export default function Index() {
 
             {/* Names */}
             <div className="flex flex-col items-center -space-y-4 sm:-space-y-6 mt-8">
-              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}>Nikila</h1>
+              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Nikila" /></h1>
               <span className="font-script text-4xl sm:text-5xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
-              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}>Sarthak</h1>
+              <h1 className="font-script text-[7rem] sm:text-[11rem] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Sarthak" /></h1>
             </div>
 
             {/* Request text */}
@@ -315,14 +316,16 @@ export default function Index() {
         {/* ── SECTION 2: ILLUSTRATION + COUNTDOWN ── */}
         <Section>
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
-            <img
-              src={coupleSwingIllustration}
-              alt="Couple on a swing illustration"
-              className="w-full max-w-sm mx-auto"
-              loading="lazy"
-              width={1024}
-              height={1024}
-            />
+            <CoupleParallax>
+              <img
+                src={coupleSwingIllustration}
+                alt="Couple on a swing illustration"
+                className="w-full max-w-sm mx-auto"
+                loading="lazy"
+                width={1024}
+                height={1024}
+              />
+            </CoupleParallax>
             <div>
               <Countdown />
             </div>
