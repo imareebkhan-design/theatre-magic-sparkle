@@ -9,9 +9,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
+  const { t } = useLanguage();
   const target = new Date('2026-11-29T16:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, min: 0, sec: 0 });
 
@@ -36,10 +39,10 @@ function Countdown() {
   return (
     <div className="flex gap-3 sm:gap-6 justify-center mt-4">
       {[
-        { label: 'DAYS', value: String(timeLeft.days) },
-        { label: 'HOURS', value: pad(timeLeft.hours) },
-        { label: 'MIN', value: pad(timeLeft.min) },
-        { label: 'SEC', value: pad(timeLeft.sec) },
+        { label: t('countdown.days'), value: String(timeLeft.days) },
+        { label: t('countdown.hours'), value: pad(timeLeft.hours) },
+        { label: t('countdown.min'), value: pad(timeLeft.min) },
+        { label: t('countdown.sec'), value: pad(timeLeft.sec) },
       ].map((item) => (
         <div key={item.label} className="flex flex-col items-center">
           <div className="w-20 h-20 sm:w-28 sm:h-28 border border-brand-red-dark/40 flex items-center justify-center">
@@ -182,7 +185,9 @@ const WeddingCarIllustration = () => (
 );
 
 /* ─────────────── Thank You Card (deckled edge) ─────────────── */
-const ThankYouCard = () => (
+const ThankYouCard = () => {
+  const { t } = useLanguage();
+  return (
   <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1 / 1' }}>
     <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
       <defs>
@@ -218,14 +223,15 @@ const ThankYouCard = () => (
       />
     </svg>
     <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-12">
-      <h2 className="font-script text-5xl text-brand-red-dark mb-4">Thank You</h2>
+      <h2 className="font-script text-5xl text-brand-red-dark mb-4">{t('thankyou.title')}</h2>
       <p className="font-serif text-sm text-brand-red-dark/80 leading-relaxed mb-6">
-        For joining us on this special day.<br />Your presence is the best gift we could receive.
+        {t('thankyou.desc').split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}
       </p>
-      <p className="font-script text-3xl text-brand-red-dark">Sam &amp; Sofia</p>
+      <p className="font-script text-3xl text-brand-red-dark">Nikila &amp; Sarthak</p>
     </div>
   </div>
-);
+  );
+};
 
 /* ─────────────── Section wrapper ─────────────── */
 /* Apple-style stagger container */
@@ -265,6 +271,7 @@ export default function Index() {
   const [rsvpChoice, setRsvpChoice] = useState<'yes' | 'no' | null>(null);
   const [eventChoice, setEventChoice] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { t } = useLanguage();
 
   const fadeInAudio = useCallback(() => {
     const audio = audioRef.current;
@@ -303,12 +310,14 @@ export default function Index() {
       <FlockingBirds />
 
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full p-6 flex items-center justify-between z-[110] pointer-events-none">
+      <header className="fixed top-0 left-0 w-full p-4 sm:p-6 flex items-center justify-between z-[110] pointer-events-none">
         <div />
-
-        <button className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center pointer-events-auto border border-brand-accent/10">
-          <Info size={16} className="text-brand-red-dark" />
-        </button>
+        <div className="flex items-center gap-3 pointer-events-auto">
+          <LanguageSwitcher />
+          <button className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center border border-brand-accent/10">
+            <Info size={16} className="text-brand-red-dark" />
+          </button>
+        </div>
       </header>
 
       <audio ref={audioRef} id="bg-music" loop preload="auto">
@@ -332,7 +341,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
               className="font-dm-sans text-[12px] sm:text-[13px] uppercase tracking-[0.35em] text-[#C97B5A]"
             >
-              With Joy &amp; Love, We Invite You to Celebrate
+              {t('hero.invite')}
             </motion.p>
 
             {/* Gold divider with diamond */}
@@ -372,7 +381,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 15, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } } }}
               className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
             >
-              Request the honour of your presence
+              {t('hero.honour')}
             </motion.p>
 
             {/* Date */}
@@ -386,7 +395,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } } }}
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '15px', color: '#7397A8', marginTop: '8px' }}
             >
-              8:30 AM · Salem, Tamil Nadu
+              {t('hero.time')}
             </motion.p>
 
             {/* Venue */}
@@ -394,7 +403,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: '#223348', marginTop: '20px', fontWeight: 300 }}
             >
-              Sri Krishna Mahal Mantapa
+              {t('hero.venue')}
             </motion.h3>
 
             {/* Divider */}
@@ -417,7 +426,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeOut' } } }}
               className="flex flex-col items-center mt-8" style={{ animation: 'scrollPulse 2s ease-in-out infinite' }}
             >
-              <span className="font-serif text-[10px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>Scroll</span>
+              <span className="font-serif text-[10px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>{t('hero.scroll')}</span>
               <span style={{ color: '#AB8A3B', fontSize: '20px' }}>↓</span>
             </motion.div>
           </motion.div>
@@ -437,7 +446,7 @@ export default function Index() {
             <div>
               <Countdown />
             </div>
-            <p className="font-serif italic text-brand-red-dark/50 text-sm">until the big day</p>
+            <p className="font-serif italic text-brand-red-dark/50 text-sm">{t('countdown.until')}</p>
           </div>
         </Section>
 
@@ -457,16 +466,16 @@ export default function Index() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-80px' }}
                 >
-                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The sacred ceremony will take place at</motion.p>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>{t('venue.ceremony.subtitle')}</motion.p>
                   <motion.div variants={staggerItem}>
                     <VenueIllustration />
                   </motion.div>
-                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Sri Krishna Mahal Mantapa</motion.h3>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('hero.venue')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
-                    Salem, Tamil Nadu
+                    {t('venue.ceremony.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
-                    29th November 2026 · 8:30 AM
+                    {t('venue.ceremony.datetime')}
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
@@ -483,7 +492,7 @@ export default function Index() {
                       <circle cx="12" cy="9" r="2.5" />
                     </svg>
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
-                      View on Maps
+                      {t('venue.maps')}
                     </span>
                   </motion.a>
 
@@ -505,7 +514,7 @@ export default function Index() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-80px' }}
                 >
-                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>The wedding reception</motion.p>
+                  <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#C97B5A' }}>{t('venue.reception.subtitle')}</motion.p>
                   <motion.img
                     variants={staggerItem}
                     src={receptionVenueIllustration}
@@ -513,12 +522,12 @@ export default function Index() {
                     className="w-full max-w-md mx-auto mix-blend-multiply"
                     loading="lazy"
                   />
-                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</motion.h3>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('venue.reception.title')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
-                    Jabalpur, Madhya Pradesh
+                    {t('venue.reception.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
-                    6th December 2026 · 7:00 PM onwards
+                    {t('venue.reception.datetime')}
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
@@ -535,7 +544,7 @@ export default function Index() {
                       <circle cx="12" cy="9" r="2.5" />
                     </svg>
                     <span className="font-serif text-[10px] tracking-[0.25em] uppercase" style={{ color: '#AB8A3B' }}>
-                      View on Maps
+                      {t('venue.maps')}
                     </span>
                   </motion.a>
                 </motion.div>
@@ -544,29 +553,29 @@ export default function Index() {
               {/* ── SECTION 5: DRESS CODE ── */}
               <Section>
                 <div className="max-w-2xl mx-auto space-y-6">
-                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">Dress Code</h2>
+                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">{t('dress.title')}</h2>
                   <DressCodeFigures />
                   <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    We invite you to dress elegantly and formally to celebrate this special day with us.
+                    {t('dress.desc')}
                   </p>
-                  <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark pt-2">Formal Attire</h3>
-                  <p className="font-script text-3xl text-brand-red-dark/60 italic">Please avoid wearing white</p>
+                  <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark pt-2">{t('dress.formal')}</h3>
+                  <p className="font-script text-3xl text-brand-red-dark/60 italic">{t('dress.nowhite')}</p>
                 </div>
               </Section>
 
               {/* ── SECTION 6: GIFTS ── */}
               <Section dark>
                 <div className="max-w-lg mx-auto space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Wedding Registry</p>
+                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('gifts.registry')}</p>
                   <WeddingCarIllustration />
-                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">Gifts</h2>
+                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">{t('gifts.title')}</h2>
                   <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    Your presence is the best gift we could receive. However, if you wish to contribute to our new life together, you can do so via bank transfer.
+                    {t('gifts.desc')}
                   </p>
-                  <p className="font-script text-3xl text-brand-red-dark italic pt-2">With all our love</p>
+                  <p className="font-script text-3xl text-brand-red-dark italic pt-2">{t('gifts.love')}</p>
 
                   <div className="pt-4 space-y-3">
-                    <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Bank Details</p>
+                    <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('gifts.bank')}</p>
                     <div className="border border-brand-red-dark/30 rounded-sm px-8 py-6 text-left space-y-2">
                       <p className="font-serif text-xs text-brand-red-dark tracking-widest uppercase">Account Holder: Sam &amp; Sofia</p>
                       <p className="font-serif text-xs text-brand-red-dark tracking-wider">IBAN: IT60 X054 2811 1010 0000 0123 456</p>
@@ -579,21 +588,21 @@ export default function Index() {
               {/* ── SECTION 7: TRANSPORT ── */}
               <Section>
                 <div className="max-w-lg mx-auto space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Getting There</p>
-                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">Transport</h2>
+                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('transport.subtitle')}</p>
+                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">{t('transport.title')}</h2>
                   <div className="space-y-4 text-sm text-brand-red-dark/80 font-serif">
-                    <p>A private bus will be available for guests departing from <strong>Piazza della Signoria, Florence</strong>.</p>
+                    <p>{t('transport.desc')}</p>
                     <div className="border-t border-brand-red-dark/15 pt-4 space-y-2">
-                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">Departure</p>
+                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">{t('transport.departure')}</p>
                       <p>Saturday, September 10 · <span className="font-semibold">2:30 PM</span></p>
                     </div>
                     <div className="border-t border-brand-red-dark/15 pt-4 space-y-2">
-                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">Return</p>
+                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">{t('transport.return')}</p>
                       <p>Saturday, September 10 · <span className="font-semibold">1:00 AM</span></p>
                     </div>
                   </div>
                   <p className="font-serif italic text-brand-red-dark/50 text-xs pt-4">
-                    Please indicate in your RSVP if you need transport.
+                    {t('transport.rsvpnote')}
                   </p>
                 </div>
               </Section>
@@ -602,14 +611,14 @@ export default function Index() {
               <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
 
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>Join Us in Celebration</h2>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
 
                   <div style={{ background: '#FFFDF9', border: '1px solid rgba(171,138,59,0.15)', borderRadius: '2px', padding: '32px', width: '100%', textAlign: 'left' }} className="space-y-6">
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Full Name *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.name')}</label>
                       <input
                         type="text"
-                        placeholder="Your name"
+                        placeholder={t('rsvp.namePlaceholder')}
                         className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none"
                         style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
                         onFocus={(e) => e.currentTarget.style.borderColor = '#AB8A3B'}
@@ -617,7 +626,7 @@ export default function Index() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Email *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.email')}</label>
                       <input
                         type="email"
                         placeholder="your@email.com"
@@ -630,12 +639,12 @@ export default function Index() {
 
                     {/* Event selection */}
                     <div className="space-y-3">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Which event will you attend? *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.event')}</label>
                       <div className="flex flex-col gap-2">
                         {[
-                          { value: 'salem', label: 'Salem Wedding — 29th Nov 2026' },
-                          { value: 'jabalpur', label: 'Jabalpur Reception — 6th Dec 2026' },
-                          { value: 'both', label: 'Both Celebrations' },
+                          { value: 'salem', labelKey: 'rsvp.salem' },
+                          { value: 'jabalpur', labelKey: 'rsvp.jabalpur' },
+                          { value: 'both', labelKey: 'rsvp.both' },
                         ].map((opt) => (
                           <button
                             key={opt.value}
@@ -647,14 +656,14 @@ export default function Index() {
                               color: eventChoice === opt.value ? '#F6F0E6' : '#223348',
                             }}
                           >
-                            {opt.label}
+                            {t(opt.labelKey)}
                           </button>
                         ))}
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Will you attend? *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.attend')}</label>
                       <div className="flex gap-3">
                         <button
                           onClick={() => setRsvpChoice('yes')}
@@ -665,7 +674,7 @@ export default function Index() {
                             color: rsvpChoice === 'yes' ? '#F6F0E6' : '#223348',
                           }}
                         >
-                          Yes, I'll be there!
+                          {t('rsvp.yes')}
                         </button>
                         <button
                           onClick={() => setRsvpChoice('no')}
@@ -676,14 +685,14 @@ export default function Index() {
                             color: rsvpChoice === 'no' ? '#F6F0E6' : '#223348',
                           }}
                         >
-                          No, I can't make it
+                          {t('rsvp.no')}
                         </button>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Message For The Couple (Optional)</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.message')}</label>
                       <textarea
-                        placeholder="Write us a few words..."
+                        placeholder={t('rsvp.messagePlaceholder')}
                         rows={4}
                         className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none resize-none"
                         style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
@@ -696,12 +705,12 @@ export default function Index() {
                       style={{ background: '#223348', color: '#F6F0E6', fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.2em' }}
                     >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
-                      Confirm
+                      {t('rsvp.confirm')}
                     </button>
                   </div>
 
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '14px', fontStyle: 'italic', color: '#7397A8' }}>
-                    We can't wait to celebrate with you
+                    {t('rsvp.cantwait')}
                   </p>
                 </div>
               </Section>
@@ -732,13 +741,13 @@ export default function Index() {
 
                 {/* Dates */}
                 <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '12px', letterSpacing: '0.3em', color: '#7397A8', lineHeight: 2.2 }}>
-                  <p style={{ margin: 0 }}>29 · 11 · 2026 — Salem, Tamil Nadu</p>
-                  <p style={{ margin: 0 }}>06 · 12 · 2026 — Jabalpur, Madhya Pradesh</p>
+                  <p style={{ margin: 0 }}>29 · 11 · 2026 — {t('venue.ceremony.location')}</p>
+                  <p style={{ margin: 0 }}>06 · 12 · 2026 — {t('venue.reception.location')}</p>
                 </div>
 
                 {/* Blessing */}
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', fontStyle: 'italic', color: 'rgba(246,240,230,0.5)', maxWidth: '480px', lineHeight: 1.8, margin: 0 }}>
-                  "May your home be filled with laughter, your hearts with love"
+                  {t('footer.blessing')}
                 </p>
 
                 {/* Hashtag */}
@@ -748,7 +757,7 @@ export default function Index() {
 
                 {/* Crafted line */}
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '10px', color: 'rgba(246,240,230,0.2)', margin: '24px 0 0' }}>
-                  Crafted with love · 2026
+                  {t('footer.crafted')}
                 </p>
 
                 {/* shaadi.digital */}

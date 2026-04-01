@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Generates an SVG texture matching the target's hand-drawn curtain folds
 const CurtainTexture = () => (
@@ -32,6 +33,7 @@ export default function CurtainReveal({ children, onOpen }: { children: React.Re
     const [showHint, setShowHint] = useState(false);
     const [hasInteracted, setHasInteracted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const { t } = useLanguage();
 
     useEffect(() => {
         setIsMobile(window.innerWidth < 768);
@@ -177,7 +179,7 @@ export default function CurtainReveal({ children, onOpen }: { children: React.Re
                               whiteSpace: 'nowrap',
                             }}
                           >
-                            {isMobile ? 'Tap to open' : 'Click to open'}
+                            {isMobile ? t('curtain.tap') : t('curtain.click')}
                           </motion.p>
                         </motion.div>
                       )}

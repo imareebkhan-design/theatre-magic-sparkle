@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import SmoothScroll from "./components/SmoothScroll";
 import FloatingPetals from "./components/FloatingPetals";
 import CursorGlow from "./components/CursorGlow";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -14,18 +15,20 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <SmoothScroll />
-      <FloatingPetals />
-      <CursorGlow />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <LanguageProvider>
+        <SmoothScroll />
+        <FloatingPetals />
+        <CursorGlow />
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
