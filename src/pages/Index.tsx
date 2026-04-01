@@ -261,55 +261,57 @@ export default function Index() {
 
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
-        <Section className="min-h-screen justify-center">
-          <div className="max-w-3xl mx-auto flex flex-col items-center">
+        <Section className="!min-h-screen !justify-center !py-0" style={{ padding: '60px 24px' }}>
+          <div className="max-w-3xl mx-auto flex flex-col items-center" style={{ marginTop: '-10vh' }}>
             {/* Line 1 */}
-            <p className="font-dm-sans text-[12px] uppercase tracking-[0.3em] text-[#C97B5A]">
+            <p className="font-dm-sans text-[11px] uppercase tracking-[0.3em] text-[#C97B5A]">
               With Joy &amp; Love, We Invite You to Celebrate
             </p>
 
-            {/* Gold divider with diamond */}
-            <div className="flex items-center gap-3 w-full max-w-[180px] mt-4">
-              <div className="flex-1 h-px bg-brand-red-dark/25" />
+            {/* Gold divider with diamond — 100px each side */}
+            <div className="flex items-center gap-3 mt-4" style={{ width: '220px' }}>
+              <div style={{ width: '100px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
               <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
-              <div className="flex-1 h-px bg-brand-red-dark/25" />
+              <div style={{ width: '100px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
             </div>
 
             {/* Names */}
             <div className="flex flex-col items-center -space-y-2 sm:-space-y-3 mt-5">
-              <h1 className="font-script text-[32px] sm:text-[48px] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Nikila" /></h1>
+              <h1 className="font-script text-[52px] sm:text-[80px]" style={{ color: '#AB8A3B', lineHeight: 1.1 }}><NameLetterStagger name="Nikila" /></h1>
               <span className="font-script text-2xl sm:text-3xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
-              <h1 className="font-script text-[32px] sm:text-[48px] leading-none" style={{ color: '#AB8A3B' }}><NameLetterStagger name="Sarthak" /></h1>
+              <h1 className="font-script text-[52px] sm:text-[80px]" style={{ color: '#AB8A3B', lineHeight: 1.1 }}><NameLetterStagger name="Sarthak" /></h1>
             </div>
 
-            {/* Lotus motif */}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="mt-4">
-              <path d="M12 2C12 2 8 6 8 10C8 12 10 14 12 14C14 14 16 12 16 10C16 6 12 2 12 2Z" fill="#AB8A3B" opacity="0.8" />
-              <path d="M12 6C12 6 6 9 6 13C6 15 8 16 12 16C16 16 18 15 18 13C18 9 12 6 12 6Z" fill="#AB8A3B" opacity="0.5" />
-              <path d="M12 10C12 10 4 12 4 16C4 18 7 19 12 19C17 19 20 18 20 16C20 12 12 10 12 10Z" fill="#AB8A3B" opacity="0.3" />
+            {/* Lotus motif — 5 petals */}
+            <svg width="32" height="20" viewBox="0 0 32 20" fill="none" className="mt-4">
+              <path d="M16 0C16 0 13 4 13 8C13 10 14.5 12 16 12C17.5 12 19 10 19 8C19 4 16 0 16 0Z" fill="#AB8A3B" opacity="0.9" />
+              <path d="M10 4C10 4 7 8 8 11C8.5 13 10.5 13.5 12 12C13.5 10.5 13 7 10 4Z" fill="#AB8A3B" opacity="0.6" />
+              <path d="M22 4C22 4 25 8 24 11C23.5 13 21.5 13.5 20 12C18.5 10.5 19 7 22 4Z" fill="#AB8A3B" opacity="0.6" />
+              <path d="M6 8C6 8 3 11 4 14C4.5 15.5 7 16 9 14C11 12 9 9 6 8Z" fill="#AB8A3B" opacity="0.35" />
+              <path d="M26 8C26 8 29 11 28 14C27.5 15.5 25 16 23 14C21 12 23 9 26 8Z" fill="#AB8A3B" opacity="0.35" />
             </svg>
 
             {/* Request text */}
-            <p className="font-serif text-[11px] tracking-[0.25em] uppercase text-brand-red-dark/60 mt-3">
+            <p className="font-serif text-[13px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-3">
               Request the honour of your presence
             </p>
 
             {/* Date */}
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 400, color: '#223348', letterSpacing: '0.2em', marginTop: '24px' }}>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '30px', fontWeight: 500, color: '#223348', letterSpacing: '0.25em', marginTop: '24px' }}>
               29 · 11 · 2026
             </p>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#7397A8', marginTop: '6px' }}>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '14px', color: '#7397A8', marginTop: '6px' }}>
               8:30 AM · Salem, Tamil Nadu
             </p>
 
             {/* Venue in hero */}
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: '#223348', marginTop: '20px', fontWeight: 400 }}>Sri Krishna Mahal Mantapa</h3>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', color: '#223348', marginTop: '16px', fontWeight: 300 }}>Sri Krishna Mahal Mantapa</h3>
 
             {/* Divider */}
-            <div className="flex items-center gap-3 w-full max-w-[180px] mt-5">
-              <div className="flex-1 h-px bg-brand-red-dark/25" />
+            <div className="flex items-center gap-3 mt-5" style={{ width: '220px' }}>
+              <div style={{ width: '100px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
               <div className="w-2 h-2 rotate-45 border border-brand-red-dark/30" />
-              <div className="flex-1 h-px bg-brand-red-dark/25" />
+              <div style={{ width: '100px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
             </div>
 
             <style>{`
