@@ -1,23 +1,52 @@
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import type { Language } from '@/contexts/LanguageContext';
 
 const shlokas = [
   {
     ref: "RIGVEDA · X.85.47",
-    script: "समानो मन्त्रः समिति: समानी\nसमानं मनः सह चित्तमेषाम्",
-    english: '"May we share the same thoughts, the same purpose, the same heart."',
-    isDevanagari: true,
+    script: {
+      en: "समानो मन्त्रः समिति: समानी\nसमानं मनः सह चित्तमेषाम्",
+      ta: "சமானோ மந்த்ர: சமிதி: சமானீ\nசமானம் மன: சஹ சித்தமேஷாம்",
+      hi: "समानो मन्त्रः समिति: समानी\nसमानं मनः सह चित्तमेषाम्",
+    },
+    translation: {
+      en: '"May we share the same thoughts, the same purpose, the same heart."',
+      ta: '"நாம் ஒரே எண்ணங்களையும், ஒரே நோக்கத்தையும், ஒரே இதயத்தையும் பகிர்ந்து கொள்வோம்."',
+      hi: '"हम एक ही विचार, एक ही उद्देश्य, एक ही हृदय साझा करें।"',
+    },
+    scriptFont: (lang: Language) => lang === 'ta' ? "'Noto Sans Tamil', sans-serif" : "'Tiro Devanagari Sanskrit', serif",
+    scriptSize: (lang: Language) => lang === 'ta' ? '32px' : '42px',
   },
   {
     ref: "ATHARVAVEDA · XIV.1",
-    script: "त्वं मम, अहं तव\nआवां उभौ एकमेव",
-    english: '"You are mine, I am yours — we are one soul in two bodies."',
-    isDevanagari: true,
+    script: {
+      en: "त्वं मम, अहं तव\nआवां उभौ एकमेव",
+      ta: "த்வம் மம, அஹம் தவ\nஆவாம் உபௌ ஏகமேவ",
+      hi: "त्वं मम, अहं तव\nआवां उभौ एकमेव",
+    },
+    translation: {
+      en: '"You are mine, I am yours — we are one soul in two bodies."',
+      ta: '"நீ என்னுடையவள், நான் உன்னுடையவன் — இரு உடல்களில் ஒரே ஆத்மா."',
+      hi: '"तुम मेरी हो, मैं तुम्हारा — दो शरीरों में एक आत्मा।"',
+    },
+    scriptFont: (lang: Language) => lang === 'ta' ? "'Noto Sans Tamil', sans-serif" : "'Tiro Devanagari Sanskrit', serif",
+    scriptSize: (lang: Language) => lang === 'ta' ? '32px' : '42px',
   },
   {
     ref: "THIRUKKURAL · 1121",
-    script: "அறிதோறும் அறியாமை கண்டற்றால்\nகாமம் காமவர் நட்பு",
-    english: '"To know you more is to discover I still don\'t know you enough."',
-    isDevanagari: false,
+    script: {
+      en: "அறிதோறும் அறியாமை கண்டற்றால்\nகாமம் காமவர் நட்பு",
+      ta: "அறிதோறும் அறியாமை கண்டற்றால்\nகாமம் காமவர் நட்பு",
+      hi: "जानने पर भी अनजाना लगे\nप्रेम प्रेमियों की मित्रता",
+    },
+    translation: {
+      en: '"To know you more is to discover I still don\'t know you enough."',
+      ta: '"உன்னை அறிய அறிய, உன்னை இன்னும் அறியவில்லை என்பதை உணர்கிறேன்."',
+      hi: '"तुम्हें जानना यह जानना है कि मैं अभी भी तुम्हें पूरी तरह नहीं जानता।"',
+    },
+    scriptFont: (lang: Language) => lang === 'hi' ? "'Tiro Devanagari Sanskrit', serif" : "'Noto Sans Tamil', sans-serif",
+    scriptSize: (lang: Language) => lang === 'hi' ? '42px' : '32px',
   },
 ];
 
@@ -36,6 +65,7 @@ const Divider = () => (
 export default function WeddingShlokas() {
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
   const shimmerRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -51,7 +81,6 @@ export default function WeddingShlokas() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           (entry.target as HTMLElement).classList.add('playing');
-          // After animation ends, remove class and set solid color
           setTimeout(() => {
             (entry.target as HTMLElement).classList.remove('playing');
           }, 2500);
@@ -128,20 +157,18 @@ export default function WeddingShlokas() {
               ref={(el) => (shimmerRefs.current[i] = el)}
               className="shloka-shimmer"
               style={{
-                fontFamily: s.isDevanagari
-                  ? "'Tiro Devanagari Sanskrit', serif"
-                  : "'Noto Sans Tamil', sans-serif",
-                fontSize: s.isDevanagari ? '42px' : '32px',
+                fontFamily: s.scriptFont(language),
+                fontSize: s.scriptSize(language),
                 lineHeight: 1.7,
                 margin: '0 0 40px',
                 whiteSpace: 'pre-line',
                 letterSpacing: '0.02em',
               }}
             >
-              {s.script}
+              {s.script[language]}
             </p>
 
-            {/* English translation */}
+            {/* Translation */}
             <p style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: '20px',
@@ -154,7 +181,7 @@ export default function WeddingShlokas() {
               marginLeft: 'auto',
               marginRight: 'auto',
             }}>
-              {s.english}
+              {s.translation[language]}
             </p>
 
             {/* Source */}
