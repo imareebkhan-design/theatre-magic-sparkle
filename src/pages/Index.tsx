@@ -514,9 +514,7 @@ export default function Index() {
                   <ThankYouCard />
                 </div>
               </section>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </>
 
         {/* Floating Sound Toggle */}
         <button
