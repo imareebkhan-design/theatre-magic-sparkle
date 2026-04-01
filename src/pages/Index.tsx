@@ -608,14 +608,14 @@ export default function Index() {
               <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
 
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>Join Us in Celebration</h2>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>{t('rsvp.title')}</h2>
 
                   <div style={{ background: '#FFFDF9', border: '1px solid rgba(171,138,59,0.15)', borderRadius: '2px', padding: '32px', width: '100%', textAlign: 'left' }} className="space-y-6">
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Full Name *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.name')}</label>
                       <input
                         type="text"
-                        placeholder="Your name"
+                        placeholder={t('rsvp.namePlaceholder')}
                         className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none"
                         style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
                         onFocus={(e) => e.currentTarget.style.borderColor = '#AB8A3B'}
@@ -623,7 +623,7 @@ export default function Index() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Email *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.email')}</label>
                       <input
                         type="email"
                         placeholder="your@email.com"
@@ -636,12 +636,12 @@ export default function Index() {
 
                     {/* Event selection */}
                     <div className="space-y-3">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Which event will you attend? *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.event')}</label>
                       <div className="flex flex-col gap-2">
                         {[
-                          { value: 'salem', label: 'Salem Wedding — 29th Nov 2026' },
-                          { value: 'jabalpur', label: 'Jabalpur Reception — 6th Dec 2026' },
-                          { value: 'both', label: 'Both Celebrations' },
+                          { value: 'salem', labelKey: 'rsvp.salem' },
+                          { value: 'jabalpur', labelKey: 'rsvp.jabalpur' },
+                          { value: 'both', labelKey: 'rsvp.both' },
                         ].map((opt) => (
                           <button
                             key={opt.value}
@@ -653,14 +653,14 @@ export default function Index() {
                               color: eventChoice === opt.value ? '#F6F0E6' : '#223348',
                             }}
                           >
-                            {opt.label}
+                            {t(opt.labelKey)}
                           </button>
                         ))}
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Will you attend? *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.attend')}</label>
                       <div className="flex gap-3">
                         <button
                           onClick={() => setRsvpChoice('yes')}
@@ -671,7 +671,7 @@ export default function Index() {
                             color: rsvpChoice === 'yes' ? '#F6F0E6' : '#223348',
                           }}
                         >
-                          Yes, I'll be there!
+                          {t('rsvp.yes')}
                         </button>
                         <button
                           onClick={() => setRsvpChoice('no')}
@@ -682,14 +682,14 @@ export default function Index() {
                             color: rsvpChoice === 'no' ? '#F6F0E6' : '#223348',
                           }}
                         >
-                          No, I can't make it
+                          {t('rsvp.no')}
                         </button>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Message For The Couple (Optional)</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>{t('rsvp.message')}</label>
                       <textarea
-                        placeholder="Write us a few words..."
+                        placeholder={t('rsvp.messagePlaceholder')}
                         rows={4}
                         className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none resize-none"
                         style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
@@ -702,12 +702,12 @@ export default function Index() {
                       style={{ background: '#223348', color: '#F6F0E6', fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.2em' }}
                     >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
-                      Confirm
+                      {t('rsvp.confirm')}
                     </button>
                   </div>
 
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '14px', fontStyle: 'italic', color: '#7397A8' }}>
-                    We can't wait to celebrate with you
+                    {t('rsvp.cantwait')}
                   </p>
                 </div>
               </Section>
