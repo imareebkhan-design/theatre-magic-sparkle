@@ -65,17 +65,17 @@ const VenueIllustration = () => (
 
 /* ─────────────── Menu Ribbon Frame SVG ─────────────── */
 const MenuRibbonFrame = () => (
-  <svg viewBox="0 0 480 60" className="w-full max-w-lg mx-auto" stroke="#5C1010" strokeWidth="1.5" fill="none">
+  <svg viewBox="0 0 480 60" className="w-full max-w-lg mx-auto" stroke="#223348" strokeWidth="1.5" fill="none">
     <path d="M215,30 C200,20 185,10 175,20 C165,30 180,38 215,30 Z" />
     <path d="M265,30 C280,20 295,10 305,20 C315,30 300,38 265,30 Z" />
-    <circle cx="240" cy="30" r="5" fill="#5C1010" opacity="0.6" />
+    <circle cx="240" cy="30" r="5" fill="#223348" opacity="0.6" />
     <path d="M215,30 C195,26 175,34 155,28 C135,22 115,32 95,26 C75,20 55,30 35,24" />
     <path d="M265,30 C285,34 305,26 325,32 C345,38 365,28 385,34 C405,40 425,30 445,36" />
   </svg>
 );
 
 const MenuRibbonBottom = () => (
-  <svg viewBox="0 0 480 60" className="w-full max-w-lg mx-auto" stroke="#5C1010" strokeWidth="1.5" fill="none">
+  <svg viewBox="0 0 480 60" className="w-full max-w-lg mx-auto" stroke="#223348" strokeWidth="1.5" fill="none">
     <path d="M35,30 C55,24 75,34 95,28 C115,22 135,32 155,26 C175,20 195,30 215,30" />
     <path d="M265,30 C285,30 305,20 325,26 C345,32 365,22 385,28 C405,34 425,24 445,30" />
   </svg>
@@ -83,7 +83,7 @@ const MenuRibbonBottom = () => (
 
 /* ─────────────── Dinner Table Illustration ─────────────── */
 const DinnerTableIllustration = () => (
-  <svg viewBox="0 0 340 200" className="w-64 mx-auto" stroke="#5C1010" strokeWidth="1.2" fill="none">
+  <svg viewBox="0 0 340 200" className="w-64 mx-auto" stroke="#223348" strokeWidth="1.2" fill="none">
     <ellipse cx="170" cy="110" rx="120" ry="40" />
     <path d="M50,110 Q80,155 115,160 Q170,170 225,160 Q260,155 290,110" />
     <rect x="110" y="65" width="8" height="35" />
@@ -116,16 +116,16 @@ const DinnerTableIllustration = () => (
 
 /* ─────────────── Dress Code Figures Illustration ─────────────── */
 const DressCodeFigures = () => (
-  <svg viewBox="0 0 400 180" className="w-full max-w-sm mx-auto" stroke="#5C1010" strokeWidth="1.3" fill="none">
+  <svg viewBox="0 0 400 180" className="w-full max-w-sm mx-auto" stroke="#223348" strokeWidth="1.3" fill="none">
     {/* Figure 1 - Man in tux */}
     <circle cx="50" cy="35" r="12" />
     <path d="M38,47 L38,100 M62,47 L62,100" />
     <path d="M38,100 L32,140 M62,100 L68,140" />
     <path d="M38,60 L22,80 M62,60 L75,74" />
-    <path d="M40,47 Q50,52 60,47 L64,75 L36,75 Z" fill="#5C1010" opacity="0.2" />
+    <path d="M40,47 Q50,52 60,47 L64,75 L36,75 Z" fill="#223348" opacity="0.2" />
     {/* Figure 2 - Woman, green dress */}
     <circle cx="115" cy="32" r="11" />
-    <path d="M104,43 Q115,50 126,43 L135,90 Q115,100 95,90 Z" fill="#5C1010" opacity="0.15" />
+    <path d="M104,43 Q115,50 126,43 L135,90 Q115,100 95,90 Z" fill="#223348" opacity="0.15" />
     <path d="M115,100 L108,140 M115,100 L122,140" />
     <path d="M104,55 L92,72 M126,55 L140,68" />
     {/* Figure 3 - Man, center */}
@@ -133,15 +133,15 @@ const DressCodeFigures = () => (
     <path d="M178,40 L178,95 M202,40 L202,95" />
     <path d="M178,95 L172,140 M202,95 L208,140" />
     <path d="M178,55 L162,70 M202,55 L218,62" />
-    <path d="M180,40 Q190,46 200,40 L204,72 L176,72 Z" fill="#5C1010" opacity="0.2" />
+    <path d="M180,40 Q190,46 200,40 L204,72 L176,72 Z" fill="#223348" opacity="0.2" />
     {/* Figure 4 - Woman, red dress */}
     <circle cx="265" cy="30" r="11" />
-    <path d="M254,41 Q265,48 276,41 L284,92 Q265,102 246,92 Z" fill="#5C1010" opacity="0.2" />
+    <path d="M254,41 Q265,48 276,41 L284,92 Q265,102 246,92 Z" fill="#223348" opacity="0.2" />
     <path d="M265,102 L258,140 M265,102 L274,140" />
     <path d="M254,53 L240,38 M276,53 L290,72" />
     {/* Figure 5 - Woman, gold dress */}
     <circle cx="340" cy="35" r="11" />
-    <path d="M329,46 Q340,53 351,46 L358,92 Q340,102 322,92 Z" fill="#5C1010" opacity="0.12" />
+    <path d="M329,46 Q340,53 351,46 L358,92 Q340,102 322,92 Z" fill="#223348" opacity="0.12" />
     <path d="M340,102 L334,140 M340,102 L348,140" />
     <path d="M329,56 L316,70 M351,56 L365,68" />
   </svg>
@@ -149,7 +149,7 @@ const DressCodeFigures = () => (
 
 /* ─────────────── Wedding Car Illustration ─────────────── */
 const WeddingCarIllustration = () => (
-  <svg viewBox="0 0 300 160" className="w-64 mx-auto" stroke="#5C1010" strokeWidth="1.3" fill="none">
+  <svg viewBox="0 0 300 160" className="w-64 mx-auto" stroke="#223348" strokeWidth="1.3" fill="none">
     <path d="M30,100 L30,70 Q50,40 100,35 L200,35 Q250,40 270,70 L270,100 Z" />
     <path d="M80,35 Q100,15 140,12 Q180,10 220,35" />
     <path d="M90,35 L85,70 L145,70 L145,35" />
@@ -168,11 +168,11 @@ const WeddingCarIllustration = () => (
     <rect x="285" y="144" width="10" height="12" rx="2" />
     <rect x="264" y="141" width="10" height="12" rx="2" />
     <rect x="220" y="92" width="55" height="18" rx="3" />
-    <text x="247" y="105" textAnchor="middle" fontSize="7" fontFamily="serif" stroke="none" fill="#5C1010">Just Married</text>
-    <circle cx="120" cy="28" r="6" fill="#5C1010" opacity="0.2" />
-    <circle cx="140" cy="22" r="5" fill="#5C1010" opacity="0.2" />
-    <circle cx="160" cy="25" r="6" fill="#5C1010" opacity="0.2" />
-    <circle cx="180" cy="22" r="5" fill="#5C1010" opacity="0.2" />
+    <text x="247" y="105" textAnchor="middle" fontSize="7" fontFamily="serif" stroke="none" fill="#223348">Just Married</text>
+    <circle cx="120" cy="28" r="6" fill="#223348" opacity="0.2" />
+    <circle cx="140" cy="22" r="5" fill="#223348" opacity="0.2" />
+    <circle cx="160" cy="25" r="6" fill="#223348" opacity="0.2" />
+    <circle cx="180" cy="22" r="5" fill="#223348" opacity="0.2" />
     <line x1="120" y1="28" x2="120" y2="35" strokeWidth="0.8" />
     <line x1="140" y1="22" x2="140" y2="35" strokeWidth="0.8" />
     <line x1="160" y1="25" x2="160" y2="35" strokeWidth="0.8" />
@@ -210,7 +210,7 @@ const ThankYouCard = () => (
         x="20" y="20"
         width="360" height="360"
         fill="none"
-        stroke="#5C1010"
+        stroke="#223348"
         strokeWidth="28"
         filter="url(#deckle)"
         rx="6"
