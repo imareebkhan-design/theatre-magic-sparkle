@@ -467,7 +467,7 @@ export default function Index() {
                   <motion.div variants={staggerItem}>
                     <VenueIllustration />
                   </motion.div>
-                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Sri Krishna Mahal Mantapa</motion.h3>
+                  <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('hero.venue')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
                     Salem, Tamil Nadu
                   </motion.p>
