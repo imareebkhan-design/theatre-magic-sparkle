@@ -104,7 +104,7 @@ export default function WeddingShlokas() {
               fontSize: '20px',
               fontStyle: 'italic',
               fontWeight: 300,
-              color: 'rgba(246,240,230,0.85)',
+              color: '#53694D',
               lineHeight: 1.9,
               margin: '0 0 24px',
               maxWidth: '600px',
