@@ -2,7 +2,6 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
-import southIndianCoupleHero from '../assets/south-indian-couple-hero.jpg';
 import coupleSwingIllustration from '../assets/couple-swing-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect } from 'react';
@@ -262,19 +261,8 @@ export default function Index() {
 
       <CurtainReveal>
         {/* ── SECTION 1: HERO INVITATION ── */}
-        <Section className="!min-h-screen !justify-center !py-[60px] !px-6 relative overflow-hidden">
-          {/* Temple hero background */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src={templeIllustration}
-              alt=""
-              className="w-full h-full object-cover"
-              width={1024}
-              height={640}
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(244,237,228,0.82) 0%, rgba(244,237,228,0.7) 40%, rgba(244,237,228,0.85) 100%)' }} />
-          </div>
-          <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10" style={{ marginTop: '-10vh' }}>
+        <Section className="!min-h-screen !justify-center !py-[60px] !px-6">
+          <div className="max-w-3xl mx-auto flex flex-col items-center" style={{ marginTop: '-10vh' }}>
             {/* Line 1 */}
             <p className="font-dm-sans text-[11px] uppercase tracking-[0.3em] text-[#C97B5A]">
               With Joy &amp; Love, We Invite You to Celebrate
