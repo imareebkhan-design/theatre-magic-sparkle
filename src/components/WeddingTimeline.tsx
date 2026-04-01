@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
+import { AnimatedTimelineLine, EventCard } from './TimelineAnimations';
 
 const events = [
-  { time: "5:30 AM", name: "Naandi", tamil: "நாந்தி", desc: "Ancestral blessings invoked to sanctify the wedding day", side: "left" },
-  { time: "7:00 AM", name: "Kashi Yatra", tamil: "காசி யாத்திரை", desc: "The groom's playful pilgrimage — stopped by the bride's father", side: "right" },
-  { time: "8:30 AM", name: "Muhurtham", tamil: "முகூர்த்தம்", desc: "The sacred moment — tying of the thali around the sacred fire", side: "left" },
-  { time: "9:30 AM", name: "Oonjal", tamil: "ஊஞ்சல்", desc: "The swing ceremony — the couple seated together as families sing", side: "right" },
-  { time: "10:15 AM", name: "Saptapadi", tamil: "சப்தபதி", desc: "Seven sacred steps — seven vows for a lifetime together", side: "left" },
-  { time: "11:00 AM", name: "Aashirvadham", tamil: "ஆசீர்வாதம்", desc: "Elders bless the couple as husband and wife", side: "right" },
-  { time: "12:30 PM", name: "Virundhu", tamil: "விருந்து", desc: "Traditional feast served on banana leaf for all guests", side: "left" },
+  { time: "5:30 AM", name: "Naandi", tamil: "நாந்தி", desc: "Ancestral blessings invoked to sanctify the wedding day", side: "left" as const },
+  { time: "7:00 AM", name: "Kashi Yatra", tamil: "காசி யாத்திரை", desc: "The groom's playful pilgrimage — stopped by the bride's father", side: "right" as const },
+  { time: "8:30 AM", name: "Muhurtham", tamil: "முகூர்த்தம்", desc: "The sacred moment — tying of the thali around the sacred fire", side: "left" as const },
+  { time: "9:30 AM", name: "Oonjal", tamil: "ஊஞ்சல்", desc: "The swing ceremony — the couple seated together as families sing", side: "right" as const },
+  { time: "10:15 AM", name: "Saptapadi", tamil: "சப்தபதி", desc: "Seven sacred steps — seven vows for a lifetime together", side: "left" as const },
+  { time: "11:00 AM", name: "Aashirvadham", tamil: "ஆசீர்வாதம்", desc: "Elders bless the couple as husband and wife", side: "right" as const },
+  { time: "12:30 PM", name: "Virundhu", tamil: "விருந்து", desc: "Traditional feast served on banana leaf for all guests", side: "left" as const },
 ];
 
 export default function WeddingTimeline() {
@@ -34,29 +35,26 @@ export default function WeddingTimeline() {
 
       {/* Timeline */}
       <div style={{ maxWidth: '640px', margin: '0 auto 64px', position: 'relative' }}>
-        <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '1px', background: 'linear-gradient(to bottom, transparent, #AB8A3B 10%, #AB8A3B 90%, transparent)', transform: 'translateX(-50%)' }} />
+        <AnimatedTimelineLine />
         
         {events.map((event, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: event.side === 'left' ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            style={{ display: 'flex', alignItems: 'flex-start', gap: '0', marginBottom: '36px', flexDirection: event.side === 'right' ? 'row-reverse' : 'row' }}
-          >
-            {/* Content */}
-            <div style={{ flex: 1, textAlign: event.side === 'left' ? 'right' : 'left', paddingRight: event.side === 'left' ? '32px' : '0', paddingLeft: event.side === 'right' ? '32px' : '0' }}>
-              <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{event.time}</p>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 400, color: '#223348', margin: '0 0 2px' }}>{event.name}</h3>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '13px', fontStyle: 'italic', color: '#7397A8', margin: '0 0 4px' }}>{event.tamil}</p>
-              <p style={{ fontSize: '12px', fontWeight: 300, color: '#53694D', lineHeight: 1.6, margin: 0 }}>{event.desc}</p>
-            </div>
+          <EventCard key={i} side={event.side} index={i}>
+            <div
+              style={{ display: 'flex', alignItems: 'flex-start', gap: '0', marginBottom: '36px', flexDirection: event.side === 'right' ? 'row-reverse' : 'row' }}
+            >
+              {/* Content */}
+              <div style={{ flex: 1, textAlign: event.side === 'left' ? 'right' : 'left', paddingRight: event.side === 'left' ? '32px' : '0', paddingLeft: event.side === 'right' ? '32px' : '0' }}>
+                <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#AB8A3B', textTransform: 'uppercase', marginBottom: '4px' }}>{event.time}</p>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 400, color: '#223348', margin: '0 0 2px' }}>{event.name}</h3>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '13px', fontStyle: 'italic', color: '#7397A8', margin: '0 0 4px' }}>{event.tamil}</p>
+                <p style={{ fontSize: '12px', fontWeight: 300, color: '#53694D', lineHeight: 1.6, margin: 0 }}>{event.desc}</p>
+              </div>
 
-            {/* Dot */}
-            <div style={{ width: '10px', height: '10px', background: '#AB8A3B', borderRadius: '50%', flexShrink: 0, marginTop: '8px', position: 'relative', zIndex: 1, border: '2px solid #F6F0E6', boxShadow: '0 0 0 1px #AB8A3B' }} />
-            <div style={{ flex: 1 }} />
-          </motion.div>
+              {/* Dot */}
+              <div style={{ width: '10px', height: '10px', background: '#AB8A3B', borderRadius: '50%', flexShrink: 0, marginTop: '8px', position: 'relative', zIndex: 1, border: '2px solid #F6F0E6', boxShadow: '0 0 0 1px #AB8A3B' }} />
+              <div style={{ flex: 1 }} />
+            </div>
+          </EventCard>
         ))}
       </div>
 
