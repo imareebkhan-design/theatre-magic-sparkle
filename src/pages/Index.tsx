@@ -332,7 +332,13 @@ export default function Index() {
 
         {/* ── REMAINING SECTIONS ── */}
         <>
-              {/* ── SECTION 3: CEREMONY VENUE ── */}
+              {/* ── SECTION 3: WEDDING SHLOKAS ── */}
+              <WeddingShlokas />
+
+              {/* ── SECTION 4: WEDDING TIMELINE ── */}
+              <WeddingTimeline />
+
+              {/* ── SECTION 5: CEREMONY VENUE ── */}
               <Section>
                 <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
                   <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The sacred ceremony will take place at</p>
@@ -365,7 +371,7 @@ export default function Index() {
                 </div>
               </Section>
 
-              {/* ── SECTION 3B: RECEPTION VENUE ── */}
+              {/* ── SECTION 5B: RECEPTION VENUE ── */}
               <Section dark>
                 <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
                   <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-brand-red-dark/60">The wedding reception</p>
@@ -400,9 +406,6 @@ export default function Index() {
                   </a>
                 </div>
               </Section>
-
-              {/* ── SECTION 4: WEDDING TIMELINE ── */}
-              <WeddingTimeline />
 
               {/* ── SECTION 5: DRESS CODE ── */}
               <Section>
