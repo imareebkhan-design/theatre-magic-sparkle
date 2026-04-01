@@ -2,7 +2,7 @@ import { Info } from 'lucide-react';
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
-import coupleIllustration from '../assets/couple-illustration.jpg';
+import coupleIllustration from '../assets/couple-illustration-lineart.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
