@@ -82,6 +82,25 @@ export default function CurtainReveal({ children }: { children: React.ReactNode 
                             <CurtainTexture />
                         </div>
                     </motion.div>
+
+                    {/* Light ray effect */}
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: [0, 0.6, 0] }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                        style={{
+                          position: 'absolute',
+                          top: '50%', left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          width: '300px', height: '100vh',
+                          background: 'conic-gradient(from 270deg at 50% 50%, transparent 60deg, rgba(171,138,59,0.15) 90deg, transparent 120deg, transparent 240deg, rgba(171,138,59,0.1) 270deg, transparent 300deg)',
+                          pointerEvents: 'none',
+                          zIndex: 5,
+                          filter: 'blur(8px)',
+                        }}
+                      />
+                    )}
                 </motion.div>
             </AnimatePresence>
 
