@@ -386,7 +386,7 @@ export default function Index() {
                     loading="lazy"
                     width={1024}
                     height={640}
-                    style={{ filter: illustrationFilter }}
+                    
                   />
                   <h3 className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>Reception Celebration</h3>
                   <p className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
