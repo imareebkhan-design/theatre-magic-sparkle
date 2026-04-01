@@ -273,6 +273,7 @@ export default function Index() {
   const [eventChoice, setEventChoice] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { t } = useLanguage();
+  const { formatEventTime, isIST } = useTimeZone();
 
   const fadeInAudio = useCallback(() => {
     const audio = audioRef.current;
