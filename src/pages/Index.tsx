@@ -249,15 +249,7 @@ export default function Index() {
 
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 w-full p-6 flex items-center justify-between z-[110] pointer-events-none">
-        <div className="flex items-center gap-3 bg-white/70 backdrop-blur-md rounded-full pl-2 pr-6 py-2 shadow-sm pointer-events-auto cursor-pointer border border-brand-accent/10">
-          <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0 overflow-hidden bg-[#F4EDE4]">
-            <span className="text-xs">🕊️</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-[9px] uppercase font-semibold tracking-widest text-brand-red-dark leading-tight">Teatro Demo</span>
-            <span className="text-[9px] font-sans text-brand-red-dark/60 leading-tight">Buy now</span>
-          </div>
-        </div>
+        <div />
 
         <button className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center pointer-events-auto border border-brand-accent/10">
           <Info size={16} className="text-brand-red-dark" />
