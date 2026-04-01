@@ -470,68 +470,110 @@ export default function Index() {
               </Section>
 
               {/* ── SECTION 8: RSVP ── */}
-              <Section dark>
+              <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
-                  <div className="inline-flex items-center gap-2 bg-white/70 border border-brand-red-dark/20 rounded-full px-4 py-2">
-                    <Info size={12} className="text-brand-red-dark/60" />
-                    <span className="font-serif text-[10px] tracking-wide text-brand-red-dark/70">This form is fully customizable to your needs</span>
-                  </div>
 
-                  <h2 className="font-script text-5xl sm:text-6xl text-brand-red-dark">Confirm your attendance</h2>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '48px', color: '#223348', fontWeight: 400 }}>Join Us in Celebration</h2>
 
-                  <div className="bg-white/60 backdrop-blur-sm border border-brand-red-dark/15 rounded-sm p-8 w-full text-left space-y-6">
+                  <div style={{ background: '#FFFDF9', border: '1px solid rgba(171,138,59,0.15)', borderRadius: '2px', padding: '32px', width: '100%', textAlign: 'left' }} className="space-y-6">
                     <div className="space-y-1">
-                      <label className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/70">Full Name *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Full Name *</label>
                       <input
                         type="text"
                         placeholder="Your name"
-                        className="w-full border border-brand-red-dark/20 rounded-none bg-transparent px-4 py-3 font-serif text-sm text-brand-red-dark placeholder:text-brand-red-dark/30 focus:outline-none focus:border-brand-red-dark/50"
+                        className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none"
+                        style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
+                        onFocus={(e) => e.currentTarget.style.borderColor = '#AB8A3B'}
+                        onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(171,138,59,0.4)'}
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/70">Email (Optional)</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Email *</label>
                       <input
                         type="email"
                         placeholder="your@email.com"
-                        className="w-full border border-brand-red-dark/20 rounded-none bg-transparent px-4 py-3 font-serif text-sm text-brand-red-dark placeholder:text-brand-red-dark/30 focus:outline-none focus:border-brand-red-dark/50"
+                        className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none"
+                        style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
+                        onFocus={(e) => e.currentTarget.style.borderColor = '#AB8A3B'}
+                        onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(171,138,59,0.4)'}
                       />
                     </div>
+
+                    {/* Event selection */}
+                    <div className="space-y-3">
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Which event will you attend? *</label>
+                      <div className="flex flex-col gap-2">
+                        {[
+                          { value: 'salem', label: 'Salem Wedding — 29th Nov 2026' },
+                          { value: 'jabalpur', label: 'Jabalpur Reception — 6th Dec 2026' },
+                          { value: 'both', label: 'Both Celebrations' },
+                        ].map((opt) => (
+                          <button
+                            key={opt.value}
+                            onClick={() => setEventChoice(opt.value)}
+                            className="w-full py-3 px-4 rounded-none font-serif text-sm transition-all text-left"
+                            style={{
+                              border: `1px solid ${eventChoice === opt.value ? '#223348' : 'rgba(171,138,59,0.4)'}`,
+                              background: eventChoice === opt.value ? '#223348' : 'transparent',
+                              color: eventChoice === opt.value ? '#F6F0E6' : '#223348',
+                            }}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
-                      <label className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/70">Will you attend? *</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Will you attend? *</label>
                       <div className="flex gap-3">
                         <button
                           onClick={() => setRsvpChoice('yes')}
-                          className={`flex-1 py-3 border rounded-none font-serif text-sm transition-all ${rsvpChoice === 'yes'
-                            ? 'bg-brand-red-dark text-white border-brand-red-dark'
-                            : 'border-brand-red-dark/25 text-brand-red-dark hover:border-brand-red-dark/60'
-                            }`}
+                          className="flex-1 py-3 rounded-none font-serif text-sm transition-all"
+                          style={{
+                            border: '1px solid #223348',
+                            background: rsvpChoice === 'yes' ? '#223348' : 'transparent',
+                            color: rsvpChoice === 'yes' ? '#F6F0E6' : '#223348',
+                          }}
                         >
                           Yes, I'll be there!
                         </button>
                         <button
                           onClick={() => setRsvpChoice('no')}
-                          className={`flex-1 py-3 border rounded-none font-serif text-sm transition-all ${rsvpChoice === 'no'
-                            ? 'bg-brand-red-dark text-white border-brand-red-dark'
-                            : 'border-brand-red-dark/25 text-brand-red-dark hover:border-brand-red-dark/60'
-                            }`}
+                          className="flex-1 py-3 rounded-none font-serif text-sm transition-all"
+                          style={{
+                            border: '1px solid #223348',
+                            background: rsvpChoice === 'no' ? '#223348' : 'transparent',
+                            color: rsvpChoice === 'no' ? '#F6F0E6' : '#223348',
+                          }}
                         >
                           No, I can't make it
                         </button>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <label className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/70">Message For The Couple (Optional)</label>
+                      <label style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.3em', color: '#C97B5A', textTransform: 'uppercase', display: 'block' }}>Message For The Couple (Optional)</label>
                       <textarea
                         placeholder="Write us a few words..."
                         rows={4}
-                        className="w-full border border-brand-red-dark/20 rounded-none bg-transparent px-4 py-3 font-serif text-sm text-brand-red-dark placeholder:text-brand-red-dark/30 focus:outline-none focus:border-brand-red-dark/50 resize-none"
+                        className="w-full rounded-none bg-transparent px-4 py-3 font-serif text-sm placeholder:opacity-30 focus:outline-none resize-none"
+                        style={{ border: '1px solid rgba(171,138,59,0.4)', color: '#223348' }}
+                        onFocus={(e) => e.currentTarget.style.borderColor = '#AB8A3B'}
+                        onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(171,138,59,0.4)'}
                       />
                     </div>
-                    <button className="w-full py-4 bg-[#8B6060]/80 hover:bg-brand-red-dark text-white font-serif text-sm tracking-widest uppercase transition-colors flex items-center justify-center gap-3">
+                    <button
+                      className="w-full py-4 font-serif text-sm uppercase transition-colors flex items-center justify-center gap-3"
+                      style={{ background: '#223348', color: '#F6F0E6', fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.2em' }}
+                    >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
                       Confirm
                     </button>
                   </div>
+
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '14px', fontStyle: 'italic', color: '#7397A8' }}>
+                    We can't wait to celebrate with you
+                  </p>
                 </div>
               </Section>
 
