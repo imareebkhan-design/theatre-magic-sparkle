@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
-  const target = new Date('2027-09-10T16:00:00').getTime();
+  const target = new Date('2026-11-29T16:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, min: 0, sec: 0 });
 
   useEffect(() => {
