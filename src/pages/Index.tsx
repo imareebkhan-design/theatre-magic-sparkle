@@ -400,7 +400,7 @@ export default function Index() {
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: '#223348', marginTop: '20px', fontWeight: 300 }}
             >
-              Sri Krishna Mahal Mantapa
+              {t('hero.venue')}
             </motion.h3>
 
             {/* Divider */}
