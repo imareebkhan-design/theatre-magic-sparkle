@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedTimelineLine, EventCard } from './TimelineAnimations';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTimeZone } from '@/hooks/useTimeZone';
 
 const eventKeys = [
   { time: "5:30 AM", nameKey: 'event.naandi.name', tamil: "நாந்தி", descKey: 'event.naandi.desc', side: "left" as const },
