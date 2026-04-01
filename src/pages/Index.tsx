@@ -5,7 +5,7 @@ import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration-lineart.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
