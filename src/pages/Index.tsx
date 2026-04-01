@@ -469,7 +469,7 @@ export default function Index() {
                   </motion.div>
                   <motion.h3 variants={staggerItem} className="font-script text-4xl sm:text-5xl" style={{ color: '#223348' }}>{t('hero.venue')}</motion.h3>
                   <motion.p variants={staggerItem} className="font-serif text-[10px] tracking-[0.2em] uppercase" style={{ color: '#7397A8' }}>
-                    Salem, Tamil Nadu
+                    {t('venue.ceremony.location')}
                   </motion.p>
                   <motion.p variants={staggerItem} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', color: '#223348', margin: 0 }}>
                     29th November 2026 · 8:30 AM
