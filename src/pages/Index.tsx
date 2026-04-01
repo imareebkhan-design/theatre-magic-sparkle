@@ -588,6 +588,57 @@ export default function Index() {
                   <ThankYouCard />
                 </div>
               </section>
+
+              {/* ── FOOTER ── */}
+              <footer style={{ background: '#223348', padding: '80px 24px 48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
+                {/* Om */}
+                <span style={{ fontFamily: "'Tiro Devanagari Sanskrit', serif", fontSize: '24px', color: '#AB8A3B' }}>ॐ</span>
+
+                {/* Names */}
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontSize: '52px', color: '#F6F0E6', margin: 0, lineHeight: 1.2 }}>
+                  Nikila &amp; Sarthak
+                </h2>
+
+                {/* Gold divider */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '60px', height: '1px', background: '#AB8A3B' }} />
+                  <div style={{ width: '6px', height: '6px', background: '#AB8A3B', transform: 'rotate(45deg)' }} />
+                  <div style={{ width: '60px', height: '1px', background: '#AB8A3B' }} />
+                </div>
+
+                {/* Dates */}
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '12px', letterSpacing: '0.3em', color: '#7397A8', lineHeight: 2.2 }}>
+                  <p style={{ margin: 0 }}>29 · 11 · 2026 — Salem, Tamil Nadu</p>
+                  <p style={{ margin: 0 }}>06 · 12 · 2026 — Jabalpur, Madhya Pradesh</p>
+                </div>
+
+                {/* Blessing */}
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', fontStyle: 'italic', color: 'rgba(246,240,230,0.5)', maxWidth: '480px', lineHeight: 1.8, margin: 0 }}>
+                  "May your home be filled with laughter, your hearts with love"
+                </p>
+
+                {/* Hashtag */}
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '13px', letterSpacing: '0.2em', color: '#AB8A3B', margin: 0 }}>
+                  #NikilaWedsSarthak
+                </p>
+
+                {/* Crafted line */}
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '10px', color: 'rgba(246,240,230,0.2)', margin: '24px 0 0' }}>
+                  Crafted with love · 2026
+                </p>
+
+                {/* shadi.digital */}
+                <a
+                  href="https://shadi.digital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '11px', letterSpacing: '0.15em', color: 'rgba(246,240,230,0.35)', textDecoration: 'none', marginTop: '8px', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#AB8A3B')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(246,240,230,0.35)')}
+                >
+                  made with love by shadi.digital
+                </a>
+              </footer>
         </>
 
         {/* Floating Sound Toggle */}
