@@ -379,7 +379,7 @@ export default function Index() {
             {/* Request text */}
             <motion.p
               variants={{ hidden: { opacity: 0, y: 15, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } } }}
-              className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
+              className="font-serif text-[12px] sm:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
             >
               {t('hero.honour')}
             </motion.p>
