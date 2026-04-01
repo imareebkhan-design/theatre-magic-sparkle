@@ -585,21 +585,21 @@ export default function Index() {
               {/* ── SECTION 7: TRANSPORT ── */}
               <Section>
                 <div className="max-w-lg mx-auto space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">Getting There</p>
-                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">Transport</h2>
+                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('transport.subtitle')}</p>
+                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">{t('transport.title')}</h2>
                   <div className="space-y-4 text-sm text-brand-red-dark/80 font-serif">
-                    <p>A private bus will be available for guests departing from <strong>Piazza della Signoria, Florence</strong>.</p>
+                    <p>{t('transport.desc')}</p>
                     <div className="border-t border-brand-red-dark/15 pt-4 space-y-2">
-                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">Departure</p>
+                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">{t('transport.departure')}</p>
                       <p>Saturday, September 10 · <span className="font-semibold">2:30 PM</span></p>
                     </div>
                     <div className="border-t border-brand-red-dark/15 pt-4 space-y-2">
-                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">Return</p>
+                      <p className="font-serif text-[10px] tracking-widest uppercase text-brand-red-dark/50">{t('transport.return')}</p>
                       <p>Saturday, September 10 · <span className="font-semibold">1:00 AM</span></p>
                     </div>
                   </div>
                   <p className="font-serif italic text-brand-red-dark/50 text-xs pt-4">
-                    Please indicate in your RSVP if you need transport.
+                    {t('transport.rsvpnote')}
                   </p>
                 </div>
               </Section>
