@@ -4,7 +4,7 @@ import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration.jpg';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
 import WeddingShlokas from '../components/WeddingShlokas';
