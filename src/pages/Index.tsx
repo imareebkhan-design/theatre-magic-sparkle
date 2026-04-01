@@ -316,9 +316,6 @@ export default function Index() {
         <div />
         <div className="flex items-center gap-3 pointer-events-auto">
           <LanguageSwitcher />
-          <button className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full shadow-sm flex items-center justify-center border border-brand-accent/10">
-            <Info size={16} className="text-brand-red-dark" />
-          </button>
         </div>
       </header>
 
