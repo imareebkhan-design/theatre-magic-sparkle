@@ -387,7 +387,8 @@ export default function Index() {
             {/* Date */}
             <motion.p
               variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
-              style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 500, color: '#223348', letterSpacing: '0.25em', marginTop: '32px' }}
+              className="font-serif font-medium tracking-[0.25em] mt-8 text-[24px] sm:text-[36px]"
+              style={{ fontFamily: "'Playfair Display', serif", color: '#223348' }}
             >
               29 · 11 · 2026
             </motion.p>
