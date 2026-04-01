@@ -131,6 +131,7 @@ export default function HeroSection() {
         className="absolute top-0 left-0 w-1/2 h-full z-30 overflow-hidden"
         style={{
           transformOrigin: 'left center',
+          perspective: 1200,
           backgroundImage: `url(${templeDoor})`,
           backgroundSize: '200% 100%',
           backgroundPosition: 'left center',
@@ -149,6 +150,7 @@ export default function HeroSection() {
         className="absolute top-0 right-0 w-1/2 h-full z-30 overflow-hidden"
         style={{
           transformOrigin: 'right center',
+          perspective: 1200,
           backgroundImage: `url(${templeDoor})`,
           backgroundSize: '200% 100%',
           backgroundPosition: 'right center',
