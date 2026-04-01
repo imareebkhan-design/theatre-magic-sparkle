@@ -318,57 +318,94 @@ export default function Index() {
       <CurtainReveal onOpen={handleCurtainOpen}>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[80px] !px-6">
-          <div className="max-w-3xl mx-auto flex flex-col items-center">
+          <motion.div
+            className="max-w-3xl mx-auto flex flex-col items-center"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 1.2 } },
+            }}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Line 1 */}
-            <p className="font-dm-sans text-[12px] sm:text-[13px] uppercase tracking-[0.35em] text-[#C97B5A]">
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
+              className="font-dm-sans text-[12px] sm:text-[13px] uppercase tracking-[0.35em] text-[#C97B5A]"
+            >
               With Joy &amp; Love, We Invite You to Celebrate
-            </p>
+            </motion.p>
 
-            {/* Gold divider with diamond — 100px each side */}
-            <div className="flex items-center gap-3 mt-6" style={{ width: '260px' }}>
+            {/* Gold divider with diamond */}
+            <motion.div
+              variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1, ease: 'easeOut' } } }}
+              className="flex items-center gap-3 mt-6" style={{ width: '260px' }}
+            >
               <div style={{ width: '120px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
               <div className="w-2.5 h-2.5 rotate-45 border border-brand-red-dark/30" />
               <div style={{ width: '120px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
-            </div>
+            </motion.div>
 
             {/* Names */}
-            <div className="flex flex-col items-center -space-y-2 sm:-space-y-4 mt-8">
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 40, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.2, ease: 'easeOut' } } }}
+              className="flex flex-col items-center -space-y-2 sm:-space-y-4 mt-8"
+            >
               <h1 className="font-script text-[64px] sm:text-[100px]" style={{ color: '#AB8A3B', lineHeight: 1.05 }}><NameLetterStagger name="Nikila" /></h1>
               <span className="font-script text-3xl sm:text-4xl" style={{ color: '#AB8A3B', opacity: 0.5 }}>&amp;</span>
               <h1 className="font-script text-[64px] sm:text-[100px]" style={{ color: '#AB8A3B', lineHeight: 1.05 }}><NameLetterStagger name="Sarthak" /></h1>
-            </div>
+            </motion.div>
 
-            {/* Lotus motif — 5 petals */}
-            <svg width="36" height="22" viewBox="0 0 32 20" fill="none" className="mt-6">
+            {/* Lotus motif */}
+            <motion.svg
+              variants={{ hidden: { opacity: 0, scale: 0.5 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: 'easeOut' } } }}
+              width="36" height="22" viewBox="0 0 32 20" fill="none" className="mt-6"
+            >
               <path d="M16 0C16 0 13 4 13 8C13 10 14.5 12 16 12C17.5 12 19 10 19 8C19 4 16 0 16 0Z" fill="#AB8A3B" opacity="0.9" />
               <path d="M10 4C10 4 7 8 8 11C8.5 13 10.5 13.5 12 12C13.5 10.5 13 7 10 4Z" fill="#AB8A3B" opacity="0.6" />
               <path d="M22 4C22 4 25 8 24 11C23.5 13 21.5 13.5 20 12C18.5 10.5 19 7 22 4Z" fill="#AB8A3B" opacity="0.6" />
               <path d="M6 8C6 8 3 11 4 14C4.5 15.5 7 16 9 14C11 12 9 9 6 8Z" fill="#AB8A3B" opacity="0.35" />
               <path d="M26 8C26 8 29 11 28 14C27.5 15.5 25 16 23 14C21 12 23 9 26 8Z" fill="#AB8A3B" opacity="0.35" />
-            </svg>
+            </motion.svg>
 
             {/* Request text */}
-            <p className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5">
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 15, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } } }}
+              className="font-serif text-[14px] tracking-[0.3em] uppercase text-brand-red-dark/60 mt-5"
+            >
               Request the honour of your presence
-            </p>
+            </motion.p>
 
             {/* Date */}
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 500, color: '#223348', letterSpacing: '0.25em', marginTop: '32px' }}>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
+              style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 500, color: '#223348', letterSpacing: '0.25em', marginTop: '32px' }}
+            >
               29 · 11 · 2026
-            </p>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '15px', color: '#7397A8', marginTop: '8px' }}>
+            </motion.p>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } } }}
+              style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: '15px', color: '#7397A8', marginTop: '8px' }}
+            >
               8:30 AM · Salem, Tamil Nadu
-            </p>
+            </motion.p>
 
-            {/* Venue in hero */}
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: '#223348', marginTop: '20px', fontWeight: 300 }}>Sri Krishna Mahal Mantapa</h3>
+            {/* Venue */}
+            <motion.h3
+              variants={{ hidden: { opacity: 0, y: 20, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: 'easeOut' } } }}
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: '#223348', marginTop: '20px', fontWeight: 300 }}
+            >
+              Sri Krishna Mahal Mantapa
+            </motion.h3>
 
             {/* Divider */}
-            <div className="flex items-center gap-3 mt-8" style={{ width: '260px' }}>
+            <motion.div
+              variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1, ease: 'easeOut' } } }}
+              className="flex items-center gap-3 mt-8" style={{ width: '260px' }}
+            >
               <div style={{ width: '120px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
               <div className="w-2.5 h-2.5 rotate-45 border border-brand-red-dark/30" />
               <div style={{ width: '120px', height: '1px', background: 'rgba(34,51,72,0.25)' }} />
-            </div>
+            </motion.div>
 
             <style>{`
               @keyframes scrollPulse {
@@ -376,11 +413,14 @@ export default function Index() {
                 50% { opacity: 0.4; }
               }
             `}</style>
-            <div className="flex flex-col items-center mt-8" style={{ animation: 'scrollPulse 2s ease-in-out infinite' }}>
+            <motion.div
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeOut' } } }}
+              className="flex flex-col items-center mt-8" style={{ animation: 'scrollPulse 2s ease-in-out infinite' }}
+            >
               <span className="font-serif text-[10px] tracking-[0.3em] uppercase" style={{ color: '#AB8A3B' }}>Scroll</span>
               <span style={{ color: '#AB8A3B', fontSize: '20px' }}>↓</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </Section>
 
         {/* ── SECTION 2: ILLUSTRATION + COUNTDOWN ── */}
