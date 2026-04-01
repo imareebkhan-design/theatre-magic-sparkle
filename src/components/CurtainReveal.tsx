@@ -179,7 +179,7 @@ export default function CurtainReveal({ children, onOpen }: { children: React.Re
                               whiteSpace: 'nowrap',
                             }}
                           >
-                            {isMobile ? 'Tap to open' : 'Click to open'}
+                            {isMobile ? t('curtain.tap') : t('curtain.click')}
                           </motion.p>
                         </motion.div>
                       )}
