@@ -332,20 +332,7 @@ export default function Index() {
                         Temple Road · Chennai, Tamil Nadu
                       </p>
                       <p className="font-script text-4xl text-brand-red-dark/70 pt-4">Wedding Reception to Follow</p>
-                      <p className="font-script text-4xl text-brand-red-dark/70 pt-2">Wedding Reception to Follow</p>
                     </div>
-                  </div>
-
-                  {/* Couple Swing Illustration */}
-                  <div className="pt-16">
-                    <img
-                      src={coupleSwingIllustration}
-                      alt="Couple on a swing illustration"
-                      className="w-full max-w-sm mx-auto rounded-lg"
-                      loading="lazy"
-                      width={1024}
-                      height={1024}
-                    />
                   </div>
                 </div>
               </Section>
