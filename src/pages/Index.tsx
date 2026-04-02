@@ -2,7 +2,7 @@
 import CurtainReveal from '../components/CurtainReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
-import coupleIllustration from '../assets/couple-illustration-lineart.png';
+import coupleIllustration from '../assets/couple-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
