@@ -572,11 +572,19 @@ export default function Index() {
                 <div className="max-w-2xl mx-auto space-y-6">
                   <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">{t('dress.title')}</h2>
                   <DressCodeFigures />
-                  <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    {t('dress.desc')}
-                  </p>
-                  <h3 className="font-serif text-4xl sm:text-5xl text-brand-red-dark pt-2">{t('dress.formal')}</h3>
-                  <p className="font-script text-3xl text-brand-red-dark/60 italic">{t('dress.nowhite')}</p>
+
+                  {/* Salem */}
+                  <div className="space-y-2 pt-2">
+                    <p className="font-serif text-xs tracking-[0.2em] uppercase text-brand-red-dark/50">{t('dress.salem.label')}</p>
+                    <h3 className="font-serif text-3xl sm:text-4xl text-brand-red-dark">{t('dress.salem.attire')}</h3>
+                    <p className="font-script text-2xl text-brand-red-dark/60 italic">{t('dress.salem.avoid')}</p>
+                  </div>
+
+                  {/* Jabalpur */}
+                  <div className="space-y-2 pt-4 border-t border-brand-red-dark/10">
+                    <p className="font-serif text-xs tracking-[0.2em] uppercase text-brand-red-dark/50">{t('dress.jabalpur.label')}</p>
+                    <h3 className="font-serif text-3xl sm:text-4xl text-brand-red-dark">{t('dress.jabalpur.attire')}</h3>
+                  </div>
                 </div>
               </Section>
 
