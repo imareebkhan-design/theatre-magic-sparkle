@@ -175,76 +175,131 @@ export default function WeddingTimeline() {
           </motion.div>
 
           {/* Timeline */}
-          <div style={{
-            maxWidth: '680px', margin: '0 auto',
-            position: 'relative',
-          }}>
-            {/* Vertical line */}
+          {day.events.length === 1 ? (
+            /* Single event — centered layout with dot above vertical line */
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6 }}
+              style={{
+                maxWidth: '480px', margin: '0 auto',
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', textAlign: 'center',
+              }}
+            >
+              {/* Dot */}
+              <div style={{
+                width: '10px', height: '10px',
+                background: day.color,
+                borderRadius: '50%',
+                flexShrink: 0,
+                position: 'relative', zIndex: 1,
+                border: '2px solid #F6F0E6',
+                boxShadow: `0 0 0 1px ${day.color}`,
+                marginBottom: '0',
+              }} />
+              {/* Vertical line */}
+              <div style={{
+                width: '1px', height: '32px',
+                background: `${day.color}60`,
+                marginBottom: '20px',
+              }} />
+              {/* Content */}
+              <p style={{
+                fontSize: '10px', letterSpacing: '0.2em',
+                textTransform: 'uppercase', color: day.color,
+                marginBottom: '4px',
+              }}>
+                {day.events[0].time}
+              </p>
+              <h4 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '22px', fontWeight: 400,
+                color: '#223348', margin: '0 0 6px',
+              }}>
+                {day.events[0].name}
+              </h4>
+              <p style={{
+                fontSize: '12px', fontWeight: 300,
+                color: '#53694D', lineHeight: 1.7, margin: 0,
+              }}>
+                {day.events[0].desc}
+              </p>
+            </motion.div>
+          ) : (
+            /* Multiple events — standard alternating timeline */
             <div style={{
-              position: 'absolute', left: '50%', top: 0, bottom: 0,
-              width: '1px',
-              background: `linear-gradient(to bottom, transparent, ${day.color}60 10%, ${day.color}60 90%, transparent)`,
-              transform: 'translateX(-50%)',
-            }} />
+              maxWidth: '680px', margin: '0 auto',
+              position: 'relative',
+            }}>
+              {/* Vertical line */}
+              <div style={{
+                position: 'absolute', left: '50%', top: 0, bottom: 0,
+                width: '1px',
+                background: `linear-gradient(to bottom, transparent, ${day.color}60 10%, ${day.color}60 90%, transparent)`,
+                transform: 'translateX(-50%)',
+              }} />
 
-            {/* Events */}
-            {day.events.map((event, eventIndex) => (
-              <motion.div
-                key={eventIndex}
-                initial={{ opacity: 0, x: event.side === 'left' ? -24 : 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.6, delay: eventIndex * 0.12 }}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  marginBottom: '40px',
-                  flexDirection: event.side === 'right' ? 'row-reverse' : 'row',
-                }}
-              >
-                {/* Content */}
-                <div style={{
-                  flex: 1,
-                  textAlign: event.side === 'left' ? 'right' : 'left',
-                  paddingRight: event.side === 'left' ? '32px' : 0,
-                  paddingLeft: event.side === 'right' ? '32px' : 0,
-                }}>
-                  <p style={{
-                    fontSize: '10px', letterSpacing: '0.2em',
-                    textTransform: 'uppercase', color: day.color,
-                    marginBottom: '4px',
+              {/* Events */}
+              {day.events.map((event, eventIndex) => (
+                <motion.div
+                  key={eventIndex}
+                  initial={{ opacity: 0, x: event.side === 'left' ? -24 : 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.6, delay: eventIndex * 0.12 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    marginBottom: '40px',
+                    flexDirection: event.side === 'right' ? 'row-reverse' : 'row',
+                  }}
+                >
+                  {/* Content */}
+                  <div style={{
+                    flex: 1,
+                    textAlign: event.side === 'left' ? 'right' : 'left',
+                    paddingRight: event.side === 'left' ? '32px' : 0,
+                    paddingLeft: event.side === 'right' ? '32px' : 0,
                   }}>
-                    {event.time}
-                  </p>
-                  <h4 style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: '22px', fontWeight: 400,
-                    color: '#223348', margin: '0 0 6px',
-                  }}>
-                    {event.name}
-                  </h4>
-                  <p style={{
-                    fontSize: '12px', fontWeight: 300,
-                    color: '#53694D', lineHeight: 1.7, margin: 0,
-                  }}>
-                    {event.desc}
-                  </p>
-                </div>
+                    <p style={{
+                      fontSize: '10px', letterSpacing: '0.2em',
+                      textTransform: 'uppercase', color: day.color,
+                      marginBottom: '4px',
+                    }}>
+                      {event.time}
+                    </p>
+                    <h4 style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: '22px', fontWeight: 400,
+                      color: '#223348', margin: '0 0 6px',
+                    }}>
+                      {event.name}
+                    </h4>
+                    <p style={{
+                      fontSize: '12px', fontWeight: 300,
+                      color: '#53694D', lineHeight: 1.7, margin: 0,
+                    }}>
+                      {event.desc}
+                    </p>
+                  </div>
 
-                {/* Dot */}
-                <div style={{
-                  width: '10px', height: '10px',
-                  background: day.color,
-                  borderRadius: '50%',
-                  flexShrink: 0, marginTop: '8px',
-                  position: 'relative', zIndex: 1,
-                  border: '2px solid #F6F0E6',
-                  boxShadow: `0 0 0 1px ${day.color}`,
-                }} />
-                <div style={{ flex: 1 }} />
-              </motion.div>
-            ))}
-          </div>
+                  {/* Dot */}
+                  <div style={{
+                    width: '10px', height: '10px',
+                    background: day.color,
+                    borderRadius: '50%',
+                    flexShrink: 0, marginTop: '8px',
+                    position: 'relative', zIndex: 1,
+                    border: '2px solid #F6F0E6',
+                    boxShadow: `0 0 0 1px ${day.color}`,
+                  }} />
+                  <div style={{ flex: 1 }} />
+                </motion.div>
+              ))}
+            </div>
+          )}
 
           {/* Day divider — not after last day */}
           {dayIndex < days.length - 1 && (
