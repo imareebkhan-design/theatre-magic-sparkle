@@ -548,7 +548,7 @@ export default function Index() {
                   </motion.p>
                   <motion.a
                     variants={staggerItem}
-                    href="https://maps.google.com/?q=Jabalpur+Madhya+Pradesh+India"
+                    href="https://share.google/1dSOl6F8i0hNjxT26"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 mt-4 px-6 py-3 rounded-none transition-all duration-300"

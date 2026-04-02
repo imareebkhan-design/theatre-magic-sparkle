@@ -50,7 +50,7 @@ const translations: Translations = {
   'venue.ceremony.datetime': { en: '29th November 2026 · 8:30 AM', ta: '29 நவம்பர் 2026 · காலை 8:30', hi: '29 नवंबर 2026 · सुबह 8:30' },
   'venue.maps': { en: 'View on Maps', ta: 'வரைபடத்தில் காண்க', hi: 'मानचित्र पर देखें' },
   'venue.reception.subtitle': { en: 'The wedding reception', ta: 'திருமண வரவேற்பு', hi: 'विवाह स्वागत समारोह' },
-  'venue.reception.title': { en: 'Reception Celebration', ta: 'வரவேற்பு விழா', hi: 'स्वागत समारोह' },
+  'venue.reception.title': { en: 'Hotel Vijan Mahal', ta: 'ஹோட்டல் விஜன் மஹால்', hi: 'होटल विजन महल' },
   'venue.reception.location': { en: 'Jabalpur, Madhya Pradesh', ta: 'ஜபல்பூர், மத்தியப் பிரதேசம்', hi: 'जबलपुर, मध्य प्रदेश' },
   'venue.reception.datetime': { en: '6th December 2026 · 7:00 PM onwards', ta: '6 டிசம்பர் 2026 · மாலை 7:00 முதல்', hi: '6 दिसंबर 2026 · शाम 7:00 बजे से' },
 
