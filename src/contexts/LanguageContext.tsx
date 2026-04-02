@@ -63,17 +63,7 @@ const translations: Translations = {
   // Gifts
   'gifts.registry': { en: 'Wedding Registry', ta: 'திருமண பதிவேடு', hi: 'विवाह रजिस्ट्री' },
   'gifts.title': { en: 'Gifts', ta: 'பரிசுகள்', hi: 'उपहार' },
-  'gifts.desc': { en: 'Your presence is the best gift we could receive. However, if you wish to contribute to our new life together, you can do so via bank transfer.', ta: 'உங்கள் வருகையே எங்களுக்கு கிடைக்கக்கூடிய சிறந்த பரிசு. இருப்பினும், எங்கள் புதிய வாழ்க்கைக்கு பங்களிக்க விரும்பினால், வங்கி மாற்றம் மூலம் செய்யலாம்.', hi: 'आपकी उपस्थिति ही हमारे लिए सबसे बड़ा उपहार है। हालांकि, यदि आप हमारे नए जीवन में योगदान देना चाहते हैं, तो बैंक ट्रांसफर के माध्यम से कर सकते हैं।' },
-  'gifts.love': { en: 'With all our love', ta: 'எங்கள் முழு அன்புடன்', hi: 'हमारे सारे प्यार के साथ' },
-  'gifts.bank': { en: 'Bank Details', ta: 'வங்கி விவரங்கள்', hi: 'बैंक विवरण' },
-
-  // Transport
-  'transport.subtitle': { en: 'Getting There', ta: 'எப்படி வருவது', hi: 'कैसे पहुँचें' },
-  'transport.title': { en: 'Transport', ta: 'போக்குவரத்து', hi: 'परिवहन' },
-  'transport.desc': { en: 'A private bus will be available for guests departing from Piazza della Signoria, Florence.', ta: 'பியாஸா டெல்லா சிக்னோரியா, புளோரன்ஸிலிருந்து புறப்படும் விருந்தினர்களுக்கு தனியார் பேருந்து கிடைக்கும்.', hi: 'पियाज़ा डेला सिग्नोरिया, फ्लोरेंस से जाने वाले मेहमानों के लिए एक निजी बस उपलब्ध होगी।' },
-  'transport.departure': { en: 'Departure', ta: 'புறப்பாடு', hi: 'प्रस्थान' },
-  'transport.return': { en: 'Return', ta: 'திரும்புதல்', hi: 'वापसी' },
-  'transport.rsvpnote': { en: 'Please indicate in your RSVP if you need transport.', ta: 'போக்குவரத்து தேவைப்பட்டால் உங்கள் RSVP இல் குறிப்பிடவும்.', hi: 'यदि आपको परिवहन की आवश्यकता है तो कृपया अपने RSVP में बताएं।' },
+  'gifts.desc': { en: 'Your presence and your blessings are the biggest gift we could ever receive.', ta: 'உங்கள் வருகையும் ஆசீர்வாதமும் எங்களுக்கு கிடைக்கக்கூடிய மிகப்பெரிய பரிசு.', hi: 'आपकी उपस्थिति और आपका आशीर्वाद ही हमें मिल सकने वाला सबसे बड़ा उपहार है।' },
 
   // RSVP
   'rsvp.title': { en: 'Join Us in Celebration', ta: 'கொண்டாட்டத்தில் எங்களுடன் சேருங்கள்', hi: 'उत्सव में हमारे साथ शामिल हों' },
