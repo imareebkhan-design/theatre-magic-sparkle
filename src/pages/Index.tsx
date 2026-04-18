@@ -1,5 +1,5 @@
 
-import CurtainReveal from '../components/CurtainReveal';
+import EnvelopeReveal from '../components/EnvelopeReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration.png';
@@ -291,7 +291,7 @@ export default function Index() {
     }).catch(() => {});
   }, []);
 
-  const handleCurtainOpen = useCallback(() => {
+  const handleEnvelopeOpen = useCallback(() => {
     setTimeout(fadeInAudio, 3000);
   }, [fadeInAudio]);
 
@@ -323,7 +323,7 @@ export default function Index() {
         <source src="/wedding-music.mp3" type="audio/mpeg" />
       </audio>
 
-      <CurtainReveal onOpen={handleCurtainOpen}>
+      <EnvelopeReveal onOpen={handleEnvelopeOpen}>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[80px] !px-6">
           <motion.div
@@ -764,7 +764,7 @@ export default function Index() {
             )}
           </svg>
         </button>
-      </CurtainReveal>
+      </EnvelopeReveal>
     </div>
   );
 }
