@@ -12,6 +12,14 @@ import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations'
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTimeZone } from '@/hooks/useTimeZone';
+import {
+  JasmineToran,
+  KolamDivider,
+  SouthIndianCouple,
+  GopuramAccent,
+  BananaLeafFrame,
+  KolamCorner,
+} from '../components/SouthIndianIllustrations';
 
 /* ─────────────── Countdown Component ─────────────── */
 function Countdown() {
@@ -324,6 +332,10 @@ export default function Index() {
       </audio>
 
       <EnvelopeReveal onOpen={handleEnvelopeOpen}>
+        {/* Jasmine Toran — top of page */}
+        <div style={{ position: 'relative', zIndex: 2, marginBottom: '-20px' }}>
+          <JasmineToran />
+        </div>
         {/* ── SECTION 1: HERO INVITATION ── */}
         <Section className="!min-h-screen !justify-center !py-[80px] !px-6">
           <motion.div
@@ -453,12 +465,23 @@ export default function Index() {
         <Section className="!pt-0 !-mt-20">
           <div className="max-w-3xl mx-auto flex flex-col items-center space-y-12">
             <CoupleParallax>
-              <img
-                src={coupleIllustration}
-                alt="Couple illustration"
-                className="w-full max-w-3xl mx-auto mix-blend-multiply"
-                loading="lazy"
-              />
+              <div style={{ position: 'relative', maxWidth: '440px', margin: '0 auto' }}>
+                {/* Gopuram watermark behind couple */}
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 0 }}>
+                  <GopuramAccent />
+                </div>
+                {/* Kolam corners */}
+                <div style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+                  <KolamCorner />
+                </div>
+                <div style={{ position: 'absolute', top: 0, right: 0, zIndex: 1 }}>
+                  <KolamCorner flip />
+                </div>
+                {/* Couple illustration */}
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <SouthIndianCouple />
+                </div>
+              </div>
             </CoupleParallax>
             <div>
               <Countdown />
@@ -472,8 +495,18 @@ export default function Index() {
               {/* ── SECTION 3: WEDDING SHLOKAS ── */}
               <WeddingShlokas />
 
+              {/* Kolam divider */}
+              <div style={{ background: '#F6F0E6', padding: '8px 0' }}>
+                <KolamDivider color="#B5334E" />
+              </div>
+
               {/* ── SECTION 4: WEDDING TIMELINE ── */}
               <WeddingTimeline />
+
+              {/* Banana leaf frame */}
+              <div style={{ background: '#F6F0E6', overflow: 'hidden' }}>
+                <BananaLeafFrame />
+              </div>
 
               <Section className="!bg-[#F6F0E6]">
                 <motion.div
@@ -674,6 +707,11 @@ export default function Index() {
                   </p>
                 </div>
               </Section>
+
+              {/* Kolam divider before footer */}
+              <div style={{ background: '#F4EDE4', padding: '8px 0' }}>
+                <KolamDivider color="#E8651A" />
+              </div>
 
               {/* ── SECTION 9: FOOTER – THANK YOU CARD ── */}
               <section className="w-full py-24 px-8 flex flex-col items-center bg-[#F4EDE4]">
