@@ -567,39 +567,6 @@ export default function Index() {
                 </motion.div>
               </Section>
 
-              {/* ── SECTION 5: DRESS CODE ── */}
-              <Section>
-                <div className="max-w-2xl mx-auto space-y-6">
-                  <h2 className="font-script text-6xl sm:text-7xl text-brand-red-dark">{t('dress.title')}</h2>
-                  <DressCodeFigures />
-
-                  {/* Salem */}
-                  <div className="space-y-2 pt-2">
-                    <p className="font-serif text-xs tracking-[0.2em] uppercase text-brand-red-dark/50">{t('dress.salem.label')}</p>
-                    <h3 className="font-serif text-3xl sm:text-4xl text-brand-red-dark">{t('dress.salem.attire')}</h3>
-                    <p className="font-script text-2xl text-brand-red-dark/60 italic">{t('dress.salem.avoid')}</p>
-                  </div>
-
-                  {/* Jabalpur */}
-                  <div className="space-y-2 pt-4 border-t border-brand-red-dark/10">
-                    <p className="font-serif text-xs tracking-[0.2em] uppercase text-brand-red-dark/50">{t('dress.jabalpur.label')}</p>
-                    <h3 className="font-serif text-3xl sm:text-4xl text-brand-red-dark">{t('dress.jabalpur.attire')}</h3>
-                  </div>
-                </div>
-              </Section>
-
-              {/* ── SECTION 6: GIFTS ── */}
-              <Section dark>
-                <div className="max-w-lg mx-auto space-y-6">
-                  <p className="font-serif text-[10px] tracking-[0.3em] uppercase text-brand-red-dark/60">{t('gifts.registry')}</p>
-                  <WeddingCarIllustration />
-                  <h2 className="font-serif text-5xl sm:text-6xl text-brand-red-dark">{t('gifts.title')}</h2>
-                  <p className="font-serif text-sm text-brand-red-dark/70 max-w-md mx-auto leading-relaxed">
-                    {t('gifts.desc')}
-                  </p>
-                </div>
-              </Section>
-
               {/* ── SECTION 8: RSVP ── */}
               <Section className="!bg-[#F6F0E6]">
                 <div className="max-w-xl w-full mx-auto space-y-8">
