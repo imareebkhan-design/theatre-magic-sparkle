@@ -443,6 +443,12 @@ export default function WeddingTimeline() {
                   swatches={day.events[0].colors || []}
                 />
               )}
+              {day.events[0].decoration && day.events[0].decoration !== 'parrot' && (
+                <EventDoodle
+                  decoration={day.events[0].decoration}
+                  align="center"
+                />
+              )}
             </motion.div>
           ) : (
             /* Multiple events — standard alternating timeline */
