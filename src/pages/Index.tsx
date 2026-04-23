@@ -846,13 +846,6 @@ export default function Index() {
                 <KolamDivider color="#E8651A" />
               </div>
 
-              {/* ── SECTION 9: FOOTER – THANK YOU CARD ── */}
-              <section className="w-full py-24 px-8 flex flex-col items-center bg-[#F4EDE4]">
-                <div className="max-w-md w-full">
-                  <ThankYouCard />
-                </div>
-              </section>
-
               {/* ── FOOTER ── */}
               <footer style={{ background: '#223348', padding: '60px 20px 40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
                 {/* Om */}
