@@ -71,8 +71,8 @@ const DOODLE_MAP: Record<
   champagne: {
     src: champagneToast,
     alt: 'Illustrated wedding party with bride, groom and families celebrating',
-    width: 360,
-    height: 180,
+    width: 440,
+    height: 270,
   },
 };
 
