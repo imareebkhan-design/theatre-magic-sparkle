@@ -3,7 +3,7 @@ import {
   SouthIndianDayFrame,
   MarigoldBellString,
 } from './SouthIndianIllustrations';
-import engagementHands from '@/assets/engagement-hands.jpg';
+import engagementHands from '@/assets/engagement-ring.png';
 import kalash from '@/assets/kalash.jpg';
 import receptionProposal from '@/assets/reception-proposal.png';
 import kankanaThread from '@/assets/kankana-thread.png';
@@ -43,8 +43,8 @@ const DOODLE_MAP: Record<
   },
   'engagement-hands': {
     src: engagementHands,
-    width: 170,
-    alt: 'Hands exchanging rings — engagement',
+    width: 140,
+    alt: 'Engagement ring in floral-adorned box',
   },
   kalash: {
     src: kalash,
@@ -58,8 +58,8 @@ const DOODLE_MAP: Record<
   },
   kankana: {
     src: engagementHands,
-    width: 170,
-    alt: 'Hands exchanging rings — kankana dharana',
+    width: 140,
+    alt: 'Engagement ring in floral-adorned box — kankana dharana',
   },
   'blessing-hands': {
     src: blessingHands,
