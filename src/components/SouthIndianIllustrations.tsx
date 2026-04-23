@@ -242,7 +242,6 @@ export const SouthIndianCouple = () => (
       height: 'auto',
       margin: '0 auto',
       display: 'block',
-      mixBlendMode: 'multiply',
     }}
     loading="lazy"
   />
