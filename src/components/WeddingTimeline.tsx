@@ -6,6 +6,21 @@ import {
 } from './SouthIndianIllustrations';
 import engagementHands from '@/assets/engagement-hands.jpg';
 import kalash from '@/assets/kalash.jpg';
+import receptionDiya from '@/assets/reception-diya.png';
+import kankanaThread from '@/assets/kankana-thread.png';
+import blessingHands from '@/assets/blessing-hands.png';
+import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
+import champagneToast from '@/assets/champagne-toast.png';
+
+type DecorationKey =
+  | 'parrot'
+  | 'engagement-hands'
+  | 'kalash'
+  | 'diya'
+  | 'kankana'
+  | 'blessing-hands'
+  | 'banana-leaf'
+  | 'champagne';
 
 type EventItem = {
   time: string;
@@ -14,7 +29,81 @@ type EventItem = {
   side: 'left' | 'right';
   dressCode?: string;
   colors?: string[];
-  decoration?: 'parrot' | 'engagement-hands' | 'kalash';
+  decoration?: DecorationKey;
+};
+
+const DOODLE_MAP: Record<
+  Exclude<DecorationKey, 'parrot'>,
+  { src: string; width: number; alt: string }
+> = {
+  'engagement-hands': {
+    src: engagementHands,
+    width: 170,
+    alt: 'Hands exchanging rings — engagement',
+  },
+  kalash: {
+    src: kalash,
+    width: 130,
+    alt: 'Sacred kalash with coconut and mango leaves',
+  },
+  diya: {
+    src: receptionDiya,
+    width: 130,
+    alt: 'Lit brass diya — evening celebration',
+  },
+  kankana: {
+    src: kankanaThread,
+    width: 120,
+    alt: 'Turmeric-soaked sacred thread — kankanam',
+  },
+  'blessing-hands': {
+    src: blessingHands,
+    width: 160,
+    alt: 'Cupped hands showering rice and petals — blessing',
+  },
+  'banana-leaf': {
+    src: bananaLeafMeal,
+    width: 170,
+    alt: 'Banana leaf thali with traditional South Indian meal',
+  },
+  champagne: {
+    src: champagneToast,
+    width: 150,
+    alt: 'Clinking champagne coupes with floral garland — toast',
+  },
+};
+
+const EventDoodle = ({
+  decoration,
+  align,
+}: {
+  decoration: Exclude<DecorationKey, 'parrot'>;
+  align: 'left' | 'right' | 'center';
+}) => {
+  const config = DOODLE_MAP[decoration];
+  const justify =
+    align === 'left' ? 'flex-end' :
+    align === 'right' ? 'flex-start' :
+    'center';
+  return (
+    <div style={{
+      marginTop: '14px',
+      display: 'flex',
+      justifyContent: justify,
+    }}>
+      <img
+        src={config.src}
+        alt={config.alt}
+        loading="lazy"
+        style={{
+          width: `${config.width}px`,
+          height: 'auto',
+          mixBlendMode: 'multiply',
+          opacity: 0.95,
+        }}
+      />
+    </div>
+  );
 };
 
 const days: {
