@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import templeGopuram from '@/assets/temple-gopuram.png';
+import templeGopuram from '@/assets/temple-gopuram.webp';
 
 /**
  * Elegant temple reveal
