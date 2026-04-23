@@ -193,52 +193,182 @@ const WeddingCarIllustration = () => (
   </svg>
 );
 
-/* ─────────────── Thank You Card (deckled edge) ─────────────── */
+/* ─────────────── Thank You Card (vibrant ornate) ─────────────── */
 const ThankYouCard = () => {
   const { t } = useLanguage();
   return (
-  <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1 / 1' }}>
-    <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-      <defs>
-        <mask id="deckle-mask">
-          <path d="
-            M20,20
-            L380,20
-            L380,380
-            L20,380
-            Z
-          " fill="white" />
-        </mask>
-        <filter id="deckle">
-          <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="5" seed="2" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-      </defs>
-      <rect
-        x="20" y="20"
-        width="360" height="360"
-        fill="white"
-        filter="url(#deckle)"
-        rx="6"
-      />
-      <rect
-        x="20" y="20"
-        width="360" height="360"
-        fill="none"
-        stroke="#223348"
-        strokeWidth="28"
-        filter="url(#deckle)"
-        rx="6"
-      />
-    </svg>
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-12">
-      <h2 className="font-script text-5xl text-brand-red-dark mb-4">{t('thankyou.title')}</h2>
-      <p className="font-serif text-sm text-brand-red-dark/80 leading-relaxed mb-6">
-        {t('thankyou.desc').split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}
-      </p>
-      <p className="font-script text-3xl text-brand-red-dark">Nikila &amp; Sarthak</p>
-    </div>
-  </div>
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full max-w-lg mx-auto"
+      style={{ aspectRatio: '4 / 5' }}
+    >
+      {/* Outer gold gradient frame */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #D4A437 0%, #F4D06F 25%, #AB8A3B 50%, #F4D06F 75%, #D4A437 100%)',
+          padding: '6px',
+          boxShadow: '0 30px 80px -20px rgba(34, 51, 72, 0.4), 0 10px 30px -10px rgba(212, 164, 55, 0.5)',
+        }}
+      >
+        {/* Inner deep card */}
+        <div
+          className="relative w-full h-full overflow-hidden"
+          style={{
+            background: 'radial-gradient(ellipse at top, #2D4258 0%, #223348 50%, #1A2738 100%)',
+          }}
+        >
+          {/* Mandala backdrop */}
+          <svg
+            viewBox="0 0 400 500"
+            className="absolute inset-0 w-full h-full opacity-[0.12]"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            <g transform="translate(200, 250)" stroke="#F4D06F" fill="none" strokeWidth="0.6">
+              {[...Array(24)].map((_, i) => (
+                <line key={i} x1="0" y1="0" x2="0" y2="-220" transform={`rotate(${i * 15})`} />
+              ))}
+              {[40, 70, 100, 140, 180, 220].map((r) => (
+                <circle key={r} r={r} />
+              ))}
+              {[...Array(12)].map((_, i) => (
+                <ellipse key={i} cx="0" cy="-130" rx="14" ry="40" transform={`rotate(${i * 30})`} />
+              ))}
+              {[...Array(8)].map((_, i) => (
+                <path key={i} d="M 0 -200 Q 12 -180 0 -160 Q -12 -180 0 -200 Z" transform={`rotate(${i * 45})`} />
+              ))}
+            </g>
+          </svg>
+
+          {/* Inner gold border */}
+          <div
+            className="absolute inset-4 pointer-events-none"
+            style={{
+              border: '1px solid rgba(244, 208, 111, 0.5)',
+              boxShadow: 'inset 0 0 0 4px rgba(34, 51, 72, 1), inset 0 0 0 5px rgba(244, 208, 111, 0.25)',
+            }}
+          />
+
+          {/* Corner lotus ornaments */}
+          {([
+            { top: 12, left: 12, rot: 0 },
+            { top: 12, right: 12, rot: 90 },
+            { bottom: 12, right: 12, rot: 180 },
+            { bottom: 12, left: 12, rot: 270 },
+          ] as const).map((pos, i) => {
+            const { rot, ...placement } = pos;
+            return (
+              <svg
+                key={i}
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                className="absolute"
+                style={{ ...placement, transform: `rotate(${rot}deg)` }}
+              >
+                <g fill="none" stroke="#F4D06F" strokeWidth="1" strokeLinecap="round">
+                  <path d="M2 2 L18 2 M2 2 L2 18" />
+                  <path d="M6 6 Q14 6 14 14 Q22 14 22 22" opacity="0.7" />
+                  <circle cx="6" cy="6" r="1.5" fill="#F4D06F" />
+                  <path d="M10 4 Q12 8 16 6 M4 10 Q8 12 6 16" opacity="0.6" />
+                </g>
+              </svg>
+            );
+          })}
+
+          {/* Floating sparkles */}
+          {[
+            { top: '18%', left: '15%', delay: 0 },
+            { top: '25%', right: '18%', delay: 0.5 },
+            { bottom: '28%', left: '12%', delay: 1 },
+            { bottom: '20%', right: '15%', delay: 1.5 },
+          ].map((s, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={s as React.CSSProperties}
+              animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+              transition={{ duration: 2.5, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14">
+                <path d="M7 0 L8 6 L14 7 L8 8 L7 14 L6 8 L0 7 L6 6 Z" fill="#F4D06F" />
+              </svg>
+            </motion.div>
+          ))}
+
+          {/* Content */}
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-10 py-12">
+            {/* Top ornament */}
+            <div className="flex items-center gap-3 mb-6">
+              <div style={{ width: '40px', height: '1px', background: 'linear-gradient(90deg, transparent, #F4D06F)' }} />
+              <span style={{ color: '#F4D06F', fontSize: '20px', fontFamily: "'Tiro Devanagari Sanskrit', serif" }}>ॐ</span>
+              <div style={{ width: '40px', height: '1px', background: 'linear-gradient(90deg, #F4D06F, transparent)' }} />
+            </div>
+
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="font-script text-6xl md:text-7xl mb-5"
+              style={{
+                background: 'linear-gradient(135deg, #F4D06F 0%, #FFE9A8 50%, #D4A437 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 2px 8px rgba(244, 208, 111, 0.4))',
+                lineHeight: 1.1,
+              }}
+            >
+              {t('thankyou.title')}
+            </motion.h2>
+
+            {/* Decorative divider */}
+            <div className="flex items-center gap-2 mb-6">
+              <div style={{ width: '50px', height: '1px', background: '#AB8A3B' }} />
+              <div style={{ width: '6px', height: '6px', background: '#F4D06F', transform: 'rotate(45deg)' }} />
+              <div style={{ width: '8px', height: '8px', border: '1px solid #F4D06F', transform: 'rotate(45deg)' }} />
+              <div style={{ width: '6px', height: '6px', background: '#F4D06F', transform: 'rotate(45deg)' }} />
+              <div style={{ width: '50px', height: '1px', background: '#AB8A3B' }} />
+            </div>
+
+            <p
+              className="font-serif text-base md:text-lg leading-relaxed mb-8"
+              style={{ color: '#F6F0E6', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic' }}
+            >
+              {t('thankyou.desc').split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
+            </p>
+
+            <p
+              className="font-script text-4xl md:text-5xl"
+              style={{
+                background: 'linear-gradient(135deg, #FFE9A8 0%, #F4D06F 50%, #D4A437 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                lineHeight: 1.3,
+              }}
+            >
+              Nikila &amp; Sarthak
+            </p>
+
+            {/* Bottom ornament */}
+            <div className="flex items-center gap-3 mt-6">
+              <div style={{ width: '30px', height: '1px', background: 'linear-gradient(90deg, transparent, #AB8A3B)' }} />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2 Q14 6 10 10 Q6 6 10 2 Z M10 10 Q14 14 10 18 Q6 14 10 10 Z M2 10 Q6 6 10 10 Q6 14 2 10 Z M10 10 Q14 6 18 10 Q14 14 10 10 Z" fill="#F4D06F" opacity="0.8" />
+              </svg>
+              <div style={{ width: '30px', height: '1px', background: 'linear-gradient(90deg, #AB8A3B, transparent)' }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
