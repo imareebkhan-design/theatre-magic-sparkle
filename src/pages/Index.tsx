@@ -7,6 +7,7 @@ import receptionVenueIllustration from '../assets/reception-venue-illustration.p
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
+import ParallaxTemple from '../components/ParallaxTemple';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
 import LanguageSwitcher from '../components/LanguageSwitcher';
@@ -503,11 +504,7 @@ export default function Index() {
 
               {/* ── SECTION 4: WEDDING TIMELINE ── */}
               <div style={{ background: '#F6F0E6', paddingTop: '64px' }}>
-                <VenueWatercolorFrame
-                  src={new URL('../assets/temple-gopuram.png', import.meta.url).href}
-                  alt="Colorful South Indian temple gopuram"
-                  caption="Sri Krishna Mahal Mantapa, Salem"
-                />
+                <ParallaxTemple caption="Sri Krishna Mahal Mantapa, Salem" />
               </div>
               <WeddingTimeline />
 
