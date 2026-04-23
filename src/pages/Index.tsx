@@ -75,11 +75,6 @@ const VenueIllustration = () => (
     style={{ display: 'block' }}
   />
 );
-    loading="lazy"
-    width={1024}
-    height={640}
-  />
-);
 
 /* ─────────────── Menu Ribbon Frame SVG ─────────────── */
 const MenuRibbonFrame = () => (
