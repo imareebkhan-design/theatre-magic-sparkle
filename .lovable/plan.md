@@ -1,57 +1,60 @@
 
 
-# Add Doodles to Every Timeline Event
+## Replace Envelope with Floral Envelope + Ribbon-Pull Reveal
 
-Currently 3 of 8 events have doodles (Engagement, Baraat, Muhurtham). The remaining 5 events feel bare by comparison. I'll create a matching watercolor doodle for each remaining function, picked to symbolize its ritual meaning, and render them with the same style treatment already established (`mixBlendMode: multiply`, soft opacity, ~130–170px wide, side-aligned with the event card).
+Replace the existing wax-seal envelope intro with the user's floral envelope artwork. The user touches/drags the pink ribbon to "untie" it — this triggers the wax seal cracking from the bottom up, the envelope flap opening, and the hero section emerging.
 
-## Doodle assignments
+### What will be built
 
-| Day | Event | Symbol & meaning |
-|---|---|---|
-| 01 | Engagement | ✅ already done — hands exchanging rings |
-| 01 | Baraat | ✅ already done — parrot on branch |
-| 01 | **Pre-Wedding Reception** | 🆕 **Lit diya / oil lamp with flame** — evening celebration, light, festivity |
-| 01 | **Kankana Dharana** | 🆕 **Turmeric-soaked sacred thread / kankanam** tied around a wrist — literal ritual symbol |
-| 02 | Muhurtham | ✅ already done — kalash |
-| 02 | **Aashirvadham** | 🆕 **Showering rice & flower petals from cupped elder hands** — the blessing gesture |
-| 02 | **Sadagungal** | 🆕 **Banana leaf with traditional South Indian thali** (rice mound, side bowls) — post-wedding sadya/lunch ritual |
-| 03 | **Reception Party** | 🆕 **Pair of champagne coupes / clinking glasses with floral garland** — formal evening celebration |
+**1. New asset**
+- Save the uploaded floral envelope PNG to `src/assets/envelope-floral.png`.
+- Process with ImageMagick to remove the white background and the "photo" watermark text (floodfill + crop), producing a clean transparent PNG.
 
-All doodles will follow the established **soft watercolor + ink line** aesthetic (same look as the engagement hands and kalash) so the page reads as one cohesive illustrated set.
+**2. Rewrite `src/components/EnvelopeReveal.tsx`**
 
-## What the user will see
+Replace the entire SVG/CSS envelope construction with a layered composition built on top of the floral envelope image. Public API (`onOpen`, `children`) stays identical so `Index.tsx` doesn't change.
 
-Each event card on the timeline now has a small hand-drawn doodle tucked beneath its description, aligned to the inner edge (toward the center line). The doodles fade-in with the existing card animation, giving the whole timeline a warm, illustrated-storybook feel — every ceremony visually represented, not just the three that currently are.
+**Visual structure (z-stacked):**
+```text
+  ┌─────────────────────────────┐
+  │  Floral envelope image      │  ← base layer (PNG)
+  │   ┌──────────────┐          │
+  │   │  ribbon (L)  │ribbon(R) │  ← two halves of the pink ribbon
+  │   └──────┬───────┘          │     (interactive — drag/tap)
+  │       [wax seal]            │  ← seal mask, reveals from bottom-up
+  └─────────────────────────────┘
+```
 
-## Technical changes
+The pink ribbon and wax seal in the source image are masked out (via a darker overlay or by re-drawing them on top as motion elements), so we can animate them independently while the floral envelope body stays static.
 
-**New asset files** (placed in `src/assets/`):
-- `reception-diya.png` — oil lamp doodle (Pre-Wedding Reception)
-- `kankana-thread.png` — turmeric thread on wrist (Kankana Dharana)
-- `blessing-hands.png` — hands showering petals/rice (Aashirvadham)
-- `banana-leaf-meal.png` — banana leaf thali (Sadagungal)
-- `champagne-toast.png` — clinking glasses with garland (Reception Party)
+**Interaction & animation sequence:**
+1. **Idle**: envelope floats with gentle breathing motion. After ~2s a "Pull the ribbon" hint appears near the bow.
+2. **User pulls ribbon**: ribbon is a draggable element (Framer Motion `drag="x"` with elastic constraints) OR a simple tap target on mobile. Either gesture triggers `stage = 'opening'`.
+3. **Ribbon opens** (0.0–0.7s): the two ribbon halves slide apart left/right, the bow loosens and falls away with rotation + opacity fade.
+4. **Seal cracks bottom-up** (0.5–1.4s): the wax seal is masked with an animated `clip-path: inset(X% 0 0 0)` that progresses from `inset(0 0 0 0)` → `inset(100% 0 0 0)`, revealing nothing underneath (seal "melts away" upward). A subtle crack SVG line draws across it as it disappears.
+5. **Flap opens** (1.2–2.0s): the top triangular flap of the floral envelope rotates open via `rotateX(-170deg)` with `transformOrigin: top`.
+6. **Hero emerges** (1.8–2.6s): a card containing "Nikila & Sarthak / Save the Date" slides up from inside the envelope, scales up, and cross-fades into the full hero — same final transition as today.
+7. `onOpen()` fires, scroll unlocks, hero is interactive.
 
-These will be generated as watercolor-style PNGs (transparent background) matching the tone/saturation of the existing `engagement-hands.jpg` and `kalash.jpg`.
+**Reduced-motion fallback**: tap ribbon → 400ms fade to revealed (kept as today).
 
-**`src/components/WeddingTimeline.tsx`** — single file edit:
-1. Import the 5 new assets.
-2. Expand the `decoration` union type:
-   ```ts
-   decoration?: 'parrot' | 'engagement-hands' | 'kalash'
-              | 'diya' | 'kankana' | 'blessing-hands'
-              | 'banana-leaf' | 'champagne';
-   ```
-3. Add `decoration: '...'` to each of the 5 currently-bare event objects.
-4. Refactor the three repeated `event.decoration === '...'` JSX blocks into a single `<EventDoodle>` helper driven by a `{ key → { src, width, alt } }` map — keeps the file clean as we go from 2 image cases to 7.
-5. The single-event Day 03 layout (Reception Party) currently has no decoration slot — add the same `<EventDoodle>` render below its `<DressCodeLine>`, centered.
+### Technical details
 
-**Files NOT touched:** `SouthIndianIllustrations.tsx`, `ParallaxTemple.tsx`, `Index.tsx`, theme/tailwind config, all other components.
+- Framer Motion `drag` with `dragConstraints={{ left: -80, right: 80 }}`, `dragElastic={0.4}`, `onDragEnd` checks if `info.offset.x` exceeds threshold (±40px) → trigger open. Tap also triggers open for accessibility.
+- Seal bottom-up reveal uses `animate={{ clipPath: 'inset(100% 0 0 0)' }}` over 0.9s with `ease: [0.4, 0, 0.2, 1]`.
+- Ribbon halves: two absolutely positioned `<motion.div>`s with the pink ribbon redrawn as CSS gradient strips (`linear-gradient(180deg, #E8A3B8, #D17F95)`) plus a small SVG bow on top that fades out on open.
+- Flap: a CSS-only triangular `clip-path: polygon(0 0, 100% 0, 50% 100%)` overlay sized to the top ~55% of the envelope, gradient-tinted to match the cream paper of the floral image, animated with `rotateX`.
+- Image processing command (run during implementation):
+  ```bash
+  magick src/assets/envelope-floral-raw.jpg \
+    -fuzz 12% -fill none -draw "matte 0,0 floodfill" \
+    -trim +repage src/assets/envelope-floral.png
+  ```
+- Keep the existing scroll-lock, keyboard (`Enter`/`Space`) accessibility, language hint key (`envelope.tap` → updated copy "Pull the ribbon").
+- No changes needed in `Index.tsx`, `App.tsx`, or routing.
 
-## Style consistency rules applied to every doodle
-
-- `mixBlendMode: 'multiply'` + `opacity: 0.95` — blends with the `#F6F0E6` cream background
-- Width 130–170px (smaller for tall portraits like diya/kankana, wider for horizontal scenes like banana leaf/toast)
-- Aligned to the inner edge of the event card (toward the center timeline) so the doodle "points" into the spine of the page
-- No new animations — inherits the parent card's `whileInView` fade-in
+### Files touched
+- **Create**: `src/assets/envelope-floral-raw.jpg`, `src/assets/envelope-floral.png`
+- **Edit**: `src/components/EnvelopeReveal.tsx` (full rewrite of internals; same exported API)
+- **Edit**: `src/contexts/LanguageContext.tsx` (update `envelope.tap` copy to "Pull the ribbon to open")
 
