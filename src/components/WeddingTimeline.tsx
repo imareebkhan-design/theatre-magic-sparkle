@@ -199,6 +199,7 @@ const days: {
         side: "left",
         dressCode: "Formal",
         colors: ["#0F4D3A", "#E8D49A"],
+        decoration: "champagne",
       },
     ],
   },
