@@ -5,7 +5,7 @@ import {
 } from './SouthIndianIllustrations';
 import engagementHands from '@/assets/engagement-hands.jpg';
 import kalash from '@/assets/kalash.jpg';
-import receptionProposal from '@/assets/reception-proposal.jpg';
+import receptionProposal from '@/assets/reception-proposal.png';
 import kankanaThread from '@/assets/kankana-thread.png';
 import blessingHands from '@/assets/blessing-hands.png';
 import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
@@ -53,8 +53,8 @@ const DOODLE_MAP: Record<
   },
   diya: {
     src: receptionProposal,
-    width: 150,
-    alt: 'Illustration of couple at pre-wedding reception',
+    width: 170,
+    alt: 'Illustration of a marriage proposal — pre-wedding reception',
   },
   kankana: {
     src: kankanaThread,
