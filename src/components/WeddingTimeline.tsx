@@ -49,8 +49,8 @@ const DOODLE_MAP: Record<
   },
   kalash: {
     src: baraatFeet,
-    width: 160,
-    alt: 'Watercolor of bride and groom feet with anklets — muhurtham',
+    width: 180,
+    alt: 'Illustration of bride and groom in wedding attire — muhurtham',
   },
   diya: {
     src: receptionProposal,
