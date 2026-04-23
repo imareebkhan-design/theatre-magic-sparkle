@@ -5,7 +5,7 @@ import {
 } from './SouthIndianIllustrations';
 import engagementHands from '@/assets/engagement-hands.jpg';
 import kalash from '@/assets/kalash.jpg';
-import receptionDiya from '@/assets/reception-diya.png';
+import receptionProposal from '@/assets/reception-proposal.jpg';
 import kankanaThread from '@/assets/kankana-thread.png';
 import blessingHands from '@/assets/blessing-hands.png';
 import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
@@ -52,9 +52,9 @@ const DOODLE_MAP: Record<
     alt: 'Sacred kalash with coconut and mango leaves',
   },
   diya: {
-    src: receptionDiya,
-    width: 130,
-    alt: 'Lit brass diya — evening celebration',
+    src: receptionProposal,
+    width: 150,
+    alt: 'Illustration of couple at pre-wedding reception',
   },
   kankana: {
     src: kankanaThread,
