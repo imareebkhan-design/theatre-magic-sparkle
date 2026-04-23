@@ -7,6 +7,7 @@ import receptionVenueIllustration from '../assets/reception-venue-illustration.p
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
+import ParallaxTemple from '../components/ParallaxTemple';
 import WeddingShlokas from '../components/WeddingShlokas';
 import { NameLetterStagger, CoupleParallax } from '../components/HeroAnimations';
 import LanguageSwitcher from '../components/LanguageSwitcher';
