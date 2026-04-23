@@ -1,7 +1,6 @@
 
 import EnvelopeReveal from '../components/EnvelopeReveal';
 import FlockingBirds from '../components/FlockingBirds';
-import EdgeDoodleOverlay from '../components/EdgeDoodleOverlay';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
@@ -269,7 +268,7 @@ const Section = ({ children, className = '', dark = false }: { children: React.R
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: '-100px' }}
     transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-    className={`w-full py-24 px-6 flex flex-col items-center text-center ${dark ? 'bg-[#EDEAE6]' : 'bg-[#F8F4ED]'} ${className}`}
+    className={`w-full py-24 px-6 flex flex-col items-center text-center ${dark ? 'bg-[#EDEAE6]' : 'bg-[#F4EDE4]'} ${className}`}
   >
     {children}
   </motion.section>
@@ -317,8 +316,7 @@ export default function Index() {
   }, [isPlaying]);
 
   return (
-    <div className="relative min-h-screen bg-[#F8F4ED] text-brand-dark overflow-hidden font-sans">
-      <EdgeDoodleOverlay />
+    <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
       <FlockingBirds />
 
       {/* Fixed Header */}
@@ -711,12 +709,12 @@ export default function Index() {
               </Section>
 
               {/* Kolam divider before footer */}
-              <div style={{ background: '#F8F4ED', padding: '8px 0' }}>
+              <div style={{ background: '#F4EDE4', padding: '8px 0' }}>
                 <KolamDivider color="#E8651A" />
               </div>
 
               {/* ── SECTION 9: FOOTER – THANK YOU CARD ── */}
-              <section className="w-full py-24 px-8 flex flex-col items-center bg-[#F8F4ED]">
+              <section className="w-full py-24 px-8 flex flex-col items-center bg-[#F4EDE4]">
                 <div className="max-w-md w-full">
                   <ThankYouCard />
                 </div>
