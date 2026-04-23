@@ -3,7 +3,7 @@ import EnvelopeReveal from '../components/EnvelopeReveal';
 import FlockingBirds from '../components/FlockingBirds';
 import templeIllustration from '../assets/temple-gopuram.png';
 import coupleIllustration from '../assets/couple-illustration.png';
-import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
+import receptionVenueIllustration from '../assets/reception-venue-doodle.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import WeddingTimeline from '../components/WeddingTimeline';
