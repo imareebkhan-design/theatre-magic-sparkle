@@ -10,7 +10,7 @@ import receptionProposal from '@/assets/reception-proposal.png';
 import kankanaThread from '@/assets/kankana-thread.png';
 import blessingHands from '@/assets/blessing-hands.png';
 import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
-import champagneToast from '@/assets/champagne-toast.png';
+import champagneToast from '@/assets/doodle-reception-party.png';
 import baraatFeet from '@/assets/baraat-couple.png';
 import muhurthamFeet from '@/assets/muhurtham-feet.png';
 
@@ -70,7 +70,7 @@ const DOODLE_MAP: Record<
   },
   champagne: {
     src: champagneToast,
-    alt: 'Clinking champagne coupes with floral garland — toast',
+    alt: 'Illustrated wedding party with bride, groom and families celebrating',
   },
 };
 
