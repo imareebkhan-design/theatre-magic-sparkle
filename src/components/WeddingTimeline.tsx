@@ -1,4 +1,9 @@
 import { motion } from 'framer-motion';
+import {
+  SouthIndianDayFrame,
+  MarigoldBellString,
+  ParrotOnBranch,
+} from './SouthIndianIllustrations';
 
 const days = [
   {
