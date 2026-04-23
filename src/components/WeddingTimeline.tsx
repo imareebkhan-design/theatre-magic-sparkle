@@ -3,16 +3,16 @@ import {
   SouthIndianDayFrame,
   MarigoldBellString,
 } from './SouthIndianIllustrations';
-import engagementHands from '@/assets/engagement-ring.png';
-import handsExchangingRings from '@/assets/engagement-hands.jpg';
-import kalash from '@/assets/kalash.jpg';
-import receptionProposal from '@/assets/reception-proposal.png';
-import kankanaThread from '@/assets/kankana-thread.png';
-import blessingHands from '@/assets/blessing-hands.png';
-import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
-import champagneToast from '@/assets/doodle-reception-party.png';
-import baraatFeet from '@/assets/baraat-couple.png';
-import muhurthamFeet from '@/assets/muhurtham-feet.png';
+import engagementHands from '@/assets/engagement-ring.webp';
+import handsExchangingRings from '@/assets/engagement-hands.webp';
+import kalash from '@/assets/kalash.webp';
+import receptionProposal from '@/assets/reception-proposal.webp';
+import kankanaThread from '@/assets/kankana-thread.webp';
+import blessingHands from '@/assets/blessing-hands.webp';
+import bananaLeafMeal from '@/assets/banana-leaf-meal.webp';
+import champagneToast from '@/assets/doodle-reception-party.webp';
+import baraatFeet from '@/assets/baraat-couple.webp';
+import muhurthamFeet from '@/assets/muhurtham-feet.webp';
 
 type DecorationKey =
   | 'baraat-feet'
@@ -104,7 +104,9 @@ const EventDoodle = ({
         <img
           src={config.src}
           alt={config.alt}
-          loading="lazy"
+          loading="eager"
+          decoding="async"
+          fetchPriority="low"
           style={{
             maxWidth: '100%',
             maxHeight: '100%',
