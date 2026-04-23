@@ -19,6 +19,7 @@ import {
   GopuramAccent,
   BananaLeafFrame,
   KolamCorner,
+  VenueWatercolorFrame,
 } from '../components/SouthIndianIllustrations';
 
 /* ─────────────── Countdown Component ─────────────── */
