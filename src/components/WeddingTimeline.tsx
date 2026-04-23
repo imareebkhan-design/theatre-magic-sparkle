@@ -57,9 +57,9 @@ const DOODLE_MAP: Record<
     alt: 'Illustration of a marriage proposal — pre-wedding reception',
   },
   kankana: {
-    src: kankanaThread,
-    width: 120,
-    alt: 'Turmeric-soaked sacred thread — kankanam',
+    src: engagementHands,
+    width: 170,
+    alt: 'Hands exchanging rings — kankana dharana',
   },
   'blessing-hands': {
     src: blessingHands,
