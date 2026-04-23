@@ -1,7 +1,7 @@
 
 import EnvelopeReveal from '../components/EnvelopeReveal';
 import FlockingBirds from '../components/FlockingBirds';
-import templeIllustration from '../assets/temple-illustration.png';
+import templeIllustration from '../assets/temple-gopuram.png';
 import coupleIllustration from '../assets/couple-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -70,11 +70,9 @@ function Countdown() {
 const VenueIllustration = () => (
   <img
     src={templeIllustration}
-    alt="South Indian Temple Illustration"
-    className="w-full max-w-md mx-auto"
-    loading="lazy"
-    width={1024}
-    height={640}
+    alt="South Indian temple gopuram"
+    className="w-full max-w-xs mx-auto"
+    style={{ display: 'block' }}
   />
 );
 
