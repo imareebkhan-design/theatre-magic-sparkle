@@ -4,6 +4,7 @@ import {
   MarigoldBellString,
   ParrotOnBranch,
 } from './SouthIndianIllustrations';
+import engagementHands from '@/assets/engagement-hands.jpg';
 
 type EventItem = {
   time: string;
@@ -12,7 +13,7 @@ type EventItem = {
   side: 'left' | 'right';
   dressCode?: string;
   colors?: string[];
-  decoration?: 'parrot';
+  decoration?: 'parrot' | 'engagement-hands';
 };
 
 const days: {
@@ -37,6 +38,7 @@ const days: {
         side: "left",
         dressCode: "Indo-Western",
         colors: ["#F4D5C5", "#FFF8EC"],
+        decoration: "engagement-hands",
       },
       {
         time: "5:30 PM – 7:00 PM",
@@ -418,6 +420,24 @@ export default function WeddingTimeline() {
                         opacity: 0.9,
                       }}>
                         <ParrotOnBranch />
+                      </div>
+                    )}
+                    {event.decoration === 'engagement-hands' && (
+                      <div style={{
+                        marginTop: '14px',
+                        display: 'flex',
+                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
+                      }}>
+                        <img
+                          src={engagementHands}
+                          alt="Hands exchanging rings — engagement"
+                          style={{
+                            width: '170px',
+                            height: 'auto',
+                            mixBlendMode: 'multiply',
+                            opacity: 0.95,
+                          }}
+                        />
                       </div>
                     )}
                   </div>
