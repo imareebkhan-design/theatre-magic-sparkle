@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion, PanInfo } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import envelopeFloral from '@/assets/envelope-floral.png';
+import envelopeFloral from '@/assets/envelope-floral.webp';
 
 interface EnvelopeRevealProps {
   onOpen?: () => void;
@@ -163,6 +163,8 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                   src={envelopeFloral}
                   alt="Floral wedding envelope"
                   draggable={false}
+                  decoding="async"
+                  fetchPriority="high"
                   style={{
                     width: '100%',
                     height: '100%',
