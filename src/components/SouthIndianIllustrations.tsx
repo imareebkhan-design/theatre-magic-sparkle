@@ -4,7 +4,7 @@
  * Style: soft gouache/watercolor, warm festive palette
  * Elements: jasmine, kolam, banana leaves, gopuram, couple, brass lamps
  */
-import coupleMandap from '@/assets/couple-mandap.png';
+import coupleMandap from '@/assets/couple-mandap.webp';
 
 /* ─── COLOR PALETTE ─── */
 // Saffron: #E8651A
