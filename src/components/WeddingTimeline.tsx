@@ -34,48 +34,42 @@ type EventItem = {
   decoration?: DecorationKey;
 };
 
+const DOODLE_SIZE = 160;
+
 const DOODLE_MAP: Record<
   DecorationKey,
-  { src: string; width: number; alt: string }
+  { src: string; alt: string }
 > = {
   'baraat-feet': {
     src: baraatFeet,
-    width: 180,
     alt: 'Illustration of bride and groom in wedding attire — baraat',
   },
   'engagement-hands': {
     src: engagementHands,
-    width: 140,
     alt: 'Engagement ring in floral-adorned box',
   },
   kalash: {
     src: muhurthamFeet,
-    width: 170,
     alt: 'Watercolor of bride and groom feet with anklets — muhurtham',
   },
   diya: {
     src: receptionProposal,
-    width: 170,
     alt: 'Illustration of a marriage proposal — pre-wedding reception',
   },
   kankana: {
     src: handsExchangingRings,
-    width: 170,
     alt: 'Hands exchanging rings — kankana dharana',
   },
   'blessing-hands': {
     src: blessingHands,
-    width: 160,
     alt: 'Cupped hands showering rice and petals — blessing',
   },
   'banana-leaf': {
     src: bananaLeafMeal,
-    width: 170,
     alt: 'Banana leaf thali with traditional South Indian meal',
   },
   champagne: {
     src: champagneToast,
-    width: 150,
     alt: 'Clinking champagne coupes with floral garland — toast',
   },
 };
@@ -94,21 +88,32 @@ const EventDoodle = ({
     'center';
   return (
     <div style={{
-      marginTop: '14px',
+      marginTop: '12px',
       display: 'flex',
       justifyContent: justify,
     }}>
-      <img
-        src={config.src}
-        alt={config.alt}
-        loading="lazy"
-        style={{
-          width: `${config.width}px`,
-          height: 'auto',
-          mixBlendMode: 'multiply',
-          opacity: 0.95,
-        }}
-      />
+      <div style={{
+        width: `${DOODLE_SIZE}px`,
+        height: `${DOODLE_SIZE}px`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <img
+          src={config.src}
+          alt={config.alt}
+          loading="lazy"
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            mixBlendMode: 'multiply',
+            opacity: 0.95,
+          }}
+        />
+      </div>
     </div>
   );
 };
