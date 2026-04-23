@@ -1,85 +1,33 @@
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, PanInfo } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-/* ── Wax Seal Half (left or right) ── */
-const SealHalf = ({ side, broken }: { side: 'left' | 'right'; broken: boolean }) => {
-  const isLeft = side === 'left';
-  return (
-    <motion.div
-      initial={{ x: 0, rotate: 0, opacity: 1 }}
-      animate={
-        broken
-          ? {
-              x: isLeft ? -60 : 60,
-              y: 40,
-              rotate: isLeft ? -35 : 35,
-              opacity: 0,
-            }
-          : { x: 0, rotate: 0, opacity: 1 }
-      }
-      transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1], delay: broken ? 0.05 : 0 }}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: isLeft ? 0 : '50%',
-        width: '50%',
-        height: '100%',
-        overflow: 'hidden',
-        transformOrigin: isLeft ? 'right center' : 'left center',
-      }}
-    >
-      <svg
-        viewBox="0 0 120 120"
-        width="120"
-        height="120"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: isLeft ? 0 : '-100%',
-        }}
-      >
-        <defs>
-          <radialGradient id={`sealGrad-${side}`} cx="36%" cy="30%" r="72%">
-            <stop offset="0%" stopColor="#C8313A" />
-            <stop offset="45%" stopColor="#9E1B23" />
-            <stop offset="100%" stopColor="#5E0E14" />
-          </radialGradient>
-          <filter id={`sealShadow-${side}`}>
-            <feDropShadow dx="0" dy="3" stdDeviation="3.5" floodColor="rgba(70,10,15,0.5)" />
-          </filter>
-        </defs>
-        {/* Organic wax blob with irregular edges */}
-        <path
-          d="M60,6 C76,7 92,16 100,30 C110,42 114,58 110,74 C106,90 94,104 80,110 C68,115 52,115 40,110 C26,104 14,92 9,76 C5,60 8,42 18,30 C26,18 44,8 60,6 Z"
-          fill={`url(#sealGrad-${side})`}
-          filter={`url(#sealShadow-${side})`}
-        />
-        {/* Inner ring imprint */}
-        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(255,200,200,0.18)" strokeWidth="1.5" />
-        {/* Monogram */}
-        <text
-          x="60"
-          y="74"
-          textAnchor="middle"
-          fontFamily="Great Vibes, cursive"
-          fontSize="42"
-          fill="#F2D6B0"
-          opacity="0.92"
-        >
-          N|S
-        </text>
-        {/* Highlight */}
-        <ellipse cx="42" cy="36" rx="18" ry="10" fill="rgba(255,255,255,0.22)" />
-      </svg>
-    </motion.div>
-  );
-};
+import envelopeFloral from '@/assets/envelope-floral.png';
 
 interface EnvelopeRevealProps {
   onOpen?: () => void;
   children: React.ReactNode;
 }
+
+/* ── Bow SVG (sits on top of the ribbon junction) ── */
+const Bow = () => (
+  <svg viewBox="0 0 80 60" width="80" height="60" style={{ overflow: 'visible' }}>
+    <defs>
+      <linearGradient id="bowGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#F2B8C8" />
+        <stop offset="50%" stopColor="#E89AAF" />
+        <stop offset="100%" stopColor="#C97389" />
+      </linearGradient>
+    </defs>
+    {/* left loop */}
+    <path d="M40,30 C20,8 4,18 8,30 C4,42 22,48 40,30 Z" fill="url(#bowGrad)" stroke="#9E5468" strokeWidth="0.6" />
+    {/* right loop */}
+    <path d="M40,30 C60,8 76,18 72,30 C76,42 58,48 40,30 Z" fill="url(#bowGrad)" stroke="#9E5468" strokeWidth="0.6" />
+    {/* knot */}
+    <ellipse cx="40" cy="30" rx="6" ry="8" fill="#B8788A" stroke="#7E4658" strokeWidth="0.6" />
+    {/* highlight */}
+    <ellipse cx="38" cy="27" rx="2" ry="3" fill="rgba(255,255,255,0.4)" />
+  </svg>
+);
 
 export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
   const { t } = useLanguage();
@@ -88,23 +36,15 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
   const [showHint, setShowHint] = useState(false);
   const timersRef = useRef<number[]>([]);
 
-  // Lock scroll while envelope is closed
   useEffect(() => {
-    if (stage !== 'revealed') {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    document.body.style.overflow = stage !== 'revealed' ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [stage]);
 
-  // Show "tap to open" hint after delay
   useEffect(() => {
     if (stage === 'idle') {
-      const t = window.setTimeout(() => setShowHint(true), 2200);
-      return () => window.clearTimeout(t);
+      const tm = window.setTimeout(() => setShowHint(true), 1800);
+      return () => window.clearTimeout(tm);
     }
   }, [stage]);
 
@@ -113,30 +53,27 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
     setStage('opening');
 
     if (reduceMotion) {
-      const t = window.setTimeout(() => {
-        setStage('revealed');
-        onOpen?.();
-      }, 400);
-      timersRef.current.push(t);
+      const tm = window.setTimeout(() => { setStage('revealed'); onOpen?.(); }, 400);
+      timersRef.current.push(tm);
       return;
     }
 
-    // After full sequence, reveal
-    const t1 = window.setTimeout(() => {
-      setStage('revealed');
-      onOpen?.();
-    }, 2100);
-    timersRef.current.push(t1);
+    const tm = window.setTimeout(() => { setStage('revealed'); onOpen?.(); }, 2400);
+    timersRef.current.push(tm);
+  };
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (Math.abs(info.offset.x) > 35 || Math.abs(info.velocity.x) > 200) {
+      handleOpen();
+    }
   };
 
   useEffect(() => () => timersRef.current.forEach(clearTimeout), []);
 
-  const broken = stage !== 'idle';
   const opening = stage === 'opening' || stage === 'revealed';
 
   return (
     <>
-      {/* Children always mounted underneath; revealed via fade */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: stage === 'revealed' ? 1 : 0 }}
@@ -156,7 +93,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
             key="envelope-overlay"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             style={{
               position: 'fixed',
               inset: 0,
@@ -165,276 +102,284 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
               alignItems: 'center',
               justifyContent: 'center',
               background:
-                'radial-gradient(ellipse at center, #F8F1E6 0%, #EFE3CC 55%, #E0D0B0 100%)',
+                'radial-gradient(ellipse at center, #FBF4E8 0%, #F0E2C8 55%, #DCC9A4 100%)',
               overflow: 'hidden',
               padding: '24px',
             }}
           >
-            {/* Subtle ambient glow */}
+            {/* Ambient glow */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'radial-gradient(circle at 50% 45%, rgba(255,235,200,0.45) 0%, rgba(255,235,200,0) 60%)',
+                  'radial-gradient(circle at 50% 45%, rgba(255,235,200,0.5) 0%, rgba(255,235,200,0) 60%)',
                 pointerEvents: 'none',
               }}
             />
 
-            {/* 3D Stage */}
             <div
               style={{
-                perspective: '1800px',
+                position: 'relative',
                 width: '100%',
                 maxWidth: '460px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '32px',
+                gap: '24px',
               }}
             >
-              {/* Envelope wrapper — entry + breathing + hover */}
+              {/* Envelope assembly — slides up & fades on reveal */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 12 }}
+                initial={{ opacity: 0, scale: 0.94, y: 12 }}
                 animate={
-                  opening
-                    ? { opacity: 1, scale: 1, y: 0 }
-                    : {
-                        opacity: 1,
-                        scale: 1,
-                        y: [0, -6, 0],
-                      }
+                  stage === 'opening'
+                    ? { opacity: [1, 1, 0], scale: [1, 1.06, 1.15], y: [0, -20, -60] }
+                    : stage === 'idle'
+                    ? { opacity: 1, scale: 1, y: [0, -6, 0] }
+                    : { opacity: 0 }
                 }
                 transition={
-                  opening
-                    ? { duration: 0.4, ease: 'easeOut' }
-                    : {
-                        opacity: { duration: 0.8, ease: 'easeOut' },
-                        scale: { duration: 0.8, ease: 'easeOut' },
-                        y: {
-                          duration: 4.5,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        },
+                  stage === 'opening'
+                    ? { duration: 1.6, times: [0, 0.6, 1], ease: [0.4, 0, 0.2, 1], delay: 0.7 }
+                    : stage === 'idle'
+                    ? {
+                        opacity: { duration: 0.8 },
+                        scale: { duration: 0.8 },
+                        y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' },
                       }
+                    : { duration: 0.4 }
                 }
-                whileHover={
-                  !opening
-                    ? { rotateX: -6, rotateY: 4, scale: 1.02 }
-                    : undefined
-                }
-                onClick={handleOpen}
-                onTap={handleOpen}
-                role="button"
-                aria-label="Open invitation"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') handleOpen();
-                }}
                 style={{
                   position: 'relative',
                   width: '100%',
-                  aspectRatio: '1.5 / 1',
-                  cursor: stage === 'idle' ? 'pointer' : 'default',
-                  transformStyle: 'preserve-3d',
-                  willChange: 'transform',
+                  aspectRatio: '3 / 4',
                   filter:
                     'drop-shadow(0 30px 40px rgba(90,60,30,0.28)) drop-shadow(0 10px 18px rgba(90,60,30,0.18))',
                 }}
               >
-                {/* Card — slides up from inside the envelope, then scales to fill viewport */}
-                <motion.div
-                  initial={{ y: '0%', scale: 1, opacity: 1 }}
-                  animate={
-                    stage === 'opening'
-                      ? {
-                          y: ['0%', '-38%', '-38%', '-50%'],
-                          scale: [1, 1, 1.05, 8],
-                          opacity: [1, 1, 1, 0],
-                        }
-                      : { y: '0%', scale: 1 }
-                  }
-                  transition={
-                    stage === 'opening'
-                      ? {
-                          duration: 1.6,
-                          times: [0, 0.55, 0.65, 1],
-                          ease: [0.34, 1.2, 0.64, 1],
-                          delay: 0.55,
-                        }
-                      : { duration: 0.3 }
-                  }
+                {/* Floral envelope base image */}
+                <img
+                  src={envelopeFloral}
+                  alt="Floral wedding envelope"
+                  draggable={false}
                   style={{
-                    position: 'absolute',
-                    top: '8%',
-                    left: '8%',
-                    width: '84%',
-                    height: '84%',
-                    background:
-                      'linear-gradient(180deg, #FBF6EC 0%, #F2E8D3 100%)',
-                    borderRadius: '4px',
-                    boxShadow:
-                      'inset 0 0 24px rgba(180,140,80,0.12), 0 2px 6px rgba(0,0,0,0.08)',
-                    zIndex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '14% 10% 30%',
-                    textAlign: 'center',
-                    transformOrigin: 'center center',
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'Great Vibes, cursive',
-                      fontSize: 'clamp(22px, 4vw, 34px)',
-                      color: '#7A2F3E',
-                      lineHeight: 1,
-                      marginBottom: '8px',
-                    }}
-                  >
-                    Nikila &amp; Sarthak
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: '10px',
-                      letterSpacing: '0.3em',
-                      color: '#9E1B23',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    Save the Date
-                  </div>
-                </motion.div>
-
-                {/* Back pocket of envelope */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background:
-                      'linear-gradient(135deg, #F5EFE4 0%, #EAE0CC 100%)',
-                    borderRadius: '6px',
-                    boxShadow:
-                      'inset 0 -2px 4px rgba(120,90,50,0.12), inset 0 2px 4px rgba(255,255,255,0.5)',
-                    zIndex: 0,
-                  }}
-                />
-
-                {/* Front pocket panel — V-shape clip with tip meeting the flap tip */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background:
-                      'linear-gradient(165deg, #F0E6D2 0%, #E2D5B8 100%)',
-                    borderRadius: '6px',
-                    clipPath:
-                      'polygon(0 0, 0 100%, 100% 100%, 100% 0, 100% 8%, 50% 62%, 0 8%)',
-                    boxShadow: 'inset 0 2px 6px rgba(120,90,50,0.18)',
-                    zIndex: 2,
-                  }}
-                />
-
-                {/* Diagonal seam lines from envelope corners to flap tip */}
-                <svg
-                  viewBox="0 0 150 100"
-                  preserveAspectRatio="none"
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
                     width: '100%',
                     height: '100%',
-                    zIndex: 3,
+                    objectFit: 'contain',
+                    userSelect: 'none',
+                    pointerEvents: 'none',
+                  }}
+                />
+
+                {/* Wax seal — bottom-up reveal mask. Centered roughly where the bow sits. */}
+                <motion.div
+                  initial={{ clipPath: 'inset(0% 0 0 0)' }}
+                  animate={{
+                    clipPath: opening ? 'inset(100% 0 0 0)' : 'inset(0% 0 0 0)',
+                  }}
+                  transition={{
+                    duration: 0.9,
+                    ease: [0.4, 0, 0.2, 1],
+                    delay: opening ? 0.55 : 0,
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: '46%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '70px',
+                    height: '70px',
                     pointerEvents: 'none',
                   }}
                 >
-                  <line
-                    x1="0"
-                    y1="8"
-                    x2="75"
-                    y2="62"
-                    stroke="rgba(140,100,60,0.28)"
-                    strokeWidth="0.4"
-                  />
-                  <line
-                    x1="150"
-                    y1="8"
-                    x2="75"
-                    y2="62"
-                    stroke="rgba(140,100,60,0.28)"
-                    strokeWidth="0.4"
-                  />
-                </svg>
+                  <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <defs>
+                      <radialGradient id="waxGrad" cx="38%" cy="32%" r="72%">
+                        <stop offset="0%" stopColor="#C8313A" />
+                        <stop offset="50%" stopColor="#9E1B23" />
+                        <stop offset="100%" stopColor="#5E0E14" />
+                      </radialGradient>
+                    </defs>
+                    <path
+                      d="M50,5 C66,6 82,14 90,28 C100,40 104,56 100,72 C96,86 84,98 70,102 C58,106 42,106 30,102 C16,98 4,88 0,74 C-4,58 0,40 10,28 C18,16 34,6 50,5 Z"
+                      fill="url(#waxGrad)"
+                    />
+                    <circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,200,200,0.2)" strokeWidth="1.4" />
+                    <text
+                      x="50"
+                      y="62"
+                      textAnchor="middle"
+                      fontFamily="Great Vibes, cursive"
+                      fontSize="34"
+                      fill="#F2D6B0"
+                    >
+                      N|S
+                    </text>
+                  </svg>
+                </motion.div>
 
-                {/* Top flap — folds upward (rotateX) */}
-                <motion.div
-                  initial={{ rotateX: 0 }}
-                  animate={{ rotateX: opening ? -178 : 0 }}
-                  transition={{
-                    duration: 0.95,
-                    ease: [0.76, 0, 0.24, 1],
-                    delay: opening ? 0.35 : 0,
+                {/* Crack line as seal melts away */}
+                <motion.svg
+                  viewBox="0 0 100 100"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: opening ? [0, 0.7, 0] : 0 }}
+                  transition={{ duration: 0.9, delay: 0.55, times: [0, 0.4, 1] }}
+                  style={{
+                    position: 'absolute',
+                    top: '46%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '70px',
+                    height: '70px',
+                    pointerEvents: 'none',
                   }}
+                >
+                  <path
+                    d="M30,80 L45,55 L40,40 L55,25 L50,12"
+                    stroke="#3A0608"
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </motion.svg>
+
+                {/* Pink ribbon — left half (draggable) */}
+                <motion.div
+                  drag={stage === 'idle' ? 'x' : false}
+                  dragConstraints={{ left: -100, right: 0 }}
+                  dragElastic={0.5}
+                  onDragEnd={handleDragEnd}
+                  onClick={handleOpen}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') handleOpen();
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Pull the ribbon to open the invitation"
+                  initial={{ x: 0, opacity: 1 }}
+                  animate={
+                    opening
+                      ? { x: -180, opacity: 0, rotate: -8 }
+                      : { x: 0, opacity: 1, rotate: 0 }
+                  }
+                  transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
                   style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
-                    width: '100%',
-                    height: '62%',
-                    transformOrigin: 'top center',
-                    transformStyle: 'preserve-3d',
-                    zIndex: 4,
-                    willChange: 'transform',
+                    width: '50%',
+                    height: '100%',
+                    cursor: stage === 'idle' ? 'grab' : 'default',
+                  }}
+                  whileTap={{ cursor: 'grabbing' }}
+                >
+                  {/* Ribbon strip running across the envelope (left half) */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '46%',
+                      left: 0,
+                      right: 0,
+                      height: '14px',
+                      transform: 'translateY(-50%)',
+                      background:
+                        'linear-gradient(180deg, #F2B8C8 0%, #E89AAF 50%, #C97389 100%)',
+                      boxShadow:
+                        'inset 0 -2px 4px rgba(120,40,60,0.25), 0 2px 4px rgba(0,0,0,0.12)',
+                      borderRadius: '2px 0 0 2px',
+                    }}
+                  />
+                </motion.div>
+
+                {/* Pink ribbon — right half (draggable) */}
+                <motion.div
+                  drag={stage === 'idle' ? 'x' : false}
+                  dragConstraints={{ left: 0, right: 100 }}
+                  dragElastic={0.5}
+                  onDragEnd={handleDragEnd}
+                  onClick={handleOpen}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') handleOpen();
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Pull the ribbon to open the invitation"
+                  initial={{ x: 0, opacity: 1 }}
+                  animate={
+                    opening
+                      ? { x: 180, opacity: 0, rotate: 8 }
+                      : { x: 0, opacity: 1, rotate: 0 }
+                  }
+                  transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '50%',
+                    height: '100%',
+                    cursor: stage === 'idle' ? 'grab' : 'default',
+                  }}
+                  whileTap={{ cursor: 'grabbing' }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '46%',
+                      left: 0,
+                      right: 0,
+                      height: '14px',
+                      transform: 'translateY(-50%)',
+                      background:
+                        'linear-gradient(180deg, #F2B8C8 0%, #E89AAF 50%, #C97389 100%)',
+                      boxShadow:
+                        'inset 0 -2px 4px rgba(120,40,60,0.25), 0 2px 4px rgba(0,0,0,0.12)',
+                      borderRadius: '0 2px 2px 0',
+                    }}
+                  />
+                </motion.div>
+
+                {/* Bow on top — fades & rotates away */}
+                <motion.div
+                  initial={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+                  animate={
+                    opening
+                      ? { opacity: 0, y: 60, rotate: 25, scale: 0.7 }
+                      : { opacity: 1, y: 0, rotate: 0, scale: 1 }
+                  }
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  onClick={handleOpen}
+                  style={{
+                    position: 'absolute',
+                    top: '46%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    cursor: stage === 'idle' ? 'pointer' : 'default',
+                    zIndex: 6,
+                    pointerEvents: stage === 'idle' ? 'auto' : 'none',
                   }}
                 >
-                  {/* Flap front face */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background:
-                        'linear-gradient(180deg, #F5EFE4 0%, #E6D9BF 100%)',
-                      clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                      backfaceVisibility: 'hidden',
-                      boxShadow: 'inset 0 -4px 8px rgba(120,90,50,0.15)',
-                    }}
-                  />
-                  {/* Flap back face (visible when folded open) */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background:
-                        'linear-gradient(0deg, #EFE3CC 0%, #DCCBA8 100%)',
-                      clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                      backfaceVisibility: 'hidden',
-                      transform: 'rotateX(180deg)',
-                      boxShadow: 'inset 0 4px 10px rgba(120,90,50,0.2)',
-                    }}
-                  />
-
-                  {/* Wax seal sits at the tip of the flap */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '4%',
-                      left: '50%',
-                      transform: 'translate(-50%, 50%)',
-                      width: '90px',
-                      height: '90px',
-                      zIndex: 5,
-                    }}
-                  >
-                    <SealHalf side="left" broken={broken} />
-                    <SealHalf side="right" broken={broken} />
-                  </div>
+                  <Bow />
+                  {/* Pulsing glow to draw attention */}
+                  {stage === 'idle' && (
+                    <motion.div
+                      animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{
+                        position: 'absolute',
+                        inset: '-20px',
+                        borderRadius: '50%',
+                        background:
+                          'radial-gradient(circle, rgba(232,154,175,0.45) 0%, rgba(232,154,175,0) 70%)',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                      }}
+                    />
+                  )}
                 </motion.div>
               </motion.div>
 
-              {/* Tap to open hint */}
+              {/* Hint */}
               <AnimatePresence>
                 {stage === 'idle' && showHint && (
                   <motion.div
@@ -456,7 +401,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                       transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                       style={{ display: 'inline-block' }}
                     >
-                      {t('envelope.tap') || 'Tap to open'}
+                      {t('envelope.pull')}
                     </motion.span>
                   </motion.div>
                 )}
