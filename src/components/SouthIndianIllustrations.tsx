@@ -415,3 +415,240 @@ export const KolamCorner = ({ flip = false }: { flip?: boolean }) => (
     </g>
   </svg>
 );
+
+/* ════════════════════════════════════════════════
+   7. SOUTH INDIAN DAY FRAME
+   Decorative corner brackets + knot motifs around day pills
+   ════════════════════════════════════════════════ */
+export const SouthIndianDayFrame = ({
+  color = '#C97B5A',
+  children,
+}: {
+  color?: string;
+  children: React.ReactNode;
+}) => (
+  <div style={{ position: 'relative', display: 'inline-block', padding: '14px 22px' }}>
+    {/* Corner brackets + knot rosettes */}
+    <svg
+      viewBox="0 0 200 80"
+      preserveAspectRatio="none"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        overflow: 'visible',
+      }}
+    >
+      {/* Four corner brackets */}
+      {[
+        { x: 0, y: 0, sx: 1, sy: 1 },     // top-left
+        { x: 200, y: 0, sx: -1, sy: 1 },  // top-right
+        { x: 0, y: 80, sx: 1, sy: -1 },   // bottom-left
+        { x: 200, y: 80, sx: -1, sy: -1 },// bottom-right
+      ].map((c, i) => (
+        <g key={i} transform={`translate(${c.x},${c.y}) scale(${c.sx},${c.sy})`}>
+          <path
+            d="M0,12 L0,0 L12,0"
+            stroke={color}
+            strokeWidth="1.2"
+            fill="none"
+            opacity="0.8"
+            strokeLinecap="round"
+          />
+          {/* tiny corner dot */}
+          <circle cx="0" cy="0" r="1.4" fill={color} opacity="0.9" />
+        </g>
+      ))}
+
+      {/* Mid-side knot rosettes */}
+      {[
+        { x: 100, y: 0 },   // top-mid
+        { x: 100, y: 80 },  // bottom-mid
+        { x: 0, y: 40 },    // left-mid
+        { x: 200, y: 40 },  // right-mid
+      ].map((p, i) => (
+        <g key={i} transform={`translate(${p.x},${p.y})`}>
+          {/* knot diamond */}
+          <path
+            d="M0,-3 L3,0 L0,3 L-3,0 Z"
+            fill="none"
+            stroke={color}
+            strokeWidth="1"
+            opacity="0.75"
+          />
+          {/* small petal flare */}
+          <circle cx="0" cy="0" r="1.2" fill={color} opacity="0.9" />
+        </g>
+      ))}
+    </svg>
+    {children}
+  </div>
+);
+
+/* ════════════════════════════════════════════════
+   8. MARIGOLD BELL STRING — hangs from top corners
+   ════════════════════════════════════════════════ */
+export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => (
+  <svg
+    viewBox="0 0 80 160"
+    width="60"
+    height="120"
+    style={{
+      transform: side === 'right' ? 'scaleX(-1)' : undefined,
+      pointerEvents: 'none',
+      display: 'block',
+    }}
+  >
+    {/* String */}
+    <path d="M40,0 Q38,40 42,80 Q40,120 38,160" stroke="#C9922A" strokeWidth="0.8" fill="none" opacity="0.6" />
+    {/* Marigold balls along string */}
+    {[15, 35, 55, 75, 95, 115, 135].map((y, i) => {
+      const cx = 40 + Math.sin(i * 1.3) * 4;
+      const isSaffron = i % 2 === 0;
+      return (
+        <g key={i} transform={`translate(${cx}, ${y})`}>
+          {/* Outer petals */}
+          {[0, 60, 120, 180, 240, 300].map((a, j) => {
+            const rad = (a * Math.PI) / 180;
+            return (
+              <circle
+                key={j}
+                cx={Math.cos(rad) * 3}
+                cy={Math.sin(rad) * 3}
+                r="2.5"
+                fill={isSaffron ? '#E8651A' : '#D4A017'}
+                opacity="0.7"
+              />
+            );
+          })}
+          <circle cx="0" cy="0" r="2" fill={isSaffron ? '#D4A017' : '#E8651A'} opacity="0.9" />
+        </g>
+      );
+    })}
+    {/* End tassel bell */}
+    <g transform="translate(38, 152)">
+      <path d="M-4,0 Q-5,8 0,10 Q5,8 4,0 Z" fill="#C9922A" opacity="0.8" />
+      <circle cx="0" cy="11" r="1.4" fill="#A07820" opacity="0.9" />
+    </g>
+  </svg>
+);
+
+/* ════════════════════════════════════════════════
+   9. PARROT ON BRANCH — small accent doodle
+   ════════════════════════════════════════════════ */
+export const ParrotOnBranch = () => (
+  <svg
+    viewBox="0 0 100 80"
+    width="80"
+    height="64"
+    style={{ pointerEvents: 'none', display: 'block' }}
+  >
+    {/* Branch */}
+    <path d="M5,60 Q40,55 95,62" stroke="#6B4A2A" strokeWidth="1.2" fill="none" opacity="0.55" />
+    {/* Small leaf */}
+    <path d="M20,58 Q15,50 25,48 Q22,55 20,58 Z" fill="#3B6B4A" opacity="0.6" />
+    <path d="M75,60 Q72,52 82,52 Q78,58 75,60 Z" fill="#3B6B4A" opacity="0.6" />
+    {/* Parrot body */}
+    <ellipse cx="50" cy="38" rx="14" ry="11" fill="#3B6B4A" opacity="0.7" />
+    {/* Belly */}
+    <ellipse cx="48" cy="42" rx="8" ry="6" fill="#D4A017" opacity="0.55" />
+    {/* Head */}
+    <circle cx="62" cy="30" r="7" fill="#3B6B4A" opacity="0.75" />
+    {/* Beak */}
+    <path d="M68,30 Q73,32 70,35 Z" fill="#E8651A" opacity="0.85" />
+    {/* Eye */}
+    <circle cx="64" cy="29" r="0.9" fill="#223348" />
+    {/* Wing */}
+    <path d="M44,32 Q50,42 56,46 Q44,48 42,40 Z" fill="#2D5238" opacity="0.6" />
+    {/* Tail */}
+    <path d="M38,38 Q28,40 22,46 Q34,44 38,42 Z" fill="#3B6B4A" opacity="0.6" />
+    {/* Feet on branch */}
+    <line x1="48" y1="49" x2="46" y2="58" stroke="#6B4A2A" strokeWidth="0.8" opacity="0.7" />
+    <line x1="54" y1="49" x2="56" y2="58" stroke="#6B4A2A" strokeWidth="0.8" opacity="0.7" />
+  </svg>
+);
+
+/* ════════════════════════════════════════════════
+   10. VENUE WATERCOLOR FRAME
+   Square framed venue image with ornamental border
+   ════════════════════════════════════════════════ */
+export const VenueWatercolorFrame = ({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+}) => (
+  <div style={{ maxWidth: '320px', margin: '0 auto 32px', textAlign: 'center' }}>
+    <div style={{ position: 'relative', padding: '14px' }}>
+      {/* Ornamental corner brackets */}
+      <svg
+        viewBox="0 0 320 320"
+        preserveAspectRatio="none"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+        }}
+      >
+        {[
+          { x: 0, y: 0, sx: 1, sy: 1 },
+          { x: 320, y: 0, sx: -1, sy: 1 },
+          { x: 0, y: 320, sx: 1, sy: -1 },
+          { x: 320, y: 320, sx: -1, sy: -1 },
+        ].map((c, i) => (
+          <g key={i} transform={`translate(${c.x},${c.y}) scale(${c.sx},${c.sy})`}>
+            <path d="M0,28 L0,0 L28,0" stroke="#B5334E" strokeWidth="1.2" fill="none" opacity="0.6" />
+            <path d="M6,16 L6,6 L16,6" stroke="#D4A017" strokeWidth="0.9" fill="none" opacity="0.6" />
+            <circle cx="0" cy="0" r="2" fill="#E8651A" opacity="0.8" />
+          </g>
+        ))}
+        {/* Mid knots */}
+        {[
+          { x: 160, y: 0 }, { x: 160, y: 320 }, { x: 0, y: 160 }, { x: 320, y: 160 },
+        ].map((p, i) => (
+          <g key={i} transform={`translate(${p.x},${p.y})`}>
+            <path d="M0,-4 L4,0 L0,4 L-4,0 Z" fill="none" stroke="#B5334E" strokeWidth="1" opacity="0.55" />
+            <circle cx="0" cy="0" r="1.4" fill="#D4A017" opacity="0.85" />
+          </g>
+        ))}
+      </svg>
+      <div style={{
+        aspectRatio: '1 / 1',
+        width: '100%',
+        overflow: 'hidden',
+        border: '1px solid rgba(181, 51, 78, 0.18)',
+        background: '#F6F0E6',
+      }}>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
+      </div>
+    </div>
+    {caption && (
+      <p style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontStyle: 'italic',
+        fontSize: '13px',
+        color: '#7397A8',
+        marginTop: '8px',
+      }}>
+        {caption}
+      </p>
+    )}
+  </div>
+);

@@ -1,6 +1,28 @@
 import { motion } from 'framer-motion';
+import {
+  SouthIndianDayFrame,
+  MarigoldBellString,
+  ParrotOnBranch,
+} from './SouthIndianIllustrations';
 
-const days = [
+type EventItem = {
+  time: string;
+  name: string;
+  desc: string;
+  side: 'left' | 'right';
+  dressCode?: string;
+  colors?: string[];
+  decoration?: 'parrot';
+};
+
+const days: {
+  day: string;
+  date: string;
+  title: string;
+  location: string;
+  color: string;
+  events: EventItem[];
+}[] = [
   {
     day: "Day 01",
     date: "28th November 2026",
@@ -13,18 +35,23 @@ const days = [
         name: "Engagement",
         desc: "The formal union of two families, followed by a celebratory lunch",
         side: "left",
+        dressCode: "Indo-Western",
+        colors: ["#F4D5C5", "#FFF8EC"],
       },
       {
         time: "5:30 PM – 7:00 PM",
         name: "Baraat",
         desc: "The groom's grand procession — music, dance and celebration as Sarthak arrives",
         side: "right",
+        decoration: "parrot",
       },
       {
         time: "7:00 PM onwards",
         name: "Pre-Wedding Reception",
         desc: "An evening of joy, laughter and togetherness, followed by dinner",
         side: "left",
+        dressCode: "Cocktail",
+        colors: ["#1E2A4A", "#C9922A"],
       },
       {
         time: "11:00 PM onwards",
@@ -73,6 +100,8 @@ const days = [
         name: "Reception Party",
         desc: "An elegant evening celebration bringing both families together, followed by dinner",
         side: "left",
+        dressCode: "Formal",
+        colors: ["#0F4D3A", "#E8D49A"],
       },
     ],
   },
@@ -89,6 +118,64 @@ const Divider = ({ color }: { color: string }) => (
     <div style={{ width: '60px', height: '1px', background: `${color}60` }} />
   </div>
 );
+
+const DressCodeLine = ({
+  align,
+  color,
+  code,
+  swatches,
+}: {
+  align: 'left' | 'right' | 'center';
+  color: string;
+  code: string;
+  swatches: string[];
+}) => {
+  const justify =
+    align === 'left' ? 'flex-start' :
+    align === 'right' ? 'flex-end' : 'center';
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: justify,
+      gap: '8px',
+      marginTop: '10px',
+    }}>
+      <span style={{
+        fontSize: '9px',
+        letterSpacing: '0.25em',
+        textTransform: 'uppercase',
+        color: color,
+        opacity: 0.85,
+      }}>
+        Dress Code
+      </span>
+      <span style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontStyle: 'italic',
+        fontSize: '12px',
+        color: '#223348',
+      }}>
+        {code}
+      </span>
+      <span style={{ display: 'inline-flex', gap: '4px', marginLeft: '4px' }}>
+        {swatches.map((c, i) => (
+          <span
+            key={i}
+            style={{
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              background: c,
+              border: '1px solid rgba(34,51,72,0.15)',
+              display: 'inline-block',
+            }}
+          />
+        ))}
+      </span>
+    </div>
+  );
+};
 
 export default function WeddingTimeline() {
   return (
@@ -127,29 +214,53 @@ export default function WeddingTimeline() {
 
       {/* Days */}
       {days.map((day, dayIndex) => (
-        <div key={dayIndex} style={{ marginBottom: dayIndex < days.length - 1 ? '80px' : 0 }}>
+        <div key={dayIndex} style={{
+          marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
+          position: 'relative',
+        }}>
+          {/* Marigold bell strings on Day 01 only */}
+          {dayIndex === 0 && (
+            <>
+              <div style={{
+                position: 'absolute', top: '-40px', left: '4%',
+                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+              }}>
+                <MarigoldBellString side="left" />
+              </div>
+              <div style={{
+                position: 'absolute', top: '-40px', right: '4%',
+                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+              }}>
+                <MarigoldBellString side="right" />
+              </div>
+            </>
+          )}
+
           {/* Day Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            style={{ textAlign: 'center', marginBottom: '48px' }}
+            style={{ textAlign: 'center', marginBottom: '48px', position: 'relative', zIndex: 1 }}
           >
-            {/* Day pill */}
-            <div style={{
-              display: 'inline-block',
-              padding: '6px 20px',
-              border: `1px solid ${day.color}`,
-              borderRadius: '2px',
-              marginBottom: '16px',
-            }}>
-              <span style={{
-                fontSize: '10px', letterSpacing: '0.35em',
-                textTransform: 'uppercase', color: day.color,
-              }}>
-                {day.day}
-              </span>
+            {/* Day pill — wrapped in South Indian decorative frame */}
+            <div style={{ marginBottom: '16px' }}>
+              <SouthIndianDayFrame color={day.color}>
+                <div style={{
+                  display: 'inline-block',
+                  padding: '6px 20px',
+                  border: `1px solid ${day.color}`,
+                  borderRadius: '2px',
+                }}>
+                  <span style={{
+                    fontSize: '10px', letterSpacing: '0.35em',
+                    textTransform: 'uppercase', color: day.color,
+                  }}>
+                    {day.day}
+                  </span>
+                </div>
+              </SouthIndianDayFrame>
             </div>
 
             <h3 style={{
@@ -226,6 +337,14 @@ export default function WeddingTimeline() {
               }}>
                 {day.events[0].desc}
               </p>
+              {day.events[0].dressCode && (
+                <DressCodeLine
+                  align="center"
+                  color={day.color}
+                  code={day.events[0].dressCode}
+                  swatches={day.events[0].colors || []}
+                />
+              )}
             </motion.div>
           ) : (
             /* Multiple events — standard alternating timeline */
@@ -283,6 +402,24 @@ export default function WeddingTimeline() {
                     }}>
                       {event.desc}
                     </p>
+                    {event.dressCode && (
+                      <DressCodeLine
+                        align={event.side === 'left' ? 'right' : 'left'}
+                        color={day.color}
+                        code={event.dressCode}
+                        swatches={event.colors || []}
+                      />
+                    )}
+                    {event.decoration === 'parrot' && (
+                      <div style={{
+                        marginTop: '10px',
+                        display: 'flex',
+                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
+                        opacity: 0.9,
+                      }}>
+                        <ParrotOnBranch />
+                      </div>
+                    )}
                   </div>
 
                   {/* Dot */}
