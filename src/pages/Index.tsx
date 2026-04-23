@@ -1,6 +1,7 @@
 
 import EnvelopeReveal from '../components/EnvelopeReveal';
 import FlockingBirds from '../components/FlockingBirds';
+import EdgeDoodleOverlay from '../components/EdgeDoodleOverlay';
 import templeIllustration from '../assets/temple-illustration.png';
 import coupleIllustration from '../assets/couple-illustration.png';
 import receptionVenueIllustration from '../assets/reception-venue-illustration.png';
@@ -317,6 +318,7 @@ export default function Index() {
 
   return (
     <div className="relative min-h-screen bg-[#F4EDE4] text-brand-dark overflow-hidden font-sans">
+      <EdgeDoodleOverlay />
       <FlockingBirds />
 
       {/* Fixed Header */}
