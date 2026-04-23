@@ -257,7 +257,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                       display: 'inline-block',
                     }}
                   >
-                    {t('envelope.pull') || 'Tap to open'}
+                    Tap the seal to open
                   </motion.span>
                 </motion.div>
               )}
