@@ -253,28 +253,31 @@ const ThankYouCard = () => {
           />
 
           {/* Corner lotus ornaments */}
-          {[
-            { top: 12, left: 12, rotate: 0 },
-            { top: 12, right: 12, rotate: 90 },
-            { bottom: 12, right: 12, rotate: 180 },
-            { bottom: 12, left: 12, rotate: 270 },
-          ].map((pos, i) => (
-            <svg
-              key={i}
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              className="absolute"
-              style={{ ...pos, transform: `rotate(${pos.rotate}deg)` } as React.CSSProperties}
-            >
-              <g fill="none" stroke="#F4D06F" strokeWidth="1" strokeLinecap="round">
-                <path d="M2 2 L18 2 M2 2 L2 18" />
-                <path d="M6 6 Q14 6 14 14 Q22 14 22 22" opacity="0.7" />
-                <circle cx="6" cy="6" r="1.5" fill="#F4D06F" />
-                <path d="M10 4 Q12 8 16 6 M4 10 Q8 12 6 16" opacity="0.6" />
-              </g>
-            </svg>
-          ))}
+          {([
+            { top: 12, left: 12, rot: 0 },
+            { top: 12, right: 12, rot: 90 },
+            { bottom: 12, right: 12, rot: 180 },
+            { bottom: 12, left: 12, rot: 270 },
+          ] as const).map((pos, i) => {
+            const { rot, ...placement } = pos;
+            return (
+              <svg
+                key={i}
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                className="absolute"
+                style={{ ...placement, transform: `rotate(${rot}deg)` }}
+              >
+                <g fill="none" stroke="#F4D06F" strokeWidth="1" strokeLinecap="round">
+                  <path d="M2 2 L18 2 M2 2 L2 18" />
+                  <path d="M6 6 Q14 6 14 14 Q22 14 22 22" opacity="0.7" />
+                  <circle cx="6" cy="6" r="1.5" fill="#F4D06F" />
+                  <path d="M10 4 Q12 8 16 6 M4 10 Q8 12 6 16" opacity="0.6" />
+                </g>
+              </svg>
+            );
+          })}
 
           {/* Floating sparkles */}
           {[
