@@ -48,9 +48,9 @@ const DOODLE_MAP: Record<
     alt: 'Engagement ring in floral-adorned box',
   },
   kalash: {
-    src: kalash,
-    width: 130,
-    alt: 'Sacred kalash with coconut and mango leaves',
+    src: baraatFeet,
+    width: 160,
+    alt: 'Watercolor of bride and groom feet with anklets — muhurtham',
   },
   diya: {
     src: receptionProposal,
