@@ -156,29 +156,53 @@ export default function WeddingTimeline() {
 
       {/* Days */}
       {days.map((day, dayIndex) => (
-        <div key={dayIndex} style={{ marginBottom: dayIndex < days.length - 1 ? '80px' : 0 }}>
+        <div key={dayIndex} style={{
+          marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
+          position: 'relative',
+        }}>
+          {/* Marigold bell strings on Day 01 only */}
+          {dayIndex === 0 && (
+            <>
+              <div style={{
+                position: 'absolute', top: '-40px', left: '4%',
+                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+              }}>
+                <MarigoldBellString side="left" />
+              </div>
+              <div style={{
+                position: 'absolute', top: '-40px', right: '4%',
+                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+              }}>
+                <MarigoldBellString side="right" />
+              </div>
+            </>
+          )}
+
           {/* Day Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            style={{ textAlign: 'center', marginBottom: '48px' }}
+            style={{ textAlign: 'center', marginBottom: '48px', position: 'relative', zIndex: 1 }}
           >
-            {/* Day pill */}
-            <div style={{
-              display: 'inline-block',
-              padding: '6px 20px',
-              border: `1px solid ${day.color}`,
-              borderRadius: '2px',
-              marginBottom: '16px',
-            }}>
-              <span style={{
-                fontSize: '10px', letterSpacing: '0.35em',
-                textTransform: 'uppercase', color: day.color,
-              }}>
-                {day.day}
-              </span>
+            {/* Day pill — wrapped in South Indian decorative frame */}
+            <div style={{ marginBottom: '16px' }}>
+              <SouthIndianDayFrame color={day.color}>
+                <div style={{
+                  display: 'inline-block',
+                  padding: '6px 20px',
+                  border: `1px solid ${day.color}`,
+                  borderRadius: '2px',
+                }}>
+                  <span style={{
+                    fontSize: '10px', letterSpacing: '0.35em',
+                    textTransform: 'uppercase', color: day.color,
+                  }}>
+                    {day.day}
+                  </span>
+                </div>
+              </SouthIndianDayFrame>
             </div>
 
             <h3 style={{
