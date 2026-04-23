@@ -519,17 +519,7 @@ export default function WeddingTimeline() {
                         swatches={event.colors || []}
                       />
                     )}
-                    {event.decoration === 'parrot' && (
-                      <div style={{
-                        marginTop: '10px',
-                        display: 'flex',
-                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-                        opacity: 0.9,
-                      }}>
-                        <ParrotOnBranch />
-                      </div>
-                    )}
-                    {event.decoration && event.decoration !== 'parrot' && (
+                    {event.decoration && (
                       <EventDoodle
                         decoration={event.decoration}
                         align={event.side}
