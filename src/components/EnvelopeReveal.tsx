@@ -40,34 +40,37 @@ const SealHalf = ({ side, broken }: { side: 'left' | 'right'; broken: boolean })
         }}
       >
         <defs>
-          <radialGradient id={`sealGrad-${side}`} cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stopColor="#C9B5DC" />
-            <stop offset="45%" stopColor="#9C7FBE" />
-            <stop offset="100%" stopColor="#5E4582" />
+          <radialGradient id={`sealGrad-${side}`} cx="36%" cy="30%" r="72%">
+            <stop offset="0%" stopColor="#C8313A" />
+            <stop offset="45%" stopColor="#9E1B23" />
+            <stop offset="100%" stopColor="#5E0E14" />
           </radialGradient>
           <filter id={`sealShadow-${side}`}>
-            <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor="rgba(60,40,90,0.45)" />
+            <feDropShadow dx="0" dy="3" stdDeviation="3.5" floodColor="rgba(70,10,15,0.5)" />
           </filter>
         </defs>
+        {/* Organic wax blob with irregular edges */}
         <path
-          d="M60,8 C78,10 95,22 102,38 C112,52 112,72 104,86 C96,102 78,112 60,112 C42,112 24,102 16,86 C8,72 8,52 18,38 C25,22 42,10 60,8 Z"
+          d="M60,6 C76,7 92,16 100,30 C110,42 114,58 110,74 C106,90 94,104 80,110 C68,115 52,115 40,110 C26,104 14,92 9,76 C5,60 8,42 18,30 C26,18 44,8 60,6 Z"
           fill={`url(#sealGrad-${side})`}
           filter={`url(#sealShadow-${side})`}
         />
+        {/* Inner ring imprint */}
+        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(255,200,200,0.18)" strokeWidth="1.5" />
         {/* Monogram */}
         <text
           x="60"
-          y="72"
+          y="74"
           textAnchor="middle"
           fontFamily="Great Vibes, cursive"
-          fontSize="44"
-          fill="#F5EFE4"
-          opacity="0.95"
+          fontSize="42"
+          fill="#F2D6B0"
+          opacity="0.92"
         >
           N|S
         </text>
         {/* Highlight */}
-        <ellipse cx="44" cy="38" rx="20" ry="12" fill="rgba(255,255,255,0.25)" />
+        <ellipse cx="42" cy="36" rx="18" ry="10" fill="rgba(255,255,255,0.22)" />
       </svg>
     </motion.div>
   );
@@ -298,7 +301,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '10px',
                       letterSpacing: '0.3em',
-                      color: '#9C7FBE',
+                      color: '#9E1B23',
                       textTransform: 'uppercase',
                     }}
                   >
@@ -320,22 +323,22 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                   }}
                 />
 
-                {/* Front pocket panel — V-shape clip so card peeks above */}
+                {/* Front pocket panel — V-shape clip with tip meeting the flap tip */}
                 <div
                   style={{
                     position: 'absolute',
                     inset: 0,
                     background:
-                      'linear-gradient(165deg, #EFE5D2 0%, #E0D2B5 100%)',
+                      'linear-gradient(165deg, #F0E6D2 0%, #E2D5B8 100%)',
                     borderRadius: '6px',
                     clipPath:
-                      'polygon(0 38%, 50% 100%, 100% 38%, 100% 100%, 0 100%)',
+                      'polygon(0 0, 0 100%, 100% 100%, 100% 0, 100% 8%, 50% 62%, 0 8%)',
                     boxShadow: 'inset 0 2px 6px rgba(120,90,50,0.18)',
                     zIndex: 2,
                   }}
                 />
 
-                {/* Diagonal seam lines (V shape on front) */}
+                {/* Diagonal seam lines from envelope corners to flap tip */}
                 <svg
                   viewBox="0 0 150 100"
                   preserveAspectRatio="none"
@@ -350,18 +353,18 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                 >
                   <line
                     x1="0"
-                    y1="38"
+                    y1="8"
                     x2="75"
-                    y2="100"
-                    stroke="rgba(140,100,60,0.25)"
+                    y2="62"
+                    stroke="rgba(140,100,60,0.28)"
                     strokeWidth="0.4"
                   />
                   <line
                     x1="150"
-                    y1="38"
+                    y1="8"
                     x2="75"
-                    y2="100"
-                    stroke="rgba(140,100,60,0.25)"
+                    y2="62"
+                    stroke="rgba(140,100,60,0.28)"
                     strokeWidth="0.4"
                   />
                 </svg>
