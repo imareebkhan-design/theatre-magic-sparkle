@@ -119,6 +119,64 @@ const Divider = ({ color }: { color: string }) => (
   </div>
 );
 
+const DressCodeLine = ({
+  align,
+  color,
+  code,
+  swatches,
+}: {
+  align: 'left' | 'right' | 'center';
+  color: string;
+  code: string;
+  swatches: string[];
+}) => {
+  const justify =
+    align === 'left' ? 'flex-start' :
+    align === 'right' ? 'flex-end' : 'center';
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: justify,
+      gap: '8px',
+      marginTop: '10px',
+    }}>
+      <span style={{
+        fontSize: '9px',
+        letterSpacing: '0.25em',
+        textTransform: 'uppercase',
+        color: color,
+        opacity: 0.85,
+      }}>
+        Dress Code
+      </span>
+      <span style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontStyle: 'italic',
+        fontSize: '12px',
+        color: '#223348',
+      }}>
+        {code}
+      </span>
+      <span style={{ display: 'inline-flex', gap: '4px', marginLeft: '4px' }}>
+        {swatches.map((c, i) => (
+          <span
+            key={i}
+            style={{
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              background: c,
+              border: '1px solid rgba(34,51,72,0.15)',
+              display: 'inline-block',
+            }}
+          />
+        ))}
+      </span>
+    </div>
+  );
+};
+
 export default function WeddingTimeline() {
   return (
     <section style={{
