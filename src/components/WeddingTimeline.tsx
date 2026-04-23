@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import {
   SouthIndianDayFrame,
   MarigoldBellString,
-  ParrotOnBranch,
 } from './SouthIndianIllustrations';
 import engagementHands from '@/assets/engagement-hands.jpg';
 import kalash from '@/assets/kalash.jpg';
@@ -11,9 +10,10 @@ import kankanaThread from '@/assets/kankana-thread.png';
 import blessingHands from '@/assets/blessing-hands.png';
 import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
 import champagneToast from '@/assets/champagne-toast.png';
+import baraatFeet from '@/assets/baraat-feet.jpg';
 
 type DecorationKey =
-  | 'parrot'
+  | 'baraat-feet'
   | 'engagement-hands'
   | 'kalash'
   | 'diya'
@@ -33,9 +33,14 @@ type EventItem = {
 };
 
 const DOODLE_MAP: Record<
-  Exclude<DecorationKey, 'parrot'>,
+  DecorationKey,
   { src: string; width: number; alt: string }
 > = {
+  'baraat-feet': {
+    src: baraatFeet,
+    width: 160,
+    alt: 'Watercolor of bride and groom feet with anklets — baraat',
+  },
   'engagement-hands': {
     src: engagementHands,
     width: 170,
@@ -77,7 +82,7 @@ const EventDoodle = ({
   decoration,
   align,
 }: {
-  decoration: Exclude<DecorationKey, 'parrot'>;
+  decoration: DecorationKey;
   align: 'left' | 'right' | 'center';
 }) => {
   const config = DOODLE_MAP[decoration];
@@ -135,7 +140,7 @@ const days: {
         name: "Baraat",
         desc: "The groom's grand procession — music, dance and celebration as Sarthak arrives",
         side: "right",
-        decoration: "parrot",
+        decoration: "baraat-feet",
       },
       {
         time: "7:00 PM onwards",
@@ -443,7 +448,7 @@ export default function WeddingTimeline() {
                   swatches={day.events[0].colors || []}
                 />
               )}
-              {day.events[0].decoration && day.events[0].decoration !== 'parrot' && (
+              {day.events[0].decoration && (
                 <EventDoodle
                   decoration={day.events[0].decoration}
                   align="center"
@@ -514,17 +519,7 @@ export default function WeddingTimeline() {
                         swatches={event.colors || []}
                       />
                     )}
-                    {event.decoration === 'parrot' && (
-                      <div style={{
-                        marginTop: '10px',
-                        display: 'flex',
-                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-                        opacity: 0.9,
-                      }}>
-                        <ParrotOnBranch />
-                      </div>
-                    )}
-                    {event.decoration && event.decoration !== 'parrot' && (
+                    {event.decoration && (
                       <EventDoodle
                         decoration={event.decoration}
                         align={event.side}
