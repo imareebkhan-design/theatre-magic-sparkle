@@ -5,6 +5,7 @@ import {
   ParrotOnBranch,
 } from './SouthIndianIllustrations';
 import engagementHands from '@/assets/engagement-hands.jpg';
+import kalash from '@/assets/kalash.jpg';
 
 type EventItem = {
   time: string;
@@ -13,7 +14,7 @@ type EventItem = {
   side: 'left' | 'right';
   dressCode?: string;
   colors?: string[];
-  decoration?: 'parrot' | 'engagement-hands';
+  decoration?: 'parrot' | 'engagement-hands' | 'kalash';
 };
 
 const days: {
@@ -75,6 +76,7 @@ const days: {
         name: "Muhurtham",
         desc: "The sacred moment — the tying of the thali around the holy fire, followed by breakfast",
         side: "left",
+        decoration: "kalash",
       },
       {
         time: "10:30 AM",
@@ -433,6 +435,24 @@ export default function WeddingTimeline() {
                           alt="Hands exchanging rings — engagement"
                           style={{
                             width: '170px',
+                            height: 'auto',
+                            mixBlendMode: 'multiply',
+                            opacity: 0.95,
+                          }}
+                        />
+                      </div>
+                    )}
+                    {event.decoration === 'kalash' && (
+                      <div style={{
+                        marginTop: '14px',
+                        display: 'flex',
+                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
+                      }}>
+                        <img
+                          src={kalash}
+                          alt="Sacred kalash with coconut and mango leaves"
+                          style={{
+                            width: '130px',
                             height: 'auto',
                             mixBlendMode: 'multiply',
                             opacity: 0.95,
