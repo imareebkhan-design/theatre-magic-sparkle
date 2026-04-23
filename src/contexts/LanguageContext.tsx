@@ -92,9 +92,10 @@ const translations: Translations = {
   'footer.blessing': { en: '"May your home be filled with laughter, your hearts with love"', ta: '"உங்கள் இல்லம் சிரிப்பாலும், உங்கள் இதயங்கள் அன்பாலும் நிரம்பட்டும்"', hi: '"आपका घर हंसी से भरा हो, आपके दिल प्यार से"' },
   'footer.crafted': { en: 'Crafted with love · 2026', ta: 'அன்புடன் உருவாக்கப்பட்டது · 2026', hi: 'प्यार से बनाया · 2026' },
 
-  // Curtain
+  // Curtain / Envelope
   'curtain.tap': { en: 'Tap to open', ta: 'திறக்க தட்டவும்', hi: 'खोलने के लिए टैप करें' },
   'curtain.click': { en: 'Click to open', ta: 'திறக்க கிளிக் செய்யவும்', hi: 'खोलने के लिए क्लिक करें' },
+  'envelope.pull': { en: 'Pull the ribbon to open', ta: 'ரிப்பனை இழுத்து திறக்கவும்', hi: 'खोलने के लिए रिबन खींचें' },
 
   // Menu section
   'menu.title': { en: 'Wedding Feast', ta: 'திருமண விருந்து', hi: 'विवाह भोज' },
