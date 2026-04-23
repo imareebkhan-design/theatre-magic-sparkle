@@ -104,7 +104,9 @@ const EventDoodle = ({
         <img
           src={config.src}
           alt={config.alt}
-          loading="lazy"
+          loading="eager"
+          decoding="async"
+          fetchPriority="low"
           style={{
             maxWidth: '100%',
             maxHeight: '100%',
