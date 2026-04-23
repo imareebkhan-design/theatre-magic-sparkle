@@ -163,6 +163,8 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                   src={envelopeFloral}
                   alt="Floral wedding envelope"
                   draggable={false}
+                  decoding="async"
+                  fetchPriority="high"
                   style={{
                     width: '100%',
                     height: '100%',

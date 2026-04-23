@@ -243,7 +243,9 @@ export const SouthIndianCouple = () => (
       margin: '0 auto',
       display: 'block',
     }}
-    loading="lazy"
+    loading="eager"
+    decoding="async"
+    fetchPriority="low"
   />
 );
 
