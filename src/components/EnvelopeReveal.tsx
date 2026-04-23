@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import envelopePoster from '@/assets/envelope-floral.webp';
+import envelopePoster from '@/assets/envelope-gold-seal.jpg';
 import envelopeIntroAsset from '@/assets/envelope-intro.mp4.asset.json';
 
 interface EnvelopeRevealProps {
