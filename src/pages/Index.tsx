@@ -631,9 +631,6 @@ export default function Index() {
               </div>
 
               {/* ── SECTION 4: WEDDING TIMELINE ── */}
-              <div style={{ background: '#F6F0E6', paddingTop: '64px' }}>
-                <ParallaxTemple caption="Sri Krishna Mahal Mantapa, Salem" />
-              </div>
               <WeddingTimeline />
 
               {/* Banana leaf frame */}
