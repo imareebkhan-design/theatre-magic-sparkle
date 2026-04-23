@@ -518,41 +518,11 @@ export default function WeddingTimeline() {
                         <ParrotOnBranch />
                       </div>
                     )}
-                    {event.decoration === 'engagement-hands' && (
-                      <div style={{
-                        marginTop: '14px',
-                        display: 'flex',
-                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-                      }}>
-                        <img
-                          src={engagementHands}
-                          alt="Hands exchanging rings — engagement"
-                          style={{
-                            width: '170px',
-                            height: 'auto',
-                            mixBlendMode: 'multiply',
-                            opacity: 0.95,
-                          }}
-                        />
-                      </div>
-                    )}
-                    {event.decoration === 'kalash' && (
-                      <div style={{
-                        marginTop: '14px',
-                        display: 'flex',
-                        justifyContent: event.side === 'left' ? 'flex-end' : 'flex-start',
-                      }}>
-                        <img
-                          src={kalash}
-                          alt="Sacred kalash with coconut and mango leaves"
-                          style={{
-                            width: '130px',
-                            height: 'auto',
-                            mixBlendMode: 'multiply',
-                            opacity: 0.95,
-                          }}
-                        />
-                      </div>
+                    {event.decoration && event.decoration !== 'parrot' && (
+                      <EventDoodle
+                        decoration={event.decoration}
+                        align={event.side}
+                      />
                     )}
                   </div>
 
