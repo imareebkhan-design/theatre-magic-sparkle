@@ -1,52 +1,57 @@
 
 
-# Wedding Invitation — Document-Driven Iterations
+# Add Doodles to Every Timeline Event
 
-Based on the couple's reference document, three targeted improvements to align the invitation with their vision. The envelope opening (item #1 in their doc) is already implemented — these changes cover the remaining items.
+Currently 3 of 8 events have doodles (Engagement, Baraat, Muhurtham). The remaining 5 events feel bare by comparison. I'll create a matching watercolor doodle for each remaining function, picked to symbolize its ritual meaning, and render them with the same style treatment already established (`mixBlendMode: multiply`, soft opacity, ~130–170px wide, side-aligned with the event card).
+
+## Doodle assignments
+
+| Day | Event | Symbol & meaning |
+|---|---|---|
+| 01 | Engagement | ✅ already done — hands exchanging rings |
+| 01 | Baraat | ✅ already done — parrot on branch |
+| 01 | **Pre-Wedding Reception** | 🆕 **Lit diya / oil lamp with flame** — evening celebration, light, festivity |
+| 01 | **Kankana Dharana** | 🆕 **Turmeric-soaked sacred thread / kankanam** tied around a wrist — literal ritual symbol |
+| 02 | Muhurtham | ✅ already done — kalash |
+| 02 | **Aashirvadham** | 🆕 **Showering rice & flower petals from cupped elder hands** — the blessing gesture |
+| 02 | **Sadagungal** | 🆕 **Banana leaf with traditional South Indian thali** (rice mound, side bowls) — post-wedding sadya/lunch ritual |
+| 03 | **Reception Party** | 🆕 **Pair of champagne coupes / clinking glasses with floral garland** — formal evening celebration |
+
+All doodles will follow the established **soft watercolor + ink line** aesthetic (same look as the engagement hands and kalash) so the page reads as one cohesive illustrated set.
 
 ## What the user will see
 
-### 1. South Indian decorative box around "Day 01 / Day 02 / Day 03" pills
-Replace the plain rectangular border around each day pill in the wedding timeline with a south-Indian-styled decorative frame (matching the red knotwork box reference): four short corner brackets with small ornamental knot motifs at the midpoint of each side, drawn in the pill's existing color (`#C97B5A` saffron / `#AB8A3B` brass / `#7397A8` blue). Subtle, single-line, watercolor weight — not heavy.
+Each event card on the timeline now has a small hand-drawn doodle tucked beneath its description, aligned to the inner edge (toward the center line). The doodles fade-in with the existing card animation, giving the whole timeline a warm, illustrated-storybook feel — every ceremony visually represented, not just the three that currently are.
 
-### 2. Venue image slot in the timeline header
-Add a square watercolor "venue" illustration above the "Three Days of Celebration" heading (where the red arrow in the reference points). Uses an existing watercolor placeholder (Kanota Camp / mandap-style scene) styled to blend with the ivory background, framed with a soft south-Indian border.
+## Technical changes
 
-### 3. Dress code & color-code line on each event
-Below event descriptions that need it, add a small "Dress Code" line (e.g. *Indo-Western* with two small color swatches) — matching the handwritten note in their reference. Initial values:
-- **Engagement** — Indo-Western, blush + ivory swatches
-- **Pre-Wedding Reception** — Cocktail, navy + gold swatches
-- **Reception Party** — Formal, emerald + champagne swatches
+**New asset files** (placed in `src/assets/`):
+- `reception-diya.png` — oil lamp doodle (Pre-Wedding Reception)
+- `kankana-thread.png` — turmeric thread on wrist (Kankana Dharana)
+- `blessing-hands.png` — hands showering petals/rice (Aashirvadham)
+- `banana-leaf-meal.png` — banana leaf thali (Sadagungal)
+- `champagne-toast.png` — clinking glasses with garland (Reception Party)
 
-(Other events left clean; couple can request more later.)
+These will be generated as watercolor-style PNGs (transparent background) matching the tone/saturation of the existing `engagement-hands.jpg` and `kalash.jpg`.
 
-### 4. Slightly more vibrant doodle accents (carnival reference)
-Add two more small watercolor doodle motifs in the "Rang Rave Carnival" spirit they referenced — hanging marigold bell-strings (`#E8651A` saffron + `#D4A017` turmeric) at the top corners of the Pre-Wedding Celebrations day section, and a small parrot-on-branch doodle near the Baraat event. Watercolor tone, soft, blends with the cream background.
+**`src/components/WeddingTimeline.tsx`** — single file edit:
+1. Import the 5 new assets.
+2. Expand the `decoration` union type:
+   ```ts
+   decoration?: 'parrot' | 'engagement-hands' | 'kalash'
+              | 'diya' | 'kankana' | 'blessing-hands'
+              | 'banana-leaf' | 'champagne';
+   ```
+3. Add `decoration: '...'` to each of the 5 currently-bare event objects.
+4. Refactor the three repeated `event.decoration === '...'` JSX blocks into a single `<EventDoodle>` helper driven by a `{ key → { src, width, alt } }` map — keeps the file clean as we go from 2 image cases to 7.
+5. The single-event Day 03 layout (Reception Party) currently has no decoration slot — add the same `<EventDoodle>` render below its `<DressCodeLine>`, centered.
 
-## Visual style
+**Files NOT touched:** `SouthIndianIllustrations.tsx`, `ParallaxTemple.tsx`, `Index.tsx`, theme/tailwind config, all other components.
 
-- Reuse the existing south Indian palette (saffron `#E8651A`, turmeric `#D4A017`, temple green `#3B6B4A`, deep rose `#B5334E`, brass gold `#C9922A`).
-- All new SVG strokes thin (1–1.3px), watercolor-soft.
-- New decorative day-box: each side is a short line + tiny knot rosette — does NOT enclose the pill in a heavy box, sits OUTSIDE it as accent corners.
+## Style consistency rules applied to every doodle
 
-## Technical approach
-
-- ✏️ `src/components/SouthIndianIllustrations.tsx` — add new exports:
-  - `SouthIndianDayFrame({ color })` — SVG corner brackets + knot motifs that wrap the day pill.
-  - `MarigoldBellString({ side })` — hanging marigold bell doodle.
-  - `ParrotOnBranch()` — small parrot watercolor.
-  - `VenueWatercolorFrame({ src, alt })` — venue image with ornamental border.
-- ✏️ `src/components/WeddingTimeline.tsx` —
-  - Wrap the existing "day pill" `<div>` in `<SouthIndianDayFrame color={day.color}>` (positioned absolutely around it).
-  - Add `dressCode` and `colors` optional fields to the events data, render them as a small line under `event.desc` when present.
-  - Place `<MarigoldBellString />` decorations at top-left/right of Day 01 header.
-  - Place `<ParrotOnBranch />` near the Baraat event.
-- ✏️ `src/pages/Index.tsx` (timeline section only) — insert `<VenueWatercolorFrame>` above the timeline section header, using the existing `templeIllustration` asset (already imported) as a starting placeholder. Couple can swap later by uploading a real venue photo.
-- 🆕 `src/assets/venue-placeholder.png` — only if a new asset is needed; otherwise reuse `templeIllustration`. Will reuse existing to keep change small.
-
-## Files NOT touched
-
-- `EnvelopeReveal.tsx`, `WeddingShlokas.tsx`, `LanguageContext.tsx`, `FloatingPetals.tsx`, `CursorGlow.tsx`, `App.tsx`
-- All `src/components/ui/*`, `tailwind.config.ts`, `index.css`
-- Hero, RSVP, Thank You sections
+- `mixBlendMode: 'multiply'` + `opacity: 0.95` — blends with the `#F6F0E6` cream background
+- Width 130–170px (smaller for tall portraits like diya/kankana, wider for horizontal scenes like banana leaf/toast)
+- Aligned to the inner edge of the event card (toward the center timeline) so the doodle "points" into the spine of the page
+- No new animations — inherits the parent card's `whileInView` fade-in
 
