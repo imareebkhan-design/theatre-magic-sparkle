@@ -323,22 +323,22 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                   }}
                 />
 
-                {/* Front pocket panel — V-shape clip so card peeks above */}
+                {/* Front pocket panel — V-shape clip with tip meeting the flap tip */}
                 <div
                   style={{
                     position: 'absolute',
                     inset: 0,
                     background:
-                      'linear-gradient(165deg, #EFE5D2 0%, #E0D2B5 100%)',
+                      'linear-gradient(165deg, #F0E6D2 0%, #E2D5B8 100%)',
                     borderRadius: '6px',
                     clipPath:
-                      'polygon(0 38%, 50% 100%, 100% 38%, 100% 100%, 0 100%)',
+                      'polygon(0 0, 0 100%, 100% 100%, 100% 0, 100% 8%, 50% 62%, 0 8%)',
                     boxShadow: 'inset 0 2px 6px rgba(120,90,50,0.18)',
                     zIndex: 2,
                   }}
                 />
 
-                {/* Diagonal seam lines (V shape on front) */}
+                {/* Diagonal seam lines from envelope corners to flap tip */}
                 <svg
                   viewBox="0 0 150 100"
                   preserveAspectRatio="none"
@@ -353,18 +353,18 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                 >
                   <line
                     x1="0"
-                    y1="38"
+                    y1="8"
                     x2="75"
-                    y2="100"
-                    stroke="rgba(140,100,60,0.25)"
+                    y2="62"
+                    stroke="rgba(140,100,60,0.28)"
                     strokeWidth="0.4"
                   />
                   <line
                     x1="150"
-                    y1="38"
+                    y1="8"
                     x2="75"
-                    y2="100"
-                    stroke="rgba(140,100,60,0.25)"
+                    y2="62"
+                    stroke="rgba(140,100,60,0.28)"
                     strokeWidth="0.4"
                   />
                 </svg>
