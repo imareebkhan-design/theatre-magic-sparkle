@@ -279,6 +279,14 @@ export default function WeddingTimeline() {
               }}>
                 {day.events[0].desc}
               </p>
+              {day.events[0].dressCode && (
+                <DressCodeLine
+                  align="center"
+                  color={day.color}
+                  code={day.events[0].dressCode}
+                  swatches={day.events[0].colors || []}
+                />
+              )}
             </motion.div>
           ) : (
             /* Multiple events — standard alternating timeline */
