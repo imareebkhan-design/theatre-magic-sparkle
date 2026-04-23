@@ -12,6 +12,7 @@ import blessingHands from '@/assets/blessing-hands.png';
 import bananaLeafMeal from '@/assets/banana-leaf-meal.png';
 import champagneToast from '@/assets/champagne-toast.png';
 import baraatFeet from '@/assets/baraat-couple.png';
+import muhurthamFeet from '@/assets/muhurtham-feet.png';
 
 type DecorationKey =
   | 'baraat-feet'
@@ -48,9 +49,9 @@ const DOODLE_MAP: Record<
     alt: 'Engagement ring in floral-adorned box',
   },
   kalash: {
-    src: baraatFeet,
-    width: 180,
-    alt: 'Illustration of bride and groom in wedding attire — muhurtham',
+    src: muhurthamFeet,
+    width: 170,
+    alt: 'Watercolor of bride and groom feet with anklets — muhurtham',
   },
   diya: {
     src: receptionProposal,
