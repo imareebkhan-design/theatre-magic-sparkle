@@ -240,7 +240,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '11px',
                       letterSpacing: '0.35em',
-                      color: '#7A5A3A',
+                      color: '#D4A556',
                       textTransform: 'uppercase',
                       textAlign: 'center',
                     }}
