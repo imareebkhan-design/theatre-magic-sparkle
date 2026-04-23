@@ -5,7 +5,24 @@ import {
   ParrotOnBranch,
 } from './SouthIndianIllustrations';
 
-const days = [
+type EventItem = {
+  time: string;
+  name: string;
+  desc: string;
+  side: 'left' | 'right';
+  dressCode?: string;
+  colors?: string[];
+  decoration?: 'parrot';
+};
+
+const days: {
+  day: string;
+  date: string;
+  title: string;
+  location: string;
+  color: string;
+  events: EventItem[];
+}[] = [
   {
     day: "Day 01",
     date: "28th November 2026",
@@ -18,18 +35,23 @@ const days = [
         name: "Engagement",
         desc: "The formal union of two families, followed by a celebratory lunch",
         side: "left",
+        dressCode: "Indo-Western",
+        colors: ["#F4D5C5", "#FFF8EC"],
       },
       {
         time: "5:30 PM – 7:00 PM",
         name: "Baraat",
         desc: "The groom's grand procession — music, dance and celebration as Sarthak arrives",
         side: "right",
+        decoration: "parrot",
       },
       {
         time: "7:00 PM onwards",
         name: "Pre-Wedding Reception",
         desc: "An evening of joy, laughter and togetherness, followed by dinner",
         side: "left",
+        dressCode: "Cocktail",
+        colors: ["#1E2A4A", "#C9922A"],
       },
       {
         time: "11:00 PM onwards",
@@ -78,6 +100,8 @@ const days = [
         name: "Reception Party",
         desc: "An elegant evening celebration bringing both families together, followed by dinner",
         side: "left",
+        dressCode: "Formal",
+        colors: ["#0F4D3A", "#E8D49A"],
       },
     ],
   },
