@@ -38,7 +38,7 @@ const DOODLE_SIZE = 160;
 
 const DOODLE_MAP: Record<
   DecorationKey,
-  { src: string; alt: string }
+  { src: string; alt: string; width?: number; height?: number }
 > = {
   'baraat-feet': {
     src: baraatFeet,
@@ -71,6 +71,8 @@ const DOODLE_MAP: Record<
   champagne: {
     src: champagneToast,
     alt: 'Illustrated wedding party with bride, groom and families celebrating',
+    width: 360,
+    height: 180,
   },
 };
 
@@ -93,8 +95,8 @@ const EventDoodle = ({
       justifyContent: justify,
     }}>
       <div style={{
-        width: `${DOODLE_SIZE}px`,
-        height: `${DOODLE_SIZE}px`,
+        width: `${config.width ?? DOODLE_SIZE}px`,
+        height: `${config.height ?? DOODLE_SIZE}px`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
