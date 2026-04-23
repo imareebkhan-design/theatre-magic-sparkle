@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import envelopePoster from '@/assets/envelope-gold-seal.jpg';
+import envelopePoster from '@/assets/envelope-navy-bee.jpg';
 import envelopeIntroAsset from '@/assets/envelope-intro.mp4.asset.json';
 
 interface EnvelopeRevealProps {
@@ -91,9 +91,8 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
               alignItems: 'center',
               justifyContent: 'center',
               background:
-                'radial-gradient(ellipse at center, #FBF4E8 0%, #F0E2C8 55%, #DCC9A4 100%)',
+                'radial-gradient(ellipse at center, #15233F 0%, #0B1426 70%, #050912 100%)',
               overflow: 'hidden',
-              padding: '24px',
             }}
             role="button"
             tabIndex={0}
@@ -106,113 +105,129 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
               }
             }}
           >
-            {/* warm glow */}
+            {/* warm gold glow behind the seal */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'radial-gradient(circle at 50% 45%, rgba(255,235,200,0.55) 0%, rgba(255,235,200,0) 60%)',
+                  'radial-gradient(circle at 50% 50%, rgba(212,165,86,0.18) 0%, rgba(212,165,86,0) 55%)',
                 pointerEvents: 'none',
               }}
             />
 
-            <div
+            {/* Fullscreen envelope assembly */}
+            <motion.div
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={
+                stage === 'idle'
+                  ? { opacity: 1, scale: [1, 1.015, 1] }
+                  : { opacity: 1, scale: 1 }
+              }
+              transition={
+                stage === 'idle'
+                  ? {
+                      opacity: { duration: 0.8 },
+                      scale: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
+                    }
+                  : { duration: 0.4 }
+              }
               style={{
-                position: 'relative',
+                position: 'absolute',
+                inset: 0,
                 width: '100%',
-                maxWidth: '520px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '28px',
+                height: '100%',
+                cursor: stage === 'idle' ? 'pointer' : 'default',
               }}
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.94, y: 12 }}
-                animate={
-                  stage === 'idle'
-                    ? { opacity: 1, scale: 1, y: [0, -6, 0] }
-                    : { opacity: 1, scale: 1, y: 0 }
-                }
-                transition={
-                  stage === 'idle'
-                    ? {
-                        opacity: { duration: 0.8 },
-                        scale: { duration: 0.8 },
-                        y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' },
-                      }
-                    : { duration: 0.4 }
-                }
+              {/* Poster image — visible while idle, hidden once video starts */}
+              <motion.img
+                src={envelopePoster}
+                alt="Wedding envelope with gold wax seal"
+                draggable={false}
+                decoding="async"
+                fetchPriority="high"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: stage === 'idle' ? 1 : 0 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
                 style={{
-                  position: 'relative',
+                  position: 'absolute',
+                  inset: 0,
                   width: '100%',
-                  aspectRatio: '3 / 4',
-                  filter:
-                    'drop-shadow(0 30px 40px rgba(90,60,30,0.28)) drop-shadow(0 10px 18px rgba(90,60,30,0.18))',
-                  cursor: stage === 'idle' ? 'pointer' : 'default',
+                  height: '100%',
+                  objectFit: 'cover',
+                  userSelect: 'none',
+                  pointerEvents: 'none',
                 }}
-              >
-                {/* Poster image — visible while idle, hidden once video starts */}
-                <motion.img
-                  src={envelopePoster}
-                  alt="Floral wedding envelope"
-                  draggable={false}
-                  decoding="async"
-                  fetchPriority="high"
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: stage === 'idle' ? 1 : 0 }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
+              />
+
+              {/* Cinematic envelope-opening video */}
+              <video
+                ref={videoRef}
+                src={VIDEO_URL}
+                poster={envelopePoster}
+                playsInline
+                preload="auto"
+                muted
+                onEnded={reveal}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: stage === 'opening' ? 1 : 0,
+                  transition: 'opacity 0.25s ease-out',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              {/* Subtle vignette for cinematic depth */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background:
+                    'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.45) 100%)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              {/* Soft pulsing gold glow over the seal area to draw the tap */}
+              {stage === 'idle' && (
+                <motion.div
+                  animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
                   style={{
                     position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    userSelect: 'none',
+                    top: '50%',
+                    left: '50%',
+                    width: '40vmin',
+                    height: '40vmin',
+                    transform: 'translate(-50%, -50%)',
+                    borderRadius: '50%',
+                    background:
+                      'radial-gradient(circle, rgba(212,165,86,0.35) 0%, rgba(212,165,86,0) 65%)',
                     pointerEvents: 'none',
+                    mixBlendMode: 'screen',
                   }}
                 />
+              )}
+            </motion.div>
 
-                {/* Cinematic envelope-opening video */}
-                <video
-                  ref={videoRef}
-                  src={VIDEO_URL}
-                  poster={envelopePoster}
-                  playsInline
-                  preload="auto"
-                  muted
-                  onEnded={reveal}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    opacity: stage === 'opening' ? 1 : 0,
-                    transition: 'opacity 0.25s ease-out',
-                    pointerEvents: 'none',
-                  }}
-                />
-
-                {/* Soft pulsing glow around the envelope to draw the tap */}
-                {stage === 'idle' && (
-                  <motion.div
-                    animate={{ opacity: [0.25, 0.6, 0.25], scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                    style={{
-                      position: 'absolute',
-                      inset: '-8%',
-                      borderRadius: '50%',
-                      background:
-                        'radial-gradient(circle, rgba(232,154,175,0.35) 0%, rgba(232,154,175,0) 70%)',
-                      pointerEvents: 'none',
-                      zIndex: -1,
-                    }}
-                  />
-                )}
-              </motion.div>
-
+            {/* Tap hint pinned near the bottom */}
+            <div
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: '8vh',
+                display: 'flex',
+                justifyContent: 'center',
+                pointerEvents: 'none',
+                zIndex: 2,
+              }}
+            >
               {/* Tap hint */}
               <AnimatePresence>
                 {stage === 'idle' && showHint && (
@@ -225,7 +240,7 @@ export const EnvelopeReveal = ({ onOpen, children }: EnvelopeRevealProps) => {
                       fontFamily: 'Montserrat, sans-serif',
                       fontSize: '11px',
                       letterSpacing: '0.35em',
-                      color: '#7A5A3A',
+                      color: '#D4A556',
                       textTransform: 'uppercase',
                       textAlign: 'center',
                     }}
