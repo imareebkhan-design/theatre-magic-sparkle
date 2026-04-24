@@ -375,19 +375,8 @@ export default function WeddingTimeline() {
       {/* Wrapper that spans from the section heading through the end of Day 01.
           The marigold garlands stretch the full height of this wrapper. */}
       <div style={{ position: 'relative' }}>
-        {/* Marigold bell strings — span heading → end of Day 01 timeline */}
-        <div style={{
-          position: 'absolute', top: 0, bottom: 0, left: '2%',
-          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-        }}>
-          <MarigoldBellString side="left" />
-        </div>
-        <div style={{
-          position: 'absolute', top: 0, bottom: 0, right: '2%',
-          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-        }}>
-          <MarigoldBellString side="right" />
-        </div>
+        {/* Scroll-driven garlands — span heading → end of Day 01 timeline */}
+        <GarlandPair />
 
       {/* Section Header */}
       <motion.div
