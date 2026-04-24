@@ -300,21 +300,22 @@ export default function WeddingTimeline() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Marigold bell strings — hang from the top of the section,
-          draping behind the "Three Days of Celebration" heading
-          and extending down into Day 01 */}
-      <div style={{
-        position: 'absolute', top: '0px', left: '2%',
-        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-      }}>
-        <MarigoldBellString side="left" />
-      </div>
-      <div style={{
-        position: 'absolute', top: '0px', right: '2%',
-        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-      }}>
-        <MarigoldBellString side="right" />
-      </div>
+      {/* Wrapper that spans from the section heading through the end of Day 01.
+          The marigold garlands stretch the full height of this wrapper. */}
+      <div style={{ position: 'relative' }}>
+        {/* Marigold bell strings — span heading → end of Day 01 timeline */}
+        <div style={{
+          position: 'absolute', top: 0, bottom: 0, left: '2%',
+          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+        }}>
+          <MarigoldBellString side="left" />
+        </div>
+        <div style={{
+          position: 'absolute', top: 0, bottom: 0, right: '2%',
+          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+        }}>
+          <MarigoldBellString side="right" />
+        </div>
 
       {/* Section Header */}
       <motion.div
@@ -350,7 +351,7 @@ export default function WeddingTimeline() {
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
         }}>
-          {/* Marigold strings now drape from the top of the section */}
+          {/* Garlands span from section top to end of Day 01 via the outer wrapper */}
 
           {/* Day Header */}
           <motion.div
