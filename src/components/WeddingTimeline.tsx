@@ -413,6 +413,7 @@ export default function WeddingTimeline() {
                 maxWidth: '480px', margin: '0 auto',
                 display: 'flex', flexDirection: 'column',
                 alignItems: 'center', textAlign: 'center',
+                position: 'relative', zIndex: 1,
               }}
             >
               {/* Dot */}
@@ -472,7 +473,7 @@ export default function WeddingTimeline() {
             /* Multiple events — standard alternating timeline */
             <div style={{
               maxWidth: '680px', margin: '0 auto',
-              position: 'relative',
+              position: 'relative', zIndex: 1,
             }}>
               {/* Vertical line */}
               <div style={{
@@ -641,6 +642,7 @@ export default function WeddingTimeline() {
                 maxWidth: '480px', margin: '0 auto',
                 display: 'flex', flexDirection: 'column',
                 alignItems: 'center', textAlign: 'center',
+                position: 'relative', zIndex: 1,
               }}
             >
               <div style={{
@@ -695,7 +697,7 @@ export default function WeddingTimeline() {
           ) : (
             <div style={{
               maxWidth: '680px', margin: '0 auto',
-              position: 'relative',
+              position: 'relative', zIndex: 1,
             }}>
               <div style={{
                 position: 'absolute', left: '50%', top: 0, bottom: 0,
