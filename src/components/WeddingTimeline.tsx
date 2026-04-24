@@ -297,14 +297,32 @@ export default function WeddingTimeline() {
       background: '#F6F0E6',
       padding: '80px 24px',
       fontFamily: "'DM Sans', sans-serif",
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {/* Marigold bell strings — hang from the top of the section,
+          draping behind the "Three Days of Celebration" heading
+          and extending down into Day 01 */}
+      <div style={{
+        position: 'absolute', top: '0px', left: '2%',
+        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+      }}>
+        <MarigoldBellString side="left" />
+      </div>
+      <div style={{
+        position: 'absolute', top: '0px', right: '2%',
+        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+      }}>
+        <MarigoldBellString side="right" />
+      </div>
+
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        style={{ textAlign: 'center', marginBottom: '80px' }}
+        style={{ textAlign: 'center', marginBottom: '80px', position: 'relative', zIndex: 1 }}
       >
         <p style={{
           fontSize: '10px', letterSpacing: '0.4em',
