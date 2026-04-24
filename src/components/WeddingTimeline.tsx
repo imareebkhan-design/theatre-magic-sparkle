@@ -413,6 +413,7 @@ export default function WeddingTimeline() {
                 maxWidth: '480px', margin: '0 auto',
                 display: 'flex', flexDirection: 'column',
                 alignItems: 'center', textAlign: 'center',
+                position: 'relative', zIndex: 1,
               }}
             >
               {/* Dot */}
