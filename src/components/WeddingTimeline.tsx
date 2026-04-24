@@ -1,8 +1,80 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion';
 import {
   SouthIndianDayFrame,
   MarigoldBellString,
 } from './SouthIndianIllustrations';
+
+/* Scroll-driven garland: drops down as user scrolls the day into view.
+   Uses clip-path reveal + subtle vertical drift + sway. */
+const ScrollGarland = ({
+  side,
+  containerRef,
+}: {
+  side: 'left' | 'right';
+  containerRef: React.RefObject<HTMLDivElement>;
+}) => {
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 22,
+    mass: 0.6,
+  });
+  const clip = useTransform(
+    smooth,
+    [0, 0.05, 0.55, 1],
+    ['inset(0 0 100% 0)', 'inset(0 0 100% 0)', 'inset(0 0 0% 0)', 'inset(0 0 0% 0)']
+  );
+  const y = useTransform(smooth, [0, 0.55], [-30, 0]);
+  const swayDeg: MotionValue<number> = useTransform(smooth, (v) =>
+    Math.sin(v * Math.PI * 2) * (side === 'left' ? 1.2 : -1.2)
+  );
+
+  return (
+    <motion.div
+      style={{
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        [side]: '2%',
+        pointerEvents: 'none',
+        opacity: 0.9,
+        zIndex: 0,
+        clipPath: clip,
+        WebkitClipPath: clip,
+        y,
+        rotate: swayDeg,
+        transformOrigin: 'top center',
+      } as unknown as React.CSSProperties}
+    >
+      <MarigoldBellString side={side} />
+    </motion.div>
+  );
+};
+
+/* Renders both garlands. Tracks scroll progress against its own parent
+   (the absolutely-positioned wrapper that fills the day container). */
+const GarlandPair = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        zIndex: 0,
+      }}
+    >
+      <ScrollGarland side="left" containerRef={ref} />
+      <ScrollGarland side="right" containerRef={ref} />
+    </div>
+  );
+};
+
 import engagementHands from '@/assets/engagement-ring.webp';
 import handsExchangingRings from '@/assets/engagement-hands.webp';
 import kalash from '@/assets/kalash.webp';
@@ -303,19 +375,8 @@ export default function WeddingTimeline() {
       {/* Wrapper that spans from the section heading through the end of Day 01.
           The marigold garlands stretch the full height of this wrapper. */}
       <div style={{ position: 'relative' }}>
-        {/* Marigold bell strings — span heading → end of Day 01 timeline */}
-        <div style={{
-          position: 'absolute', top: 0, bottom: 0, left: '2%',
-          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-        }}>
-          <MarigoldBellString side="left" />
-        </div>
-        <div style={{
-          position: 'absolute', top: 0, bottom: 0, right: '2%',
-          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-        }}>
-          <MarigoldBellString side="right" />
-        </div>
+        {/* Scroll-driven garlands — span heading → end of Day 01 timeline */}
+        <GarlandPair />
 
       {/* Section Header */}
       <motion.div
@@ -571,19 +632,8 @@ export default function WeddingTimeline() {
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
         }}>
-          {/* Marigold bell strings — span the full height of this day */}
-          <div style={{
-            position: 'absolute', top: 0, bottom: 0, left: '2%',
-            pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-          }}>
-            <MarigoldBellString side="left" />
-          </div>
-          <div style={{
-            position: 'absolute', top: 0, bottom: 0, right: '2%',
-            pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-          }}>
-            <MarigoldBellString side="right" />
-          </div>
+          {/* Scroll-driven garlands — drop down as the day scrolls into view */}
+          <GarlandPair />
 
           {/* Day Header */}
           <motion.div
