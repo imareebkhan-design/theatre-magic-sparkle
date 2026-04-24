@@ -462,6 +462,10 @@ export default function Index() {
       </audio>
 
       <EnvelopeReveal onOpen={handleEnvelopeOpen}>
+        {/* Kolam decorative band — top of page */}
+        <div style={{ background: '#F4EDE4', padding: '20px 0 8px' }}>
+          <KolamDivider color="#B5334E" />
+        </div>
         {/* Jasmine Toran — top of page */}
         <div style={{ position: 'relative', zIndex: 2, marginBottom: '-20px' }}>
           <JasmineToran />
