@@ -347,6 +347,9 @@ export default function WeddingTimeline() {
 
       {/* Days */}
       {days.map((day, dayIndex) => (
+        <>
+        {/* Close the garland wrapper after Day 01 so garlands end at Day 01 timeline */}
+        {dayIndex === 1 && <div data-close-garland-wrapper key={`close-${dayIndex}`} />}
         <div key={dayIndex} style={{
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
