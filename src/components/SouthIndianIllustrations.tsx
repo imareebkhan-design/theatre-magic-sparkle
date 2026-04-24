@@ -494,9 +494,9 @@ export const SouthIndianDayFrame = ({
    ════════════════════════════════════════════════ */
 export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => (
   <svg
-    viewBox="0 0 80 160"
+    viewBox="0 0 80 360"
     width="60"
-    height="120"
+    height="280"
     style={{
       transform: side === 'right' ? 'scaleX(-1)' : undefined,
       pointerEvents: 'none',
@@ -504,9 +504,9 @@ export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' 
     }}
   >
     {/* String */}
-    <path d="M40,0 Q38,40 42,80 Q40,120 38,160" stroke="#C9922A" strokeWidth="0.8" fill="none" opacity="0.6" />
+    <path d="M40,0 Q38,60 42,120 Q40,180 38,240 Q42,300 40,360" stroke="#C9922A" strokeWidth="0.8" fill="none" opacity="0.6" />
     {/* Marigold balls along string */}
-    {[15, 35, 55, 75, 95, 115, 135].map((y, i) => {
+    {[15, 35, 55, 75, 95, 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335].map((y, i) => {
       const cx = 40 + Math.sin(i * 1.3) * 4;
       const isSaffron = i % 2 === 0;
       return (
@@ -530,7 +530,7 @@ export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' 
       );
     })}
     {/* End tassel bell */}
-    <g transform="translate(38, 152)">
+    <g transform="translate(38, 350)">
       <path d="M-4,0 Q-5,8 0,10 Q5,8 4,0 Z" fill="#C9922A" opacity="0.8" />
       <circle cx="0" cy="11" r="1.4" fill="#A07820" opacity="0.9" />
     </g>
