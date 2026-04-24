@@ -345,8 +345,8 @@ export default function WeddingTimeline() {
         </p>
       </motion.div>
 
-      {/* Days */}
-      {days.map((day, dayIndex) => (
+      {/* Day 01 — inside the garland wrapper so garlands stretch from heading to end of Day 01 */}
+      {days.slice(0, 1).map((day, dayIndex) => (
         <div key={dayIndex} style={{
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
