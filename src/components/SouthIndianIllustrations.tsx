@@ -494,16 +494,16 @@ export const SouthIndianDayFrame = ({
    ════════════════════════════════════════════════ */
 export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => {
   // Generate marigold positions every 20 units along a long string
-  const marigolds = Array.from({ length: 55 }, (_, i) => 15 + i * 20);
+  const marigolds = Array.from({ length: 80 }, (_, i) => 15 + i * 20);
   const stringEnd = marigolds[marigolds.length - 1] + 15;
   return (
     <svg
       viewBox={`0 0 80 ${stringEnd + 20}`}
-      preserveAspectRatio="xMidYMin meet"
+      preserveAspectRatio="none"
       style={{
         // Responsive width: mobile → tablet → desktop
         width: 'clamp(38px, 6vw, 64px)',
-        // Fill the parent container's height (parent uses bottom:0 to anchor end)
+        // Stretch to fill parent height (parent uses top:0/bottom:0)
         height: '100%',
         transform: side === 'right' ? 'scaleX(-1)' : undefined,
         pointerEvents: 'none',
@@ -517,6 +517,7 @@ export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' 
         strokeWidth="0.8"
         fill="none"
         opacity="0.6"
+        vectorEffect="non-scaling-stroke"
       />
       {/* Marigold balls along string */}
       {marigolds.map((y, i) => {
