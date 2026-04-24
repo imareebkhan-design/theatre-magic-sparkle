@@ -492,53 +492,63 @@ export const SouthIndianDayFrame = ({
 /* ════════════════════════════════════════════════
    8. MARIGOLD BELL STRING — hangs from top corners
    ════════════════════════════════════════════════ */
-export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => (
-  <svg
-    viewBox="0 0 80 360"
-    preserveAspectRatio="xMidYMin meet"
-    style={{
-      // Responsive: ~38px wide on mobile, ~52px tablet, ~64px desktop
-      width: 'clamp(38px, 6vw, 64px)',
-      // Responsive height: ~180px mobile → ~260px tablet → ~320px desktop
-      height: 'clamp(180px, 32vw, 320px)',
-      transform: side === 'right' ? 'scaleX(-1)' : undefined,
-      pointerEvents: 'none',
-      display: 'block',
-    }}
-  >
-    {/* String */}
-    <path d="M40,0 Q38,60 42,120 Q40,180 38,240 Q42,300 40,360" stroke="#C9922A" strokeWidth="0.8" fill="none" opacity="0.6" />
-    {/* Marigold balls along string */}
-    {[15, 35, 55, 75, 95, 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335].map((y, i) => {
-      const cx = 40 + Math.sin(i * 1.3) * 4;
-      const isSaffron = i % 2 === 0;
-      return (
-        <g key={i} transform={`translate(${cx}, ${y})`}>
-          {/* Outer petals */}
-          {[0, 60, 120, 180, 240, 300].map((a, j) => {
-            const rad = (a * Math.PI) / 180;
-            return (
-              <circle
-                key={j}
-                cx={Math.cos(rad) * 3}
-                cy={Math.sin(rad) * 3}
-                r="2.5"
-                fill={isSaffron ? '#E8651A' : '#D4A017'}
-                opacity="0.7"
-              />
-            );
-          })}
-          <circle cx="0" cy="0" r="2" fill={isSaffron ? '#D4A017' : '#E8651A'} opacity="0.9" />
-        </g>
-      );
-    })}
-    {/* End tassel bell */}
-    <g transform="translate(38, 350)">
-      <path d="M-4,0 Q-5,8 0,10 Q5,8 4,0 Z" fill="#C9922A" opacity="0.8" />
-      <circle cx="0" cy="11" r="1.4" fill="#A07820" opacity="0.9" />
-    </g>
-  </svg>
-);
+export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => {
+  // Generate marigold positions every 20 units along a long string
+  const marigolds = Array.from({ length: 55 }, (_, i) => 15 + i * 20);
+  const stringEnd = marigolds[marigolds.length - 1] + 15;
+  return (
+    <svg
+      viewBox={`0 0 80 ${stringEnd + 20}`}
+      preserveAspectRatio="xMidYMin meet"
+      style={{
+        // Responsive width: mobile → tablet → desktop
+        width: 'clamp(38px, 6vw, 64px)',
+        // Fill the parent container's height (parent uses bottom:0 to anchor end)
+        height: '100%',
+        transform: side === 'right' ? 'scaleX(-1)' : undefined,
+        pointerEvents: 'none',
+        display: 'block',
+      }}
+    >
+      {/* String */}
+      <path
+        d={`M40,0 Q38,${stringEnd / 4} 42,${stringEnd / 2} Q40,${(stringEnd * 3) / 4} 38,${stringEnd}`}
+        stroke="#C9922A"
+        strokeWidth="0.8"
+        fill="none"
+        opacity="0.6"
+      />
+      {/* Marigold balls along string */}
+      {marigolds.map((y, i) => {
+        const cx = 40 + Math.sin(i * 1.3) * 4;
+        const isSaffron = i % 2 === 0;
+        return (
+          <g key={i} transform={`translate(${cx}, ${y})`}>
+            {[0, 60, 120, 180, 240, 300].map((a, j) => {
+              const rad = (a * Math.PI) / 180;
+              return (
+                <circle
+                  key={j}
+                  cx={Math.cos(rad) * 3}
+                  cy={Math.sin(rad) * 3}
+                  r="2.5"
+                  fill={isSaffron ? '#E8651A' : '#D4A017'}
+                  opacity="0.7"
+                />
+              );
+            })}
+            <circle cx="0" cy="0" r="2" fill={isSaffron ? '#D4A017' : '#E8651A'} opacity="0.9" />
+          </g>
+        );
+      })}
+      {/* End tassel bell */}
+      <g transform={`translate(38, ${stringEnd + 10})`}>
+        <path d="M-4,0 Q-5,8 0,10 Q5,8 4,0 Z" fill="#C9922A" opacity="0.8" />
+        <circle cx="0" cy="11" r="1.4" fill="#A07820" opacity="0.9" />
+      </g>
+    </svg>
+  );
+};
 
 /* ════════════════════════════════════════════════
    9. PARROT ON BRANCH — small accent doodle

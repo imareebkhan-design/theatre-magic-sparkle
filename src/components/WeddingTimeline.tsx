@@ -300,21 +300,22 @@ export default function WeddingTimeline() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Marigold bell strings — hang from the top of the section,
-          draping behind the "Three Days of Celebration" heading
-          and extending down into Day 01 */}
-      <div style={{
-        position: 'absolute', top: '0px', left: '2%',
-        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-      }}>
-        <MarigoldBellString side="left" />
-      </div>
-      <div style={{
-        position: 'absolute', top: '0px', right: '2%',
-        pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-      }}>
-        <MarigoldBellString side="right" />
-      </div>
+      {/* Wrapper that spans from the section heading through the end of Day 01.
+          The marigold garlands stretch the full height of this wrapper. */}
+      <div style={{ position: 'relative' }}>
+        {/* Marigold bell strings — span heading → end of Day 01 timeline */}
+        <div style={{
+          position: 'absolute', top: 0, bottom: 0, left: '2%',
+          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+        }}>
+          <MarigoldBellString side="left" />
+        </div>
+        <div style={{
+          position: 'absolute', top: 0, bottom: 0, right: '2%',
+          pointerEvents: 'none', opacity: 0.85, zIndex: 0,
+        }}>
+          <MarigoldBellString side="right" />
+        </div>
 
       {/* Section Header */}
       <motion.div
@@ -344,13 +345,12 @@ export default function WeddingTimeline() {
         </p>
       </motion.div>
 
-      {/* Days */}
-      {days.map((day, dayIndex) => (
+      {/* Day 01 — inside the garland wrapper so garlands stretch from heading to end of Day 01 */}
+      {days.slice(0, 1).map((day, dayIndex) => (
         <div key={dayIndex} style={{
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
         }}>
-          {/* Marigold strings now drape from the top of the section */}
 
           {/* Day Header */}
           <motion.div
@@ -556,12 +556,213 @@ export default function WeddingTimeline() {
             </div>
           )}
 
-          {/* Day divider — not after last day */}
-          {dayIndex < days.length - 1 && (
-            <Divider color={day.color} />
-          )}
+          {/* Divider after Day 01 (always, since more days follow) */}
+          <Divider color={day.color} />
         </div>
       ))}
+      </div>
+
+      {/* Remaining days (Day 02 onward) — rendered outside garland wrapper */}
+      {days.slice(1).map((day, idx) => {
+        const dayIndex = idx + 1;
+        return (
+        <div key={dayIndex} style={{
+          marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
+          position: 'relative',
+        }}>
+          {/* Day Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ textAlign: 'center', marginBottom: '48px', position: 'relative', zIndex: 1 }}
+          >
+            <div style={{ marginBottom: '16px' }}>
+              <SouthIndianDayFrame color={day.color}>
+                <div style={{
+                  display: 'inline-block',
+                  padding: '6px 20px',
+                  border: `1px solid ${day.color}`,
+                  borderRadius: '2px',
+                }}>
+                  <span style={{
+                    fontSize: '10px', letterSpacing: '0.35em',
+                    textTransform: 'uppercase', color: day.color,
+                  }}>
+                    {day.day}
+                  </span>
+                </div>
+              </SouthIndianDayFrame>
+            </div>
+            <h3 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: '32px', fontWeight: 300,
+              color: '#223348', margin: '0 0 6px',
+            }}>
+              {day.title}
+            </h3>
+            <p style={{
+              fontSize: '11px', letterSpacing: '0.25em',
+              textTransform: 'uppercase', color: '#7397A8', margin: '0 0 4px',
+            }}>
+              {day.date}
+            </p>
+            <p style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: '14px', fontStyle: 'italic',
+              color: day.color, margin: 0,
+            }}>
+              {day.location}
+            </p>
+          </motion.div>
+
+          {day.events.length === 1 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6 }}
+              style={{
+                maxWidth: '480px', margin: '0 auto',
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', textAlign: 'center',
+              }}
+            >
+              <div style={{
+                width: '10px', height: '10px',
+                background: day.color,
+                borderRadius: '50%',
+                flexShrink: 0,
+                position: 'relative', zIndex: 1,
+                border: '2px solid #F6F0E6',
+                boxShadow: `0 0 0 1px ${day.color}`,
+              }} />
+              <div style={{
+                width: '1px', height: '32px',
+                background: `${day.color}60`,
+                marginBottom: '20px',
+              }} />
+              <p style={{
+                fontSize: '10px', letterSpacing: '0.2em',
+                textTransform: 'uppercase', color: day.color,
+                marginBottom: '4px',
+              }}>
+                {day.events[0].time}
+              </p>
+              <h4 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '22px', fontWeight: 400,
+                color: '#223348', margin: '0 0 6px',
+              }}>
+                {day.events[0].name}
+              </h4>
+              <p style={{
+                fontSize: '12px', fontWeight: 300,
+                color: '#53694D', lineHeight: 1.7, margin: 0,
+              }}>
+                {day.events[0].desc}
+              </p>
+              {day.events[0].dressCode && (
+                <DressCodeLine
+                  align="center"
+                  color={day.color}
+                  code={day.events[0].dressCode}
+                  swatches={day.events[0].colors || []}
+                />
+              )}
+              {day.events[0].decoration && (
+                <EventDoodle
+                  decoration={day.events[0].decoration}
+                  align="center"
+                />
+              )}
+            </motion.div>
+          ) : (
+            <div style={{
+              maxWidth: '680px', margin: '0 auto',
+              position: 'relative',
+            }}>
+              <div style={{
+                position: 'absolute', left: '50%', top: 0, bottom: 0,
+                width: '1px',
+                background: `linear-gradient(to bottom, transparent, ${day.color}60 10%, ${day.color}60 90%, transparent)`,
+                transform: 'translateX(-50%)',
+              }} />
+              {day.events.map((event, eventIndex) => (
+                <motion.div
+                  key={eventIndex}
+                  initial={{ opacity: 0, x: event.side === 'left' ? -24 : 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.6, delay: eventIndex * 0.12 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    marginBottom: '40px',
+                    flexDirection: event.side === 'right' ? 'row-reverse' : 'row',
+                  }}
+                >
+                  <div style={{
+                    flex: 1,
+                    textAlign: event.side === 'left' ? 'right' : 'left',
+                    paddingRight: event.side === 'left' ? '32px' : 0,
+                    paddingLeft: event.side === 'right' ? '32px' : 0,
+                  }}>
+                    <p style={{
+                      fontSize: '10px', letterSpacing: '0.2em',
+                      textTransform: 'uppercase', color: day.color,
+                      marginBottom: '4px',
+                    }}>
+                      {event.time}
+                    </p>
+                    <h4 style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: '22px', fontWeight: 400,
+                      color: '#223348', margin: '0 0 6px',
+                    }}>
+                      {event.name}
+                    </h4>
+                    <p style={{
+                      fontSize: '12px', fontWeight: 300,
+                      color: '#53694D', lineHeight: 1.7, margin: 0,
+                    }}>
+                      {event.desc}
+                    </p>
+                    {event.dressCode && (
+                      <DressCodeLine
+                        align={event.side === 'left' ? 'right' : 'left'}
+                        color={day.color}
+                        code={event.dressCode}
+                        swatches={event.colors || []}
+                      />
+                    )}
+                    {event.decoration && (
+                      <EventDoodle
+                        decoration={event.decoration}
+                        align={event.side}
+                      />
+                    )}
+                  </div>
+                  <div style={{
+                    width: '10px', height: '10px',
+                    background: day.color,
+                    borderRadius: '50%',
+                    flexShrink: 0, marginTop: '8px',
+                    position: 'relative', zIndex: 1,
+                    border: '2px solid #F6F0E6',
+                    boxShadow: `0 0 0 1px ${day.color}`,
+                  }} />
+                  <div style={{ flex: 1 }} />
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {dayIndex < days.length - 1 && <Divider color={day.color} />}
+        </div>
+        );
+      })}
     </section>
   );
 }
