@@ -495,9 +495,12 @@ export const SouthIndianDayFrame = ({
 export const MarigoldBellString = ({ side = 'left' }: { side?: 'left' | 'right' }) => (
   <svg
     viewBox="0 0 80 360"
-    width="60"
-    height="280"
+    preserveAspectRatio="xMidYMin meet"
     style={{
+      // Responsive: ~38px wide on mobile, ~52px tablet, ~64px desktop
+      width: 'clamp(38px, 6vw, 64px)',
+      // Responsive height: ~180px mobile → ~260px tablet → ~320px desktop
+      height: 'clamp(180px, 32vw, 320px)',
       transform: side === 'right' ? 'scaleX(-1)' : undefined,
       pointerEvents: 'none',
       display: 'block',
