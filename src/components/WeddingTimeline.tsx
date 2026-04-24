@@ -350,23 +350,7 @@ export default function WeddingTimeline() {
           marginBottom: dayIndex < days.length - 1 ? '80px' : 0,
           position: 'relative',
         }}>
-          {/* Marigold bell strings on Day 01 only */}
-          {dayIndex === 0 && (
-            <>
-              <div style={{
-                position: 'absolute', top: '-40px', left: '4%',
-                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-              }}>
-                <MarigoldBellString side="left" />
-              </div>
-              <div style={{
-                position: 'absolute', top: '-40px', right: '4%',
-                pointerEvents: 'none', opacity: 0.85, zIndex: 0,
-              }}>
-                <MarigoldBellString side="right" />
-              </div>
-            </>
-          )}
+          {/* Marigold strings now drape from the top of the section */}
 
           {/* Day Header */}
           <motion.div
