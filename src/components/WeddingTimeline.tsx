@@ -1,8 +1,60 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion';
 import {
   SouthIndianDayFrame,
   MarigoldBellString,
 } from './SouthIndianIllustrations';
+
+/* Scroll-driven garland: drops down as user scrolls the day into view.
+   Uses clip-path reveal + subtle vertical drift + sway on the SVG. */
+const ScrollGarland = ({
+  side,
+  containerRef,
+}: {
+  side: 'left' | 'right';
+  containerRef: React.RefObject<HTMLDivElement>;
+}) => {
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 22,
+    mass: 0.6,
+  });
+  const clip = useTransform(
+    smooth,
+    [0, 0.05, 0.55, 1],
+    ['inset(0 0 100% 0)', 'inset(0 0 100% 0)', 'inset(0 0 0% 0)', 'inset(0 0 0% 0)']
+  );
+  const y = useTransform(smooth, [0, 0.55], [-30, 0]);
+  const swayDeg: MotionValue<number> = useTransform(smooth, (v) =>
+    Math.sin(v * Math.PI * 2) * (side === 'left' ? 1.2 : -1.2)
+  );
+
+  return (
+    <motion.div
+      style={{
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        [side]: '2%',
+        pointerEvents: 'none',
+        opacity: 0.9,
+        zIndex: 0,
+        clipPath: clip,
+        WebkitClipPath: clip,
+        y,
+        rotate: swayDeg,
+        transformOrigin: 'top center',
+      } as React.CSSProperties}
+    >
+      <MarigoldBellString side={side} />
+    </motion.div>
+  );
+};
+
 import engagementHands from '@/assets/engagement-ring.webp';
 import handsExchangingRings from '@/assets/engagement-hands.webp';
 import kalash from '@/assets/kalash.webp';
