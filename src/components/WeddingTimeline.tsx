@@ -473,7 +473,7 @@ export default function WeddingTimeline() {
             /* Multiple events — standard alternating timeline */
             <div style={{
               maxWidth: '680px', margin: '0 auto',
-              position: 'relative',
+              position: 'relative', zIndex: 1,
             }}>
               {/* Vertical line */}
               <div style={{
