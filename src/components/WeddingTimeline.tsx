@@ -48,7 +48,7 @@ const ScrollGarland = ({
         y,
         rotate: swayDeg,
         transformOrigin: 'top center',
-      } as React.CSSProperties}
+      } as unknown as React.CSSProperties}
     >
       <MarigoldBellString side={side} />
     </motion.div>
