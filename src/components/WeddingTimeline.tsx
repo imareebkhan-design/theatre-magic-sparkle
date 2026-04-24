@@ -6,7 +6,7 @@ import {
 } from './SouthIndianIllustrations';
 
 /* Scroll-driven garland: drops down as user scrolls the day into view.
-   Uses clip-path reveal + subtle vertical drift + sway on the SVG. */
+   Uses clip-path reveal + subtle vertical drift + sway. */
 const ScrollGarland = ({
   side,
   containerRef,
@@ -52,6 +52,26 @@ const ScrollGarland = ({
     >
       <MarigoldBellString side={side} />
     </motion.div>
+  );
+};
+
+/* Renders both garlands. Tracks scroll progress against its own parent
+   (the absolutely-positioned wrapper that fills the day container). */
+const GarlandPair = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        zIndex: 0,
+      }}
+    >
+      <ScrollGarland side="left" containerRef={ref} />
+      <ScrollGarland side="right" containerRef={ref} />
+    </div>
   );
 };
 
