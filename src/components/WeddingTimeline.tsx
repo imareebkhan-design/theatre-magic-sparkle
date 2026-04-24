@@ -563,6 +563,7 @@ export default function WeddingTimeline() {
           )}
         </div>
       ))}
+      </div>
     </section>
   );
 }
