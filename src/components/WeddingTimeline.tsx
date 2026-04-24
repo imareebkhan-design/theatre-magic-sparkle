@@ -696,7 +696,7 @@ export default function WeddingTimeline() {
           ) : (
             <div style={{
               maxWidth: '680px', margin: '0 auto',
-              position: 'relative',
+              position: 'relative', zIndex: 1,
             }}>
               <div style={{
                 position: 'absolute', left: '50%', top: 0, bottom: 0,
